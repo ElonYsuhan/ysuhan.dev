@@ -92,12 +92,12 @@ export default defineConfig({
 
     // Navigation
     nav: [
-      { text: 'Home', link: '/' },
+      { text: '首页', link: '/' },
       { text: '产品', link: '/projects/' },
-      { text: 'Showcase', link: '/showcase/' },
-      { text: 'Blog', link: '/blog/' },
-      { text: 'Notes', link: '/notes/' },
-      { text: 'About', link: '/about/' },
+      { text: '展示', link: '/showcase/' },
+      { text: '博客', link: '/blog/' },
+      { text: '笔记', link: '/notes/' },
+      { text: '关于', link: '/about/' },
     ],
 
     // Social links (shown in nav)
@@ -109,25 +109,25 @@ export default defineConfig({
     sidebar: {
       '/projects/': [
         {
-          text: 'Projects',
+          text: '产品',
           items: [
-            { text: 'All Projects', link: '/projects/' },
+            { text: '全部产品', link: '/projects/' },
           ],
         },
       ],
       '/blog/': [
         {
-          text: 'Blog',
+          text: '博客',
           items: [
-            { text: 'All Posts', link: '/blog/' },
+            { text: '全部文章', link: '/blog/' },
           ],
         },
       ],
       '/notes/': [
         {
-          text: 'Notes',
+          text: '笔记',
           items: [
-            { text: 'Digital Garden', link: '/notes/' },
+            { text: '数字花园', link: '/notes/' },
           ],
         },
       ],
@@ -135,8 +135,8 @@ export default defineConfig({
 
     // Footer
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: `Copyright © 2024–${new Date().getFullYear()} Ysuhan`,
+      message: '基于 MIT 许可证发布。',
+      copyright: `© 2024–${new Date().getFullYear()} Ysuhan`,
     },
 
     // Search
@@ -164,12 +164,12 @@ export default defineConfig({
     // Edit link
     editLink: {
       pattern: 'https://github.com/ysuhan/ysuhan.dev/edit/main/:path',
-      text: 'Edit this page on GitHub',
+      text: '在 GitHub 上编辑此页',
     },
 
     // Last updated
     lastUpdated: {
-      text: 'Updated at',
+      text: '最后更新',
       formatOptions: {
         dateStyle: 'short',
         timeStyle: 'medium',

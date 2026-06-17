@@ -53,13 +53,13 @@ const highlights = [
 </script>
 
 <div class="home-section">
-  <h2 class="section-heading">What I Do</h2>
+  <h2 class="section-heading">能力领域</h2>
   <FeatureGrid :features="highlights" />
 </div>
 
 <div class="home-section home-cta">
   <div class="cta-card">
-    <h2 class="cta-title">Let's build something great together.</h2>
+    <h2 class="cta-title">一起创造有趣的东西。</h2>
     <p class="cta-desc">
       对技术保持好奇，对产品保持热情。如果你有有趣的想法或项目，欢迎交流。
     </p>

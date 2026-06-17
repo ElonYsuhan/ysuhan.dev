@@ -5,25 +5,25 @@ const currentYear = new Date().getFullYear()
 
 const footerLinks = [
   {
-    group: 'Content',
+    group: '内容',
     items: [
-      { text: 'Projects', link: '/projects/' },
-      { text: 'Showcase', link: '/showcase/' },
-      { text: 'Blog', link: '/blog/' },
-      { text: 'Notes', link: '/notes/' },
+      { text: '产品', link: '/projects/' },
+      { text: '展示', link: '/showcase/' },
+      { text: '博客', link: '/blog/' },
+      { text: '笔记', link: '/notes/' },
     ],
   },
   {
-    group: 'About',
+    group: '关于',
     items: [
-      { text: 'About Me', link: '/about/' },
+      { text: '关于我', link: '/about/' },
       { text: 'GitHub', link: SITE.social.github },
     ],
   },
   {
-    group: 'Subscribe',
+    group: '订阅',
     items: [
-      { text: 'RSS Feed', link: '/feed.xml' },
+      { text: 'RSS 订阅', link: '/feed.xml' },
     ],
   },
 ]
