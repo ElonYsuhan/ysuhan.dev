@@ -7,9 +7,7 @@ interface Showcase {
   category: string
 }
 
-defineProps<{
-  items: Showcase[]
-}>()
+defineProps<{ items: Showcase[] }>()
 
 function animDelay(i: number): string {
   return `${i * 0.06}s`
@@ -22,15 +20,12 @@ function animDelay(i: number): string {
       v-for="(item, i) in items"
       :key="i"
       :href="item.link"
-      class="showcase-card animate-scale-in"
+      class="showcase-card animate-fade-in-up"
       :style="{ animationDelay: animDelay(i) }"
     >
-      <div class="showcase-image-wrap">
-        <div class="showcase-image-placeholder">
-          <span class="showcase-category">{{ item.category }}</span>
-        </div>
-      </div>
+      <div class="showcase-image-wrap" />
       <div class="showcase-body">
+        <span class="showcase-category">{{ item.category }}</span>
         <h3 class="showcase-title">{{ item.title }}</h3>
         <p class="showcase-desc">{{ item.description }}</p>
       </div>
@@ -42,68 +37,52 @@ function animDelay(i: number): string {
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
+  gap: 1px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--border-subtle);
 }
 
 .showcase-card {
-  border-radius: 12px;
-  background: rgba(10, 14, 23, 0.55);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border: 1px solid rgba(0, 229, 255, 0.08);
-  overflow: hidden;
+  background: var(--bg-base);
   text-decoration: none;
   color: inherit;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.25s var(--ease-out);
 }
 
 .showcase-card:hover {
-  border-color: rgba(0, 229, 255, 0.35);
-  box-shadow: 0 0 25px rgba(0, 229, 255, 0.1);
-  transform: translateY(-3px);
+  background: var(--bg-surface);
 }
 
 .showcase-image-wrap {
   aspect-ratio: 16 / 10;
-  overflow: hidden;
-}
-
-.showcase-image-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(180, 77, 255, 0.15));
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 16px;
-}
-
-.showcase-category {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #00e5ff;
-  background: rgba(10, 14, 23, 0.7);
-  padding: 4px 12px;
-  border-radius: 9999px;
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  background: var(--bg-elevated);
 }
 
 .showcase-body {
-  padding: 20px;
+  padding: 20px 24px 24px;
+}
+
+.showcase-category {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
 }
 
 .showcase-title {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: #e0e8f0;
-  margin: 0 0 6px;
+  color: var(--text-primary);
+  margin: 8px 0 4px;
 }
 
 .showcase-desc {
-  font-size: 0.875rem;
-  color: #60758a;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }

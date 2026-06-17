@@ -33,12 +33,12 @@ layout: page
 .about-intro {
   font-size: 1.0625rem;
   line-height: 1.8;
-  color: var(--vp-c-text-1);
+  color: var(--text-primary);
   margin-bottom: 40px;
-  padding: 24px;
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-bg-soft-up);
+  padding: 28px;
+  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
 }
 </style>
 

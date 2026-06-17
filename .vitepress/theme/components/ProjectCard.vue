@@ -7,12 +7,10 @@ interface Project {
   github?: string
 }
 
-defineProps<{
-  projects: Project[]
-}>()
+defineProps<{ projects: Project[] }>()
 
 function animDelay(i: number): string {
-  return `${i * 0.08}s`
+  return `${i * 0.06}s`
 }
 </script>
 
@@ -22,7 +20,7 @@ function animDelay(i: number): string {
       v-for="(p, i) in projects"
       :key="i"
       :href="p.link"
-      class="project-card animate-scale-in"
+      class="project-card animate-fade-in-up"
       :style="{ animationDelay: animDelay(i) }"
       target="_blank"
       rel="noopener noreferrer"
@@ -30,25 +28,12 @@ function animDelay(i: number): string {
       <div class="project-body">
         <h3 class="project-title">
           {{ p.title }}
-          <span class="project-arrow">→</span>
+          <svg class="project-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
         </h3>
         <p class="project-desc">{{ p.description }}</p>
       </div>
       <div class="project-footer">
         <span v-for="t in p.tech" :key="t" class="project-tag">{{ t }}</span>
-        <a
-          v-if="p.github"
-          :href="p.github"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="project-gh-link"
-          title="View on GitHub"
-          @click.stop
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-          </svg>
-        </a>
       </div>
     </a>
   </div>
@@ -57,67 +42,63 @@ function animDelay(i: number): string {
 <style scoped>
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--border-subtle);
 }
 
 .project-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px;
-  border-radius: 12px;
-  background: rgba(10, 14, 23, 0.55);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border: 1px solid rgba(0, 229, 255, 0.08);
+  padding: 28px;
+  background: var(--bg-base);
   text-decoration: none;
   color: inherit;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  min-height: 180px;
+  transition: background 0.25s var(--ease-out);
+  min-height: 160px;
 }
 
 .project-card:hover {
-  border-color: rgba(0, 229, 255, 0.35);
-  background: rgba(10, 18, 28, 0.7);
-  box-shadow:
-    0 0 25px rgba(0, 229, 255, 0.1),
-    inset 0 0 25px rgba(0, 229, 255, 0.02);
-  transform: translateY(-3px);
+  background: var(--bg-surface);
 }
 
 .project-title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: #e0e8f0;
+  color: var(--text-primary);
   margin: 0 0 8px;
   display: flex;
   align-items: center;
   gap: 8px;
+  letter-spacing: -0.01em;
 }
 
 .project-arrow {
-  font-size: 0.875rem;
   opacity: 0;
-  transform: translateX(-4px);
+  transform: translate(-4px, 4px);
   transition: all 0.2s ease;
-  color: #00e5ff;
+  color: var(--text-tertiary);
+  flex-shrink: 0;
 }
 
 .project-card:hover .project-arrow {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate(0, 0);
 }
 
 .project-desc {
-  font-size: 0.875rem;
-  color: #60758a;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }
 
 .project-footer {
-  margin-top: 16px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -126,29 +107,19 @@ function animDelay(i: number): string {
 
 .project-tag {
   display: inline-block;
-  padding: 3px 10px;
-  font-size: 0.75rem;
+  padding: 2px 8px;
+  font-size: 0.6875rem;
   font-weight: 500;
-  border-radius: 9999px;
-  background: rgba(0, 229, 255, 0.1);
-  color: #00e5ff;
-  border: 1px solid rgba(0, 229, 255, 0.15);
-}
-
-.project-gh-link {
-  margin-left: auto;
-  color: #60758a;
-  transition: color 0.2s;
-  display: flex;
-  align-items: center;
-}
-
-.project-gh-link:hover {
-  color: #00e5ff;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
 }
 
 @media (max-width: 480px) {
   .project-grid { grid-template-columns: 1fr; }
+  .project-card { padding: 22px 20px; }
 }
 </style>
 

@@ -1,286 +1,260 @@
 /* ═══════════════════════════════════════════════════════════════
-   Ysuhan — Sci-Fi Theme
-   Cesium globe background + neon cyber aesthetic
+   Ysuhan — Warm Gold · Minimal · Premium
+   Inspired by Linear, Anthropic, Vercel
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Sci-Fi Color Palette ── */
+/* ── Palette ── */
 :root {
-  --sf-bg: #0a0a0f;
-  --sf-bg-alt: #0d1117;
-  --sf-surface: rgba(10, 14, 23, 0.75);
-  --sf-surface-hover: rgba(16, 22, 36, 0.85);
-  --sf-border: rgba(0, 240, 255, 0.12);
-  --sf-border-hover: rgba(0, 240, 255, 0.35);
-  --sf-primary: #00e5ff;
-  --sf-primary-dim: #00b8d4;
-  --sf-secondary: #b44dff;
-  --sf-accent: #00e676;
-  --sf-text: #e0e8f0;
-  --sf-text-dim: #60758a;
-  --sf-glow-sm: 0 0 8px rgba(0, 229, 255, 0.2);
-  --sf-glow-md: 0 0 20px rgba(0, 229, 255, 0.3);
-  --sf-glow-lg: 0 0 40px rgba(0, 229, 255, 0.25);
-  --sf-glow-purple: 0 0 20px rgba(180, 77, 255, 0.3);
+  --gold: #d4a574;
+  --gold-hover: #e0b989;
+  --gold-dim: #b8915e;
+  --gold-subtle: rgba(212, 165, 116, 0.08);
+  --gold-border: rgba(212, 165, 116, 0.15);
 
-  /* Override VitePress vars */
-  --vp-c-bg: var(--sf-bg);
-  --vp-c-bg-alt: var(--sf-bg-alt);
-  --vp-c-bg-elv: var(--sf-surface);
-  --vp-c-bg-soft: var(--sf-surface);
-  --vp-c-bg-soft-up: rgba(0, 240, 255, 0.08);
-  --vp-c-text-1: #e0e8f0;
-  --vp-c-text-2: #8699ad;
-  --vp-c-text-3: #4a5b6e;
-  --vp-c-brand: var(--sf-primary);
-  --vp-c-brand-light: var(--sf-primary);
-  --vp-c-brand-lighter: #80f0ff;
-  --vp-c-brand-dark: var(--sf-primary-dim);
-  --vp-c-brand-darker: #008299;
-  --vp-c-divider: rgba(0, 240, 255, 0.08);
-  --vp-c-gutter: var(--sf-bg-alt);
-  --vp-nav-bg-color: rgba(10, 10, 15, 0.8);
-  --vp-sidebar-bg-color: rgba(10, 14, 23, 0.9);
-  --vp-custom-block-tip-bg: rgba(0, 229, 255, 0.08);
-  --vp-custom-block-tip-border: rgba(0, 229, 255, 0.3);
+  --bg-base: #080808;
+  --bg-surface: #0d0d0d;
+  --bg-elevated: #111;
+  --bg-hover: #161616;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
+  --text-primary: #ececec;
+  --text-secondary: #999;
+  --text-tertiary: #666;
+  --text-disabled: #444;
 
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(212, 165, 116, 0.25);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  /* ── VitePress overrides ── */
+  --vp-c-bg: var(--bg-base);
+  --vp-c-bg-alt: var(--bg-surface);
+  --vp-c-bg-elv: var(--bg-elevated);
+  --vp-c-bg-soft: var(--bg-surface);
+  --vp-c-bg-soft-up: var(--bg-elevated);
+
+  --vp-c-text-1: var(--text-primary);
+  --vp-c-text-2: var(--text-secondary);
+  --vp-c-text-3: var(--text-tertiary);
+
+  --vp-c-brand: var(--gold);
+  --vp-c-brand-light: var(--gold-hover);
+  --vp-c-brand-lighter: #e8cc9f;
+  --vp-c-brand-dark: var(--gold-dim);
+  --vp-c-brand-darker: #9e7a4a;
+
+  --vp-c-divider: var(--border-subtle);
+  --vp-c-gutter: var(--bg-base);
+  --vp-nav-bg-color: rgba(8, 8, 8, 0.85);
+  --vp-sidebar-bg-color: var(--bg-surface);
+
+  --vp-custom-block-tip-bg: var(--gold-subtle);
+  --vp-custom-block-tip-border: rgba(212, 165, 116, 0.25);
 }
 
-/* ── Global Reset ── */
+/* ── Global ── */
 *,
 *::before,
 *::after {
-  border-color: var(--vp-c-divider);
+  border-color: var(--border-subtle);
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  background: var(--sf-bg);
-  color: var(--sf-text);
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-base);
+  color: var(--text-primary);
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--sf-bg);
-}
-
-/* ── Scanline overlay for sci-fi CRT effect ── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0) 0px,
-    rgba(0, 0, 0, 0.03) 1px,
-    rgba(0, 0, 0, 0) 2px
-  );
-  opacity: 0.3;
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(0, 229, 255, 0.3);
-  color: #fff;
+  background: rgba(212, 165, 116, 0.25);
+  color: var(--text-primary);
 }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: var(--sf-bg); }
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 229, 255, 0.2);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover { background: rgba(0, 229, 255, 0.4); }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.08); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.14); }
 
 /* ── Typography ── */
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: var(--sf-text);
+  color: var(--text-primary);
 }
+
+h1 { font-size: 2rem; letter-spacing: -0.03em; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.125rem; }
+
+p { color: var(--text-secondary); }
 
 /* ── Links ── */
 a {
-  color: var(--sf-primary);
-  transition: color 0.2s, text-shadow 0.2s;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color 0.2s;
 }
-a:hover {
-  color: #80f0ff;
-  text-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+a:hover { color: var(--gold-hover); }
+
+/* ── Code ── */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: var(--text-secondary);
 }
+
+pre {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* ── Blockquote ── */
+blockquote {
+  border-left: 2px solid var(--gold) !important;
+  background: var(--bg-surface) !important;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+  padding: 14px 20px !important;
+  margin: 1.25rem 0 !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ── Table ── */
+th { color: var(--text-primary); font-weight: 600; }
+td { color: var(--text-secondary); }
 
 /* ── Animations ── */
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-@keyframes scale-in {
-  from { opacity: 0; transform: scale(0.95); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(0, 229, 255, 0.2); }
-  50%      { box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); }
-}
-@keyframes border-glow {
-  0%, 100% { border-color: rgba(0, 229, 255, 0.15); }
-  50%      { border-color: rgba(0, 229, 255, 0.4); }
-}
 
-.animate-fade-in-up  { animation: fade-in-up 0.6s var(--ease-out-expo) both; }
-.animate-fade-in     { animation: fade-in 0.5s ease both; }
-.animate-scale-in    { animation: scale-in 0.4s var(--ease-out-back) both; }
+.animate-fade-in-up { animation: fade-in-up 0.5s var(--ease-out) both; }
+.animate-fade-in    { animation: fade-in 0.4s var(--ease-out) both; }
 .animation-delay-100 { animation-delay: 0.1s; }
 .animation-delay-200 { animation-delay: 0.2s; }
 .animation-delay-300 { animation-delay: 0.3s; }
 .animation-delay-400 { animation-delay: 0.4s; }
 .animation-delay-500 { animation-delay: 0.5s; }
 
-/* ── VP Nav — transparent glass ── */
+/* ── VP Nav — minimal, clean ── */
 .VPNav {
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background: rgba(10, 10, 15, 0.7) !important;
-  border-bottom: 1px solid rgba(0, 229, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(8, 8, 8, 0.8) !important;
+  border-bottom: 1px solid var(--border-subtle);
 }
-.VPNavBar {
-  background: transparent !important;
-}
-.VPNavBar.has-sidebar {
-  background: rgba(10, 14, 23, 0.9) !important;
-}
-.VPNavBarTitle .title {
-  color: var(--sf-text) !important;
-}
+.VPNavBar { background: transparent !important; }
+.VPNavBar.has-sidebar { background: rgba(8, 8, 8, 0.95) !important; }
 
-/* ── VP Sidebar — glass ── */
+/* ── VP Sidebar ── */
 .VPSidebar {
-  background: rgba(10, 14, 23, 0.9) !important;
-  backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(0, 229, 255, 0.06);
+  background: var(--bg-surface) !important;
+  border-right: 1px solid var(--border-subtle);
 }
 
 /* ── VP Hero Overrides ── */
 .VPHero {
-  position: relative;
-  z-index: 1;
-  padding-top: 80px !important;
-  padding-bottom: 40px !important;
+  padding-top: 120px !important;
+  padding-bottom: 60px !important;
 }
 .VPHero .container {
-  position: relative;
-  z-index: 1;
+  max-width: 720px !important;
 }
 .VPHero .name {
-  font-size: 3.5rem !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.03em !important;
-  background: linear-gradient(135deg, var(--sf-primary) 0%, var(--sf-secondary) 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.3));
+  font-size: 3.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.04em !important;
+  color: var(--text-primary) !important;
+  background: none !important;
+  -webkit-text-fill-color: unset !important;
+  line-height: 1.1 !important;
 }
 .VPHero .text {
-  font-size: 1.5rem !important;
-  font-weight: 500 !important;
-  color: var(--sf-text) !important;
-  max-width: 640px !important;
-  line-height: 1.4 !important;
-  text-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  color: var(--text-secondary) !important;
+  max-width: 520px !important;
+  line-height: 1.5 !important;
+  margin-top: 12px !important;
 }
 .VPHero .tagline {
-  font-size: 1.125rem !important;
-  color: var(--sf-text-dim) !important;
+  font-size: 0.9375rem !important;
+  color: var(--text-tertiary) !important;
   font-weight: 400 !important;
   font-family: var(--font-mono) !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.04em !important;
+  margin-top: 8px !important;
 }
 .VPHero .image {
-  filter: drop-shadow(0 0 40px rgba(0, 229, 255, 0.4));
+  opacity: 0.9;
+}
+.VPHero .actions {
+  margin-top: 32px !important;
 }
 .VPHero .actions .VPButton {
   border-radius: 6px !important;
-  padding: 0 24px !important;
-  height: 44px !important;
-  font-size: 0.9375rem !important;
+  padding: 0 20px !important;
+  height: 40px !important;
+  font-size: 0.875rem !important;
   font-weight: 500 !important;
-  font-family: var(--font-mono) !important;
-  letter-spacing: 0.03em !important;
-  transition: all 0.3s var(--ease-out-expo) !important;
-  text-transform: uppercase !important;
+  transition: all 0.2s var(--ease-out) !important;
 }
 .VPHero .actions .VPButton.brand {
-  background: linear-gradient(135deg, var(--sf-primary), var(--sf-primary-dim)) !important;
-  border: 1px solid rgba(0, 229, 255, 0.4) !important;
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.25) !important;
+  background: var(--gold) !important;
+  color: #080808 !important;
+  border: none !important;
 }
 .VPHero .actions .VPButton.brand:hover {
-  box-shadow: 0 0 35px rgba(0, 229, 255, 0.5) !important;
-  transform: translateY(-2px) !important;
+  background: var(--gold-hover) !important;
 }
 .VPHero .actions .VPButton.alt {
-  border: 1px solid rgba(0, 229, 255, 0.25) !important;
-  color: var(--sf-primary) !important;
-  background: rgba(0, 229, 255, 0.05) !important;
+  border: 1px solid var(--border-default) !important;
+  color: var(--text-secondary) !important;
+  background: transparent !important;
 }
 .VPHero .actions .VPButton.alt:hover {
-  border-color: var(--sf-primary) !important;
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.25) !important;
-  transform: translateY(-2px) !important;
+  border-color: var(--border-hover) !important;
+  color: var(--text-primary) !important;
 }
 
 @media (max-width: 640px) {
   .VPHero .name { font-size: 2.5rem !important; }
-  .VPHero .text { font-size: 1.25rem !important; }
+  .VPHero .text { font-size: 1.125rem !important; }
+  .VPHero { padding-top: 80px !important; }
 }
 
-/* ── Code blocks ── */
-div[class*='language-'] {
-  border-radius: var(--radius-md) !important;
-  border: 1px solid rgba(0, 229, 255, 0.1) !important;
-  background: rgba(10, 14, 23, 0.8) !important;
-}
+/* ── VP Doc ── */
+.VPDoc { background: transparent !important; }
+.VPContent { background: transparent !important; }
 
-/* ── Blockquote ── */
-blockquote {
-  border-left: 2px solid var(--sf-primary) !important;
-  background: rgba(0, 229, 255, 0.04) !important;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
-  padding: 12px 20px !important;
-  margin: 1rem 0 !important;
-}
-
-/* ── Tables ── */
-th, td {
-  padding: 10px 14px;
-  border-bottom: 1px solid rgba(0, 229, 255, 0.08);
-}
-th { color: var(--sf-primary); }
-
-/* ── VP Footer — hidden, using CustomFooter ── */
+/* ── VP Footer — hidden (using CustomFooter) ── */
 .VPFooter { display: none !important; }
-
-/* ── Content page background — ensure transparency over globe ── */
-.VPDoc {
-  background: transparent !important;
-}
-.VPContent {
-  background: transparent !important;
-}

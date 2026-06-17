@@ -20,12 +20,6 @@ const footerLinks = [
       { text: 'GitHub', link: SITE.social.github },
     ],
   },
-  {
-    group: '订阅',
-    items: [
-      { text: 'RSS 订阅', link: '/feed.xml' },
-    ],
-  },
 ]
 </script>
 
@@ -35,9 +29,7 @@ const footerLinks = [
       <div class="footer-grid">
         <div class="footer-brand">
           <span class="footer-logo">Ysuhan</span>
-          <p class="footer-tagline">
-            {{ SITE.description }}
-          </p>
+          <p class="footer-tagline">{{ SITE.description }}</p>
         </div>
         <div v-for="group in footerLinks" :key="group.group" class="footer-group">
           <h4 class="footer-group-title">{{ group.group }}</h4>
@@ -63,51 +55,47 @@ const footerLinks = [
 
 <style scoped>
 .footer {
-  position: relative;
-  z-index: 1;
-  margin-top: 80px;
-  border-top: 1px solid rgba(0, 229, 255, 0.08);
-  background: rgba(10, 14, 23, 0.7);
-  backdrop-filter: blur(16px);
+  margin-top: 100px;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
 }
 
 .footer-inner {
   max-width: 1152px;
   margin: 0 auto;
-  padding: 48px 24px 24px;
+  padding: 56px 24px 28px;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
   padding-bottom: 40px;
-  border-bottom: 1px solid rgba(0, 229, 255, 0.06);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .footer-logo {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #00e5ff;
-  text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+  color: var(--text-primary);
 }
 
 .footer-tagline {
   margin-top: 8px;
-  font-size: 0.875rem;
-  color: #60758a;
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
   line-height: 1.6;
   max-width: 280px;
 }
 
 .footer-group-title {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  color: #00e5ff;
+  color: var(--text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 12px;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
 }
 
 .footer-links {
@@ -119,20 +107,17 @@ const footerLinks = [
 .footer-links li { margin-bottom: 8px; }
 
 .footer-links a {
-  font-size: 0.875rem;
-  color: #8699ad;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.footer-links a:hover { color: #00e5ff; }
+.footer-links a:hover { color: var(--text-primary); }
 
 .footer-bottom { margin-top: 24px; }
 
-.footer-copyright {
-  font-size: 0.8125rem;
-  color: #4a5b6e;
-}
+.footer-copyright { font-size: 0.75rem; color: var(--text-disabled); }
 
 @media (max-width: 768px) {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
