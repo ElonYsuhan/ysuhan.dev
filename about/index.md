@@ -19,7 +19,7 @@ layout: page
 ## 联系我
 
 - **GitHub:** [github.com/ysuhan](https://github.com/ysuhan)
-- **Email:** hi@ysuhan.dev
+- **Email:** ysuhan@yeah.net
 
 ---
 
