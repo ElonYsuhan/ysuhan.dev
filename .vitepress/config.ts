@@ -7,6 +7,7 @@ export default defineConfig({
   title: SITE.title,
   description: SITE.description,
   lang: 'zh-CN',
+  outDir: 'docs/.vitepress/dist',
   head: [
     // ── SEO ──
     ['meta', { name: 'author', content: 'Ysuhan' }],
