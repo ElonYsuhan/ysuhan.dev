@@ -1,0 +1,201 @@
+import { defineConfig } from 'vitepress'
+import UnoCSS from 'unocss/vite'
+import { SITE } from './constants'
+
+// https://vitepress.dev/reference/site-config
+export default defineConfig({
+  title: SITE.title,
+  description: SITE.description,
+  lang: 'zh-CN',
+  head: [
+    // ── SEO ──
+    ['meta', { name: 'author', content: 'Ysuhan' }],
+    ['meta', { name: 'keywords', content: '技术博客,个人作品集,数字花园,前端开发,创意工程,开源项目' }],
+    ['meta', { name: 'theme-color', content: '#2563eb' }],
+    ['meta', { name: 'color-scheme', content: 'dark light' }],
+
+    // Open Graph
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ['meta', { property: 'og:title', content: SITE.title }],
+    ['meta', { property: 'og:description', content: SITE.description }],
+    ['meta', { property: 'og:site_name', content: SITE.title }],
+    ['meta', { property: 'og:image', content: `${SITE.url}/og-image.png` }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
+
+    // Twitter Card
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: SITE.title }],
+    ['meta', { name: 'twitter:description', content: SITE.description }],
+    ['meta', { name: 'twitter:image', content: `${SITE.url}/og-image.png` }],
+
+    // JSON-LD
+    [
+      'script',
+      { type: 'application/ld+json' },
+      JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Ysuhan',
+        url: SITE.url,
+        description: SITE.description,
+        sameAs: [SITE.social.github],
+      }),
+    ],
+
+    // Favicon
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: '/feed.xml' }],
+
+    // Fonts
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+  ],
+
+  // Vite plugin config
+  vite: {
+    plugins: [UnoCSS()],
+    resolve: {
+      alias: {
+        '~': '/',
+      },
+    },
+  },
+
+  // Clean URLs
+  cleanUrls: true,
+  lastUpdated: true,
+
+  // Sitemap
+  sitemap: {
+    hostname: SITE.url,
+  },
+
+  // Markdown config
+  markdown: {
+    theme: {
+      light: 'github-light',
+      dark: 'github-dark',
+    },
+    lineNumbers: true,
+    image: {
+      lazyLoading: true,
+    },
+  },
+
+  // Theme config
+  themeConfig: {
+    logo: '/favicon.svg',
+    siteTitle: 'Ysuhan',
+
+    // Navigation
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: 'Projects', link: '/projects/' },
+      { text: 'Showcase', link: '/showcase/' },
+      { text: 'Blog', link: '/blog/' },
+      { text: 'Notes', link: '/notes/' },
+      { text: 'About', link: '/about/' },
+    ],
+
+    // Social links (shown in nav)
+    socialLinks: [
+      { icon: 'github', link: SITE.social.github },
+    ],
+
+    // Sidebar — contextual per section
+    sidebar: {
+      '/projects/': [
+        {
+          text: 'Projects',
+          items: [
+            { text: 'All Projects', link: '/projects/' },
+          ],
+        },
+      ],
+      '/blog/': [
+        {
+          text: 'Blog',
+          items: [
+            { text: 'All Posts', link: '/blog/' },
+          ],
+        },
+      ],
+      '/notes/': [
+        {
+          text: 'Notes',
+          items: [
+            { text: 'Digital Garden', link: '/notes/' },
+          ],
+        },
+      ],
+    },
+
+    // Footer
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: `Copyright © 2024–${new Date().getFullYear()} Ysuhan`,
+    },
+
+    // Search
+    search: {
+      provider: 'local',
+      options: {
+        translations: {
+          button: {
+            buttonText: '搜索',
+            buttonAriaLabel: '搜索',
+          },
+          modal: {
+            noResultsText: '无法找到相关结果',
+            resetButtonTitle: '清除查询条件',
+            footer: {
+              selectText: '选择',
+              navigateText: '切换',
+              closeText: '关闭',
+            },
+          },
+        },
+      },
+    },
+
+    // Edit link
+    editLink: {
+      pattern: 'https://github.com/ysuhan/ysuhan.dev/edit/main/:path',
+      text: 'Edit this page on GitHub',
+    },
+
+    // Last updated
+    lastUpdated: {
+      text: 'Updated at',
+      formatOptions: {
+        dateStyle: 'short',
+        timeStyle: 'medium',
+      },
+    },
+
+    // Dark mode
+    darkModeSwitchLabel: '深色模式',
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
+
+    // Doc footer
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇',
+    },
+
+    // Outline
+    outline: {
+      label: '页面导航',
+      level: [2, 3],
+    },
+  },
+
+  // Route rewrites for clean URLs
+  rewrites: {
+    'blog/posts/:post.md': 'blog/:post.md',
+  },
+})
+

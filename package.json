@@ -1,0 +1,30 @@
+{
+  "name": "ysuhan",
+  "version": "1.0.0",
+  "description": "从想法到作品，从创意到体系 — Ysuhan 的个人数字花园",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev --port 5173",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "lint": "eslint . --ext .ts,.vue --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@vueuse/core": "^11.3.0",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@unocss/preset-attributify": "^0.65.4",
+    "@unocss/preset-icons": "^0.65.4",
+    "@unocss/preset-typography": "^0.65.4",
+    "@unocss/preset-uno": "^0.65.4",
+    "@unocss/transformer-directives": "^0.65.4",
+    "@unocss/transformer-variant-group": "^0.65.4",
+    "feed": "^4.2.2",
+    "typescript": "^5.7.2",
+    "unocss": "^0.65.4",
+    "vitepress": "^1.5.0"
+  }
+}
