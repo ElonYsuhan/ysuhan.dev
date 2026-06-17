@@ -18,6 +18,8 @@ hero:
 ---
 
 <script setup>
+import CesiumGlobe from './.vitepress/theme/components/CesiumGlobe.vue'
+
 const highlights = [
   {
     icon: '🚀',
@@ -52,6 +54,8 @@ const highlights = [
 ]
 </script>
 
+<CesiumGlobe />
+
 <div class="home-section">
   <h2 class="section-heading">能力领域</h2>
   <FeatureGrid :features="highlights" />
@@ -71,51 +75,47 @@ const highlights = [
   max-width: 1152px;
   margin: 0 auto;
   padding: 80px 24px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .section-heading {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--vp-c-text-1);
+  color: #e0e8f0;
   margin-bottom: 32px;
   text-align: center;
+  text-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
 }
 
 @media (min-width: 640px) {
-  .section-heading {
-    font-size: 2.25rem;
-  }
+  .section-heading { font-size: 2.25rem; }
 }
 
-.home-cta {
-  padding-bottom: 60px;
-}
+.home-cta { padding-bottom: 60px; }
 
 .cta-card {
   text-align: center;
   padding: 48px 32px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, var(--brand-light), #ede9fe);
-  border: 1px solid rgba(37, 99, 235, 0.15);
-}
-
-.dark .cta-card {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(124, 58, 237, 0.12));
-  border-color: rgba(37, 99, 235, 0.25);
+  border-radius: 16px;
+  background: rgba(10, 14, 23, 0.5);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(0, 229, 255, 0.1);
 }
 
 .cta-title {
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--vp-c-text-1);
+  color: #e0e8f0;
   margin: 0 0 12px;
 }
 
 .cta-desc {
   font-size: 1rem;
-  color: var(--vp-c-text-2);
+  color: #60758a;
   max-width: 500px;
   margin: 0 auto;
   line-height: 1.6;

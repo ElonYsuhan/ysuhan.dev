@@ -46,18 +46,20 @@ function animDelay(i: number): string {
 }
 
 .showcase-card {
-  border-radius: 16px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-bg-soft-up);
+  border-radius: 12px;
+  background: rgba(10, 14, 23, 0.55);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(0, 229, 255, 0.08);
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s var(--ease-out-expo);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .showcase-card:hover {
-  border-color: var(--brand);
-  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.1);
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.1);
   transform: translateY(-3px);
 }
 
@@ -69,15 +71,11 @@ function animDelay(i: number): string {
 .showcase-image-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--brand-light), #ede9fe);
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(180, 77, 255, 0.15));
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
   padding: 16px;
-}
-
-.dark .showcase-image-placeholder {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(124, 58, 237, 0.3));
 }
 
 .showcase-category {
@@ -85,15 +83,11 @@ function animDelay(i: number): string {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--brand);
-  background: rgba(255, 255, 255, 0.8);
+  color: #00e5ff;
+  background: rgba(10, 14, 23, 0.7);
   padding: 4px 12px;
   border-radius: 9999px;
-}
-
-.dark .showcase-category {
-  background: rgba(0, 0, 0, 0.4);
-  color: #93c5fd;
+  border: 1px solid rgba(0, 229, 255, 0.2);
 }
 
 .showcase-body {
@@ -103,21 +97,19 @@ function animDelay(i: number): string {
 .showcase-title {
   font-size: 1.0625rem;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: #e0e8f0;
   margin: 0 0 6px;
 }
 
 .showcase-desc {
   font-size: 0.875rem;
-  color: var(--vp-c-text-2);
+  color: #60758a;
   line-height: 1.6;
   margin: 0;
 }
 
 @media (max-width: 480px) {
-  .showcase-grid {
-    grid-template-columns: 1fr;
-  }
+  .showcase-grid { grid-template-columns: 1fr; }
 }
 </style>
 

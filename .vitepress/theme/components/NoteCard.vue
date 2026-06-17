@@ -65,17 +65,19 @@ function animDelay(i: number): string {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-bg-soft-up);
+  border-radius: 10px;
+  background: rgba(10, 14, 23, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 229, 255, 0.06);
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s var(--ease-out-expo);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .garden-card:hover {
-  border-color: var(--brand);
-  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+  border-color: rgba(0, 229, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.08);
   transform: translateY(-2px);
 }
 
@@ -86,57 +88,38 @@ function animDelay(i: number): string {
   margin-bottom: 10px;
 }
 
-.garden-stage {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
-}
-
+.garden-stage { font-size: 0.75rem; color: #4a5b6e; }
 .garden-date {
   font-size: 0.75rem;
-  color: var(--vp-c-text-3);
+  color: #4a5b6e;
   font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
 }
 
 .garden-title {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: #e0e8f0;
   margin: 0 0 6px;
   transition: color 0.2s;
 }
 
-.garden-card:hover .garden-title {
-  color: var(--brand);
-}
+.garden-card:hover .garden-title { color: #00e5ff; }
 
 .garden-excerpt {
   font-size: 0.8125rem;
-  color: var(--vp-c-text-2);
+  color: #60758a;
   line-height: 1.6;
   margin: 0 0 12px;
   flex: 1;
 }
 
-.garden-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.garden-tag {
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
-  transition: color 0.2s;
-}
-
-.garden-tag:hover {
-  color: var(--brand);
-}
+.garden-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.garden-tag { font-size: 0.75rem; color: #4a5b6e; transition: color 0.2s; }
+.garden-tag:hover { color: #00e5ff; }
 
 @media (max-width: 480px) {
-  .garden-grid {
-    grid-template-columns: 1fr;
-  }
+  .garden-grid { grid-template-columns: 1fr; }
 }
 </style>
 

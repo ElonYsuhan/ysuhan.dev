@@ -24,6 +24,8 @@ function animDelay(i: number): string {
       :href="p.link"
       class="project-card animate-scale-in"
       :style="{ animationDelay: animDelay(i) }"
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <div class="project-body">
         <h3 class="project-title">
@@ -33,11 +35,7 @@ function animDelay(i: number): string {
         <p class="project-desc">{{ p.description }}</p>
       </div>
       <div class="project-footer">
-        <span
-          v-for="t in p.tech"
-          :key="t"
-          class="project-tag"
-        >{{ t }}</span>
+        <span v-for="t in p.tech" :key="t" class="project-tag">{{ t }}</span>
         <a
           v-if="p.github"
           :href="p.github"
@@ -68,25 +66,30 @@ function animDelay(i: number): string {
   flex-direction: column;
   justify-content: space-between;
   padding: 24px;
-  border-radius: 16px;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-bg-soft-up);
+  border-radius: 12px;
+  background: rgba(10, 14, 23, 0.55);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(0, 229, 255, 0.08);
   text-decoration: none;
   color: inherit;
-  transition: all 0.3s var(--ease-out-expo);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 180px;
 }
 
 .project-card:hover {
-  border-color: var(--brand);
-  box-shadow: 0 4px 24px rgba(37, 99, 235, 0.1);
+  border-color: rgba(0, 229, 255, 0.35);
+  background: rgba(10, 18, 28, 0.7);
+  box-shadow:
+    0 0 25px rgba(0, 229, 255, 0.1),
+    inset 0 0 25px rgba(0, 229, 255, 0.02);
   transform: translateY(-3px);
 }
 
 .project-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: #e0e8f0;
   margin: 0 0 8px;
   display: flex;
   align-items: center;
@@ -98,7 +101,7 @@ function animDelay(i: number): string {
   opacity: 0;
   transform: translateX(-4px);
   transition: all 0.2s ease;
-  color: var(--brand);
+  color: #00e5ff;
 }
 
 .project-card:hover .project-arrow {
@@ -108,7 +111,7 @@ function animDelay(i: number): string {
 
 .project-desc {
   font-size: 0.875rem;
-  color: var(--vp-c-text-2);
+  color: #60758a;
   line-height: 1.6;
   margin: 0;
 }
@@ -127,31 +130,25 @@ function animDelay(i: number): string {
   font-size: 0.75rem;
   font-weight: 500;
   border-radius: 9999px;
-  background: var(--brand-light);
-  color: var(--brand);
-}
-
-.dark .project-tag {
-  background: rgba(37, 99, 235, 0.15);
-  color: #93c5fd;
+  background: rgba(0, 229, 255, 0.1);
+  color: #00e5ff;
+  border: 1px solid rgba(0, 229, 255, 0.15);
 }
 
 .project-gh-link {
   margin-left: auto;
-  color: var(--vp-c-text-2);
+  color: #60758a;
   transition: color 0.2s;
   display: flex;
   align-items: center;
 }
 
 .project-gh-link:hover {
-  color: var(--vp-c-text-1);
+  color: #00e5ff;
 }
 
 @media (max-width: 480px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
+  .project-grid { grid-template-columns: 1fr; }
 }
 </style>
 

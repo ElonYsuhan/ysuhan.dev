@@ -33,20 +33,13 @@ const footerLinks = [
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-grid">
-        <!-- Brand column -->
         <div class="footer-brand">
           <span class="footer-logo">Ysuhan</span>
           <p class="footer-tagline">
             {{ SITE.description }}
           </p>
         </div>
-
-        <!-- Link columns -->
-        <div
-          v-for="group in footerLinks"
-          :key="group.group"
-          class="footer-group"
-        >
+        <div v-for="group in footerLinks" :key="group.group" class="footer-group">
           <h4 class="footer-group-title">{{ group.group }}</h4>
           <ul class="footer-links">
             <li v-for="item in group.items" :key="item.text">
@@ -54,18 +47,14 @@ const footerLinks = [
                 :href="item.link"
                 :target="item.link.startsWith('http') ? '_blank' : undefined"
                 :rel="item.link.startsWith('http') ? 'noopener noreferrer' : undefined"
-              >
-                {{ item.text }}
-              </a>
+              >{{ item.text }}</a>
             </li>
           </ul>
         </div>
       </div>
-
-      <!-- Bottom bar -->
       <div class="footer-bottom">
         <p class="footer-copyright">
-          © {{ currentYear }} Ysuhan. Built with VitePress.
+          © {{ currentYear }} Ysuhan
         </p>
       </div>
     </div>
@@ -74,9 +63,12 @@ const footerLinks = [
 
 <style scoped>
 .footer {
+  position: relative;
+  z-index: 1;
   margin-top: 80px;
-  border-top: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
+  border-top: 1px solid rgba(0, 229, 255, 0.08);
+  background: rgba(10, 14, 23, 0.7);
+  backdrop-filter: blur(16px);
 }
 
 .footer-inner {
@@ -90,30 +82,31 @@ const footerLinks = [
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 40px;
-  border-bottom: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.06);
 }
 
 .footer-logo {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--vp-c-brand);
+  color: #00e5ff;
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
 }
 
 .footer-tagline {
   margin-top: 8px;
   font-size: 0.875rem;
-  color: var(--vp-c-text-2);
+  color: #60758a;
   line-height: 1.6;
   max-width: 280px;
 }
 
 .footer-group-title {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: #00e5ff;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   margin-bottom: 12px;
 }
 
@@ -123,45 +116,30 @@ const footerLinks = [
   margin: 0;
 }
 
-.footer-links li {
-  margin-bottom: 8px;
-}
+.footer-links li { margin-bottom: 8px; }
 
 .footer-links a {
   font-size: 0.875rem;
-  color: var(--vp-c-text-2);
+  color: #8699ad;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-.footer-links a:hover {
-  color: var(--vp-c-brand);
-}
+.footer-links a:hover { color: #00e5ff; }
 
-.footer-bottom {
-  margin-top: 24px;
-}
+.footer-bottom { margin-top: 24px; }
 
 .footer-copyright {
   font-size: 0.8125rem;
-  color: var(--vp-c-text-3);
+  color: #4a5b6e;
 }
 
 @media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-
-  .footer-brand {
-    grid-column: 1 / -1;
-  }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; }
 }
-
 @media (max-width: 480px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
+  .footer-grid { grid-template-columns: 1fr; }
 }
 </style>
 

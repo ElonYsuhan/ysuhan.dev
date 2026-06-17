@@ -44,8 +44,7 @@ function animDelay(i: number): string {
         </div>
       </div>
       <a :href="post.url" class="blog-read-link">
-        阅读
-        <span class="read-arrow">→</span>
+        阅读 <span class="read-arrow">→</span>
       </a>
     </article>
   </div>
@@ -63,81 +62,74 @@ function animDelay(i: number): string {
   align-items: flex-start;
   gap: 24px;
   padding: 20px 24px;
-  border-radius: 12px;
+  border-radius: 10px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.25s var(--ease-out-expo);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   border: 1px solid transparent;
+  background: transparent;
 }
 
 .blog-item:hover {
-  background: var(--vp-c-bg-soft);
-  border-color: var(--vp-c-bg-soft-up);
+  background: rgba(10, 14, 23, 0.5);
+  backdrop-filter: blur(12px);
+  border-color: rgba(0, 229, 255, 0.1);
 }
 
 .blog-date {
   flex-shrink: 0;
   width: 120px;
   font-size: 0.8125rem;
-  color: var(--vp-c-text-3);
+  color: #4a5b6e;
   font-variant-numeric: tabular-nums;
   padding-top: 3px;
+  font-family: var(--font-mono);
 }
 
-.blog-content {
-  flex: 1;
-  min-width: 0;
-}
+.blog-content { flex: 1; min-width: 0; }
 
-.blog-title-link {
-  text-decoration: none;
-  color: inherit;
-}
+.blog-title-link { text-decoration: none; color: inherit; }
 
 .blog-title {
   font-size: 1.0625rem;
   font-weight: 600;
-  color: var(--vp-c-text-1);
+  color: #e0e8f0;
   margin: 0 0 6px;
   transition: color 0.2s;
 }
 
-.blog-item:hover .blog-title {
-  color: var(--brand);
-}
+.blog-item:hover .blog-title { color: #00e5ff; }
 
 .blog-excerpt {
   font-size: 0.875rem;
-  color: var(--vp-c-text-2);
+  color: #60758a;
   line-height: 1.6;
   margin: 0 0 10px;
 }
 
-.blog-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
+.blog-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 
 .blog-tag {
   font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 9999px;
-  background: var(--vp-c-bg-soft-up);
-  color: var(--vp-c-text-2);
+  background: rgba(0, 229, 255, 0.06);
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  color: #4a5b6e;
 }
 
 .blog-read-link {
   flex-shrink: 0;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--brand);
+  color: #00e5ff;
   text-decoration: none;
   padding-top: 3px;
   opacity: 0;
   transform: translateX(-8px);
   transition: all 0.2s ease;
   white-space: nowrap;
+  font-family: var(--font-mono);
 }
 
 .blog-item:hover .blog-read-link {
@@ -150,24 +142,12 @@ function animDelay(i: number): string {
   transition: transform 0.2s ease;
 }
 
-.blog-read-link:hover .read-arrow {
-  transform: translateX(3px);
-}
+.blog-read-link:hover .read-arrow { transform: translateX(3px); }
 
 @media (max-width: 640px) {
-  .blog-item {
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px;
-  }
-
-  .blog-date {
-    width: auto;
-  }
-
-  .blog-read-link {
-    display: none;
-  }
+  .blog-item { flex-direction: column; gap: 8px; padding: 16px; }
+  .blog-date { width: auto; }
+  .blog-read-link { display: none; }
 }
 </style>
 
