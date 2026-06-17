@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress'
 import UnoCSS from 'unocss/vite'
-import cesium from 'vite-plugin-cesium'
 import { SITE } from './constants'
 
 // https://vitepress.dev/reference/site-config
@@ -57,7 +56,7 @@ export default defineConfig({
 
   // Vite plugin config
   vite: {
-    plugins: [UnoCSS(), cesium()],
+    plugins: [UnoCSS()],
     resolve: {
       alias: {
         '~': '/',
