@@ -87,13 +87,13 @@ export default defineConfig({
 
   // Theme config
   themeConfig: {
-    logo: '/favicon.svg',
+    logo: '/logo.png',
     siteTitle: 'Ysuhan',
 
     // Navigation
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Projects', link: '/projects/' },
+      { text: '产品', link: '/projects/' },
       { text: 'Showcase', link: '/showcase/' },
       { text: 'Blog', link: '/blog/' },
       { text: 'Notes', link: '/notes/' },

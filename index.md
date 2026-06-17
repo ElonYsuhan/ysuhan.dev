@@ -6,15 +6,15 @@ hero:
   text: 从想法到作品，从创意到体系
   tagline: Build Ideas Into Reality.
   image:
-    src: /favicon.svg
+    src: /logo.png
     alt: Ysuhan
   actions:
     - theme: brand
-      text: 查看项目
+      text: 查看产品
       link: /projects/
     - theme: alt
-      text: 浏览文章
-      link: /blog/
+      text: 了解更多
+      link: /about/
 ---
 
 <script setup>
