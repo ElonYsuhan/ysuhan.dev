@@ -21,10 +21,6 @@ layout: page
 - **GitHub:** [github.com/ysuhan](https://github.com/ysuhan)
 - **Email:** ysuhan@yeah.net
 
----
-
-*这个站点使用 VitePress 构建，部署在 Cloudflare Pages。*
-
 </div>
 
 <style scoped>
