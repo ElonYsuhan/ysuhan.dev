@@ -1,5 +1,9 @@
-name = "ysuhan-dev"
+name = "ysuhan"
 compatibility_date = "2026-06-17"
 
 [site]
 bucket = ".vitepress/dist"
+
+
+[assets]
+directory = ".vitepress/dist"
