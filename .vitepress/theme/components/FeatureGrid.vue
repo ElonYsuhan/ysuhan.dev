@@ -42,7 +42,6 @@ function animDelay(i: number): string {
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-bg-soft-up);
   transition: all 0.3s var(--ease-out-expo);
-  opacity: 0;
 }
 
 .feature-item:hover {

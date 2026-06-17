@@ -75,7 +75,6 @@ function animDelay(i: number): string {
   color: inherit;
   transition: all 0.3s var(--ease-out-expo);
   min-height: 180px;
-  opacity: 0;
 }
 
 .project-card:hover {

@@ -68,7 +68,6 @@ function animDelay(i: number): string {
   color: inherit;
   transition: all 0.25s var(--ease-out-expo);
   border: 1px solid transparent;
-  opacity: 0;
 }
 
 .blog-item:hover {

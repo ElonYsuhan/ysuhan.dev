@@ -53,7 +53,6 @@ function animDelay(i: number): string {
   text-decoration: none;
   color: inherit;
   transition: all 0.3s var(--ease-out-expo);
-  opacity: 0;
 }
 
 .showcase-card:hover {
