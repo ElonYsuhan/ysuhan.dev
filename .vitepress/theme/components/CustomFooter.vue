@@ -9,6 +9,7 @@ const footerLinks = [
     items: [
       { text: '项目', link: '/projects/' },
       { text: '案例', link: '/showcase/' },
+      { text: '成长', link: '/career/' },
       { text: '博客', link: '/blog/' },
     ],
   },

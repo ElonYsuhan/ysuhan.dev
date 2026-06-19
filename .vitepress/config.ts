@@ -95,6 +95,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '项目', link: '/projects/' },
       { text: '案例', link: '/showcase/' },
+      { text: '成长', link: '/career/' },
       { text: '博客', link: '/blog/' },
       { text: '关于', link: '/about/' },
     ],
