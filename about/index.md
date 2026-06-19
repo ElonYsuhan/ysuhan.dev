@@ -6,11 +6,11 @@ layout: page
 
 <div class="about-container">
 
-# About Me
+# 关于我
 
 <div class="about-intro">
 
-👋 Hi，我是 **Ysuhan**。
+我是 **Ysuhan**。
 
 我相信**从想法到作品**的力量。这里是我的数字家园，记录着构建与探索的过程。
 
