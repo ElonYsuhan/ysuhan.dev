@@ -12,15 +12,15 @@ const timeline = [
     tags: ['React', 'OpenLayers', 'GeoServer'],
     insight: '地图不是终点。它只是理解空间世界的入口。',
     narrative: '这一阶段，我开始接触 GIS 系统建设，理解空间数据、地图渲染与业务场景之间的关系。参与松阳县民情地图、云森防松材线虫病平台等项目，积累了政务 GIS 系统的实战经验。',
-    leap: '从「地图开发」走向「空间数据理解」。',
+    closing: '那时我逐渐意识到：地图的价值不在于展示，而在于组织空间世界。',
   },
   {
     zh: '场景',
     period: '2022 - 2023',
     tags: ['Vue 3', 'Cesium', 'TypeScript'],
     insight: '地图描述位置。场景描述变化。当实体开始运动，时间开始流动，空间便拥有了生命。',
-    narrative: '这一阶段，我深入 Cesium 与仿真领域，研究实体系统、动画体系、多窗口渲染以及复杂场景性能优化。解决 Cesium 多窗口渲染问题，引入 Off-Screen Rendering 方案。也正是在这里，我第一次意识到：地图是静态的表达，场景是动态的系统。',
-    leap: '从「空间可视化」走向「时空系统」。',
+    narrative: '这一阶段，我深入 Cesium 与仿真领域，研究实体系统、动画体系、多窗口渲染以及复杂场景性能优化。解决 Cesium 多窗口渲染问题，引入 Off-Screen Rendering 方案。',
+    closing: '也是在这里，我第一次真正接触：时间、空间与行为共同构成的系统。',
   },
   {
     zh: '平台',
@@ -28,15 +28,15 @@ const timeline = [
     tags: ['GIS Engine', 'Animation', 'Component System'],
     insight: '项目总会结束。能力不会。',
     narrative: '随着参与项目越来越多，我开始发现大量能力在重复建设。地图能力在重复，动画能力在重复，组件能力也在重复。于是开始尝试将这些经验抽象为平台能力，构建统一的 GIS 引擎封装、动画体系、组件体系与数据交换规范。',
-    leap: '从「交付项目」走向「沉淀能力」。',
+    closing: '我开始相信：好的工程，不是不断重写，而是持续沉淀。',
   },
   {
     zh: '引擎',
     period: '现在',
     tags: ['Engine', 'Framework', 'Architecture'],
     insight: '平台解决复用。引擎解决抽象。',
-    narrative: '当越来越多问题开始重复出现时，我开始追问：什么是实体？什么是行为？什么是时间？什么是系统状态？于是开始研究 Entity、Command、Timeline、Trajectory、Workflow 等核心模型。引擎不只是代码库，它是对领域规律的抽象表达。',
-    leap: '从「能力复用」走向「领域抽象」。',
+    narrative: '当越来越多问题开始重复出现时，我开始追问：什么是实体？什么是行为？什么是时间？什么是系统状态？于是开始研究 Entity、Command、Timeline、Trajectory、Workflow 等核心模型。',
+    closing: '我逐渐发现：引擎并不是代码的集合，而是对领域规律的表达。',
   },
   {
     zh: '体系',
@@ -44,7 +44,7 @@ const timeline = [
     tags: ['GIS', 'Simulation', 'AI', 'System Engineering'],
     insight: '单个系统解决问题。体系创造可能性。',
     narrative: '未来关注的不再是单个产品，而是多个系统之间如何协同演化。AirGIS、Tactics Simulation、Workflow Engine——它们不是孤立产品，而是同一个空间智能世界观下的不同组成部分。',
-    leap: '从「构建系统」走向「构建生态」。',
+    closing: '我希望最终构建的：不是一个系统，而是一套能够持续生长的生态。',
   },
 ]
 
@@ -99,7 +99,7 @@ const coreThinking = [
         </div>
         <p class="tl-insight-text">{{ item.insight }}</p>
         <p class="tl-narrative">{{ item.narrative }}</p>
-        <p class="tl-leap">{{ item.leap }}</p>
+        <p class="tl-closing">{{ item.closing }}</p>
       </div>
     </div>
   </div>
@@ -244,7 +244,7 @@ const coreThinking = [
 .tl-tag { font-size: 0.6875rem; color: var(--text-tertiary); font-family: var(--font-mono); padding: 2px 8px; background: var(--bg-elevated); border-radius: 3px; }
 .tl-insight-text { font-size: 0.9375rem; color: var(--text-primary); line-height: 1.75; margin: 16px 0 0; font-weight: 500; letter-spacing: -0.01em; }
 .tl-narrative { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.85; margin: 12px 0 0; }
-.tl-leap { font-size: 0.8125rem; color: var(--gold); line-height: 1.7; margin: 14px 0 0; font-style: italic; }
+.tl-closing { font-size: 0.875rem; color: var(--text-primary); line-height: 1.8; margin: 14px 0 0; font-weight: 500; }
 
 /* Organization */
 .org-card { padding: 32px; background: var(--bg-surface); border-radius: 8px; }
