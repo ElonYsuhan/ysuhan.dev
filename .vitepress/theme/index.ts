@@ -8,6 +8,7 @@ import BlogPost from './components/BlogPost.vue'
 import NoteCard from './components/NoteCard.vue'
 import FeatureGrid from './components/FeatureGrid.vue'
 import CustomFooter from './components/CustomFooter.vue'
+import NetworkBg from './components/NetworkBg.vue'
 
 import './styles/custom.css'
 import 'uno.css'
@@ -23,6 +24,7 @@ export default {
     app.component('NoteCard', NoteCard)
     app.component('FeatureGrid', FeatureGrid)
     app.component('CustomFooter', CustomFooter)
+    app.component('NetworkBg', NetworkBg)
   },
 } satisfies Theme
 

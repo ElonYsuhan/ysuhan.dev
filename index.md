@@ -86,6 +86,8 @@ const latestPosts = [
 const showPosts = latestPosts.length >= 3
 </script>
 
+<NetworkBg />
+
 <!-- ═══════════ Hero ═══════════ -->
 <section class="hero">
   <div class="hero-content">
