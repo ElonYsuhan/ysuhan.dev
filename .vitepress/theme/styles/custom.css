@@ -195,20 +195,11 @@ td { color: var(--text-secondary); }
 
 /* ── VP Nav ── */
 .VPNav {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
-  z-index: 20;
 }
-.VPNavBar {
-  background: transparent !important;
-  z-index: 20;
-}
+.VPNavBar { background: transparent !important; }
 
 /* ── VP Mobile Nav Screen ── */
-.VPNavScreen {
-  z-index: 30;
-}
 .VPNavScreenMenuLink {
   font-size: 1rem;
   color: var(--text-primary) !important;
