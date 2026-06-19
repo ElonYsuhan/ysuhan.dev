@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vitepress dev --port 5173",
     "build": "vitepress build",
-    "preview": "vitepress preview",
+    "preview": "npm run build && wrangler dev",
     "lint": "eslint . --ext .ts,.vue --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@vueuse/core": "^11.3.0",
@@ -25,6 +26,7 @@
     "feed": "^4.2.2",
     "typescript": "^5.7.2",
     "unocss": "^0.65.4",
-    "vitepress": "^1.5.0"
+    "vitepress": "^1.5.0",
+    "wrangler": "^4.102.0"
   }
 }
