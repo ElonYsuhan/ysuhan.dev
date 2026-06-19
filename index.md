@@ -39,8 +39,8 @@ const featuredProjects = [
 ]
 
 const statusLabel = {
-  Active: 'Active',
-  Planning: 'Planning',
+  Active: '进行中',
+  Planning: '规划中',
 }
 
 const showcaseItems = [
@@ -90,7 +90,7 @@ const showPosts = latestPosts.length >= 3
 <section class="hero">
   <div class="hero-content">
     <h1 class="hero-name">Ysuhan</h1>
-    <p class="hero-en">Building Spatial Intelligence Systems</p>
+    <p class="hero-en">构建空间智能系统</p>
     <p class="hero-slogan">
       <span>从想法到作品</span>
       <span>从创意到体系</span>
@@ -109,8 +109,8 @@ const showPosts = latestPosts.length >= 3
 <!-- ═══════════ Featured Projects ═══════════ -->
 <section class="section">
   <div class="section-header">
-    <span class="section-label">Selected Work</span>
-    <h2 class="section-title">Featured Projects</h2>
+    <span class="section-label">精选项目</span>
+    <h2 class="section-title">项目</h2>
   </div>
   <div class="featured-grid">
     <a
@@ -141,8 +141,8 @@ const showPosts = latestPosts.length >= 3
 <!-- ═══════════ Showcase ═══════════ -->
 <section class="section">
   <div class="section-header">
-    <span class="section-label">Real Cases</span>
-    <h2 class="section-title">Showcase</h2>
+    <span class="section-label">真实案例</span>
+    <h2 class="section-title">案例</h2>
   </div>
   <div class="showcase-grid">
     <a
@@ -173,8 +173,8 @@ const showPosts = latestPosts.length >= 3
 <!-- ═══════════ Latest Posts ═══════════ -->
 <section v-if="showPosts" class="section">
   <div class="section-header">
-    <span class="section-label">Writing</span>
-    <h2 class="section-title">Latest Posts</h2>
+    <span class="section-label">文章</span>
+    <h2 class="section-title">最新文章</h2>
   </div>
   <div class="posts-list">
     <article
