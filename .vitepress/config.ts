@@ -107,14 +107,6 @@ export default defineConfig({
 
     // Sidebar — contextual per section
     sidebar: {
-      '/projects/': [
-        {
-          text: '产品',
-          items: [
-            { text: '全部产品', link: '/projects/' },
-          ],
-        },
-      ],
       '/blog/': [
         {
           text: '博客',
