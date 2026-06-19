@@ -64,7 +64,7 @@ const showcaseItems = [
 .page-subtitle {
   font-size: 1rem;
   color: var(--text-secondary);
-  margin: -16px 0 40px;
+  margin: 4px 0 40px;
   line-height: 1.6;
 }
 </style>

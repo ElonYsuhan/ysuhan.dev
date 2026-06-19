@@ -38,7 +38,7 @@ const projects = [
 
 <div class="page-container">
 
-# Projects
+# 项目
 
 <p class="page-subtitle">框架、引擎与数字系统</p>
 
@@ -55,7 +55,7 @@ const projects = [
 .page-subtitle {
   font-size: 1rem;
   color: var(--text-secondary);
-  margin: -16px 0 40px;
+  margin: 4px 0 40px;
   line-height: 1.6;
 }
 </style>

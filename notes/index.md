@@ -10,7 +10,7 @@ const notes = []
 
 <div class="page-container">
 
-# 🪴 Digital Garden
+# 🪴 数字花园
 
 <p class="page-subtitle">
   持续生长的数字花园，笔记按成熟度分为三个阶段：
@@ -33,7 +33,7 @@ const notes = []
 .page-subtitle {
   font-size: 0.9375rem;
   color: var(--vp-c-text-2);
-  margin: -16px 0 36px;
+  margin: 4px 0 36px;
   line-height: 1.7;
 }
 

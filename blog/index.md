@@ -10,7 +10,7 @@ const posts = []
 
 <div class="page-container">
 
-# Blog
+# 博客
 
 <p class="page-subtitle">暂无文章，敬请期待。</p>
 
@@ -28,7 +28,7 @@ const posts = []
 .page-subtitle {
   font-size: 1.0625rem;
   color: var(--vp-c-text-2);
-  margin: -16px 0 40px;
+  margin: 4px 0 40px;
   line-height: 1.6;
 }
 </style>
