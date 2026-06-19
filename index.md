@@ -171,7 +171,7 @@ const latestPosts = [
 <section class="section about-section">
   <div class="about-grid">
     <div class="about-avatar-wrap">
-      <img src="/logo.png" alt="Ysuhan" class="about-avatar" />
+      <img src="/favicon.png" alt="Ysuhan" class="about-avatar" />
     </div>
     <div class="about-text">
       <h2 class="about-name">易水寒 <span class="about-alias">Ysuhan</span></h2>

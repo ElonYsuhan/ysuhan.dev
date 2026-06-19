@@ -46,7 +46,7 @@ export default defineConfig({
     ],
 
     // Favicon
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }],
     ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'RSS', href: '/feed.xml' }],
 
     // Fonts
@@ -87,7 +87,7 @@ export default defineConfig({
 
   // Theme config
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/favicon.png',
     siteTitle: 'Ysuhan',
 
     // Navigation
