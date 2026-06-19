@@ -6,11 +6,46 @@ layout: page
 
 <script setup>
 const timeline = [
-  { zh: '看见地图', period: '早期', tags: ['React', 'OpenLayers', 'GeoServer'], saw: '理解 GIS 不是画图，是对空间数据的建模与表达。', learned: '空间数据模型、地图可视化、政务 GIS 系统设计。', thinking: '地图只是载体。真正的价值在于数据如何组织、如何关联、如何被理解。' },
-  { zh: '看见场景', period: '2022 - 2023', tags: ['Vue 3', 'Cesium', 'TypeScript'], saw: '场景不是地图的放大版。场景有自己的节奏——实体、动画、时序、交互。', learned: 'Cesium 渲染管线、实体系统架构、Off-Screen Rendering、多窗口性能优化。', thinking: '地图是静态的载体，场景是动态的系统。从地图到场景，是从平面到时空的跃迁。' },
-  { zh: '看见平台', period: '2023 - 2024', tags: ['GIS Engine', 'Animation', 'Component System'], saw: '单项目开发的天花板。真正可复用的能力需要抽象为平台层。', learned: 'GIS 引擎封装、动画控制体系、通用组件体系、数据交换协议设计。', thinking: '平台不是产品。平台是让产品能以更低成本、更高一致性被构建的基础设施。' },
-  { zh: '看见引擎', period: '现在', tags: ['Engine', 'Framework', 'Architecture'], saw: '平台解决复用，引擎解决抽象。Entity、Command、Timeline、Workflow——这些才是本质。', learned: '引擎设计范式、DSL 设计、工作流编排、Monorepo 工程体系。', thinking: '引擎不是代码库。引擎是可执行的领域模型，是对一类问题的完整解答。' },
-  { zh: '看见体系', period: '未来', tags: ['GIS', 'Simulation', 'AI', 'System Engineering'], saw: '引擎之上是体系。AirGIS + Tactics Simulation + Workflow Engine——它们不是三个产品，是同一个世界观。', learned: '', thinking: '体系不是产品组合。体系是让每一块拼图都能独立存在、又能无缝协作的生态设计。' },
+  {
+    zh: '地图',
+    period: '早期',
+    tags: ['React', 'OpenLayers', 'GeoServer'],
+    insight: '地图不是终点。它只是理解空间世界的入口。',
+    narrative: '这一阶段，我开始接触 GIS 系统建设，理解空间数据、地图渲染与业务场景之间的关系。参与松阳县民情地图、云森防松材线虫病平台等项目，积累了政务 GIS 系统的实战经验。',
+    leap: '从「地图开发」走向「空间数据理解」。',
+  },
+  {
+    zh: '场景',
+    period: '2022 - 2023',
+    tags: ['Vue 3', 'Cesium', 'TypeScript'],
+    insight: '地图描述位置。场景描述变化。当实体开始运动，时间开始流动，空间便拥有了生命。',
+    narrative: '这一阶段，我深入 Cesium 与仿真领域，研究实体系统、动画体系、多窗口渲染以及复杂场景性能优化。解决 Cesium 多窗口渲染问题，引入 Off-Screen Rendering 方案。也正是在这里，我第一次意识到：地图是静态的表达，场景是动态的系统。',
+    leap: '从「空间可视化」走向「时空系统」。',
+  },
+  {
+    zh: '平台',
+    period: '2023 - 2024',
+    tags: ['GIS Engine', 'Animation', 'Component System'],
+    insight: '项目总会结束。能力不会。',
+    narrative: '随着参与项目越来越多，我开始发现大量能力在重复建设。地图能力在重复，动画能力在重复，组件能力也在重复。于是开始尝试将这些经验抽象为平台能力，构建统一的 GIS 引擎封装、动画体系、组件体系与数据交换规范。',
+    leap: '从「交付项目」走向「沉淀能力」。',
+  },
+  {
+    zh: '引擎',
+    period: '现在',
+    tags: ['Engine', 'Framework', 'Architecture'],
+    insight: '平台解决复用。引擎解决抽象。',
+    narrative: '当越来越多问题开始重复出现时，我开始追问：什么是实体？什么是行为？什么是时间？什么是系统状态？于是开始研究 Entity、Command、Timeline、Trajectory、Workflow 等核心模型。引擎不只是代码库，它是对领域规律的抽象表达。',
+    leap: '从「能力复用」走向「领域抽象」。',
+  },
+  {
+    zh: '体系',
+    period: '未来',
+    tags: ['GIS', 'Simulation', 'AI', 'System Engineering'],
+    insight: '单个系统解决问题。体系创造可能性。',
+    narrative: '未来关注的不再是单个产品，而是多个系统之间如何协同演化。AirGIS、Tactics Simulation、Workflow Engine——它们不是孤立产品，而是同一个空间智能世界观下的不同组成部分。',
+    leap: '从「构建系统」走向「构建生态」。',
+  },
 ]
 
 const whatIBuild = [
@@ -62,18 +97,9 @@ const coreThinking = [
         <div v-if="item.tags.length" class="tl-tags">
           <span v-for="t in item.tags" :key="t" class="tl-tag">{{ t }}</span>
         </div>
-        <div class="tl-insight">
-          <p class="tl-insight-label">看见了什么</p>
-          <p class="tl-insight-text">{{ item.saw }}</p>
-        </div>
-        <div v-if="item.learned" class="tl-insight">
-          <p class="tl-insight-label">学会了什么</p>
-          <p class="tl-insight-text">{{ item.learned }}</p>
-        </div>
-        <div class="tl-insight">
-          <p class="tl-insight-label">开始思考</p>
-          <p class="tl-insight-text tl-thinking">{{ item.thinking }}</p>
-        </div>
+        <p class="tl-insight-text">{{ item.insight }}</p>
+        <p class="tl-narrative">{{ item.narrative }}</p>
+        <p class="tl-leap">{{ item.leap }}</p>
       </div>
     </div>
   </div>
@@ -216,10 +242,9 @@ const coreThinking = [
 .tl-en { font-size: 0.8125rem; color: var(--text-tertiary); font-family: var(--font-mono); margin: 0; }
 .tl-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
 .tl-tag { font-size: 0.6875rem; color: var(--text-tertiary); font-family: var(--font-mono); padding: 2px 8px; background: var(--bg-elevated); border-radius: 3px; }
-.tl-insight { margin-bottom: 14px; }
-.tl-insight-label { font-size: 0.625rem; color: var(--text-disabled); text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font-mono); margin: 0 0 4px; }
-.tl-insight-text { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.8; margin: 0; }
-.tl-thinking { color: var(--gold); font-style: italic; }
+.tl-insight-text { font-size: 0.9375rem; color: var(--text-primary); line-height: 1.75; margin: 16px 0 0; font-weight: 500; letter-spacing: -0.01em; }
+.tl-narrative { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.85; margin: 12px 0 0; }
+.tl-leap { font-size: 0.8125rem; color: var(--gold); line-height: 1.7; margin: 14px 0 0; font-style: italic; }
 
 /* Organization */
 .org-card { padding: 32px; background: var(--bg-surface); border-radius: 8px; }
