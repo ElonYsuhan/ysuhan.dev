@@ -198,27 +198,20 @@ td { color: var(--text-secondary); }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
+  z-index: 20;
 }
-.VPNavBar { background: transparent !important; }
+.VPNavBar {
+  background: transparent !important;
+  z-index: 20;
+}
 
 /* ── VP Mobile Nav Screen ── */
 .VPNavScreen {
-  background: var(--bg-base) !important;
-  z-index: 100;
-}
-.VPNavScreen .container {
-  padding: 24px;
-}
-.VPNavScreenMenu {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  z-index: 30;
 }
 .VPNavScreenMenuLink {
   font-size: 1rem;
-  color: var(--text-primary);
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary) !important;
 }
 
 /* ── VP Sidebar ── */
