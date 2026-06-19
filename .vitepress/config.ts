@@ -12,7 +12,7 @@ export default defineConfig({
     // ── SEO ──
     ['meta', { name: 'author', content: 'Ysuhan' }],
     ['meta', { name: 'keywords', content: '技术博客,个人作品集,数字花园,前端开发,创意工程,开源项目' }],
-    ['meta', { name: 'theme-color', content: '#2563eb' }],
+    ['meta', { name: 'theme-color', content: '#c08c54' }],
     ['meta', { name: 'color-scheme', content: 'dark light' }],
 
     // Open Graph
@@ -93,10 +93,9 @@ export default defineConfig({
     // Navigation
     nav: [
       { text: '首页', link: '/' },
-      { text: '产品', link: '/projects/' },
-      { text: '展示', link: '/showcase/' },
+      { text: '项目', link: '/projects/' },
+      { text: '案例', link: '/showcase/' },
       { text: '博客', link: '/blog/' },
-      { text: '笔记', link: '/notes/' },
       { text: '关于', link: '/about/' },
     ],
 
@@ -120,14 +119,6 @@ export default defineConfig({
           text: '博客',
           items: [
             { text: '全部文章', link: '/blog/' },
-          ],
-        },
-      ],
-      '/notes/': [
-        {
-          text: '笔记',
-          items: [
-            { text: '数字花园', link: '/notes/' },
           ],
         },
       ],

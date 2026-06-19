@@ -7,10 +7,9 @@ const footerLinks = [
   {
     group: '内容',
     items: [
-      { text: '产品', link: '/projects/' },
-      { text: '展示', link: '/showcase/' },
+      { text: '项目', link: '/projects/' },
+      { text: '案例', link: '/showcase/' },
       { text: '博客', link: '/blog/' },
-      { text: '笔记', link: '/notes/' },
     ],
   },
   {
