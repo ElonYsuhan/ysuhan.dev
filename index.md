@@ -528,7 +528,7 @@ const showPosts = latestPosts.length >= 3
 .about-avatar {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 16px;
   object-fit: cover;
 }
 .about-name {
