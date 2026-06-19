@@ -311,19 +311,17 @@ const showPosts = latestPosts.length >= 3
 }
 .section-header { margin-bottom: 48px; }
 .section-label {
-  font-size: 0.6875rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 500;
   color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
 }
 .section-title {
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
-  margin: 8px 0 0;
+  margin: 6px 0 0;
 }
 .section-more { margin-top: 40px; }
 .section-more a {

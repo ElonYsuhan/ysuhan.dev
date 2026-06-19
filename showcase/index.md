@@ -1,5 +1,5 @@
 ---
-title: Showcase
+title: 案例
 description: 真实案例与系统展示
 layout: page
 ---
@@ -47,7 +47,7 @@ const showcaseItems = [
 
 <div class="page-container">
 
-# Showcase
+# 案例
 
 <p class="page-subtitle">真实案例与系统展示</p>
 

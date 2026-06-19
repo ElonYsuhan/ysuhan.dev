@@ -1,5 +1,5 @@
 ---
-title: Notes
+title: 笔记
 description: 持续生长的数字花园
 layout: page
 ---

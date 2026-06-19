@@ -1,5 +1,5 @@
 ---
-title: Blog
+title: 博客
 description: 技术文章与思考
 layout: page
 ---
