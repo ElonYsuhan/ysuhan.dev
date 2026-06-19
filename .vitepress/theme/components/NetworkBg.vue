@@ -5,7 +5,16 @@ const canvas = ref<HTMLCanvasElement>()
 let ctx: CanvasRenderingContext2D | null = null
 let animId = 0
 let mouse = { x: -1000, y: -1000, targetX: -1000, targetY: -1000 }
-let clickRipples: { x: number; y: number; r: number; opacity: number }[] = []
+let clickRipples: { x: number; y: number; r: number; opacity: number; color: string }[] = []
+
+const rippleColors = [
+  'rgba(212,165,116,',   // warm gold
+  'rgba(200,180,140,',   // champagne
+  'rgba(180,150,110,',   // bronze
+  'rgba(220,190,150,',   // light amber
+  'rgba(190,160,130,',   // muted tan
+  'rgba(210,175,135,',   // honey
+]
 
 interface Node {
   x: number; y: number; ox: number; oy: number; r: number; opacity: number
@@ -135,7 +144,7 @@ function draw() {
     r.opacity -= 0.015
     ctx.beginPath()
     ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2)
-    ctx.strokeStyle = `rgba(212,165,116,${r.opacity})`
+    ctx.strokeStyle = `${r.color}${r.opacity})`
     ctx.lineWidth = 1
     ctx.stroke()
   }
@@ -189,14 +198,15 @@ function onMove(e: MouseEvent) {
   mouse.targetY = e.clientY
 }
 function onClick(e: MouseEvent) {
-  clickRipples.push({ x: e.clientX, y: e.clientY, r: 0, opacity: 0.5 })
+  const color = rippleColors[Math.floor(Math.random() * rippleColors.length)]
+  clickRipples.push({ x: e.clientX, y: e.clientY, r: 0, opacity: 0.5, color })
   if (clickRipples.length > 5) clickRipples.shift()
 }
 function onParallax(e: MouseEvent) {
   // Subtle shift of entire canvas
   if (!canvas.value) return
-  const px = (e.clientX / w - 0.5) * 8
-  const py = (e.clientY / h - 0.5) * 8
+  const px = (e.clientX / w - 0.5) * 16
+  const py = (e.clientY / h - 0.5) * 16
   canvas.value.style.transform = `translate(${px}px, ${py}px)`
 }
 
