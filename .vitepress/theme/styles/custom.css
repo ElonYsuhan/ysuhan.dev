@@ -199,6 +199,11 @@ td { color: var(--text-secondary); }
 }
 .VPNavBar { background: transparent !important; }
 
+/* ── VP Nav Logo ── */
+.VPNavBarTitle .VPImage {
+  border-radius: 8px;
+}
+
 /* ── VP Mobile Nav Screen ── */
 .VPNavScreenMenuLink {
   font-size: 1rem;
