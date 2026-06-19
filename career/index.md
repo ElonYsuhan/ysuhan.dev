@@ -1,30 +1,30 @@
 ---
-title: Career
+title: 成长
 description: 从 GIS 开发者到系统构建者的成长档案
 layout: page
 ---
 
 <script setup>
 const timeline = [
-  { en: 'Seeing Maps', zh: '看见地图', period: 'Early', tags: ['React', 'OpenLayers', 'GeoServer'], saw: '理解 GIS 不是画图，是对空间数据的建模与表达。', learned: '空间数据模型、地图可视化、政务 GIS 系统设计。', thinking: '地图只是载体。真正的价值在于数据如何组织、如何关联、如何被理解。' },
-  { en: 'Seeing Scenes', zh: '看见场景', period: '2022 - 2023', tags: ['Vue 3', 'Cesium', 'TypeScript'], saw: '场景不是地图的放大版。场景有自己的节奏——实体、动画、时序、交互。', learned: 'Cesium 渲染管线、实体系统架构、Off-Screen Rendering、多窗口性能优化。', thinking: '地图是静态的载体，场景是动态的系统。从地图到场景，是从平面到时空的跃迁。' },
-  { en: 'Seeing Platforms', zh: '看见平台', period: '2023 - 2024', tags: ['GIS Engine', 'Animation', 'Component System'], saw: '单项目开发的天花板。真正可复用的能力需要抽象为平台层。', learned: 'GIS 引擎封装、动画控制体系、通用组件体系、数据交换协议设计。', thinking: '平台不是产品。平台是让产品能以更低成本、更高一致性被构建的基础设施。' },
-  { en: 'Seeing Engines', zh: '看见引擎', period: 'Now', tags: ['Engine', 'Framework', 'Architecture'], saw: '平台解决复用，引擎解决抽象。Entity、Command、Timeline、Workflow——这些才是本质。', learned: '引擎设计范式、DSL 设计、工作流编排、Monorepo 工程体系。', thinking: '引擎不是代码库。引擎是可执行的领域模型，是对一类问题的完整解答。' },
-  { en: 'Seeing Systems', zh: '看见体系', period: 'Future', tags: ['GIS', 'Simulation', 'AI', 'System Engineering'], saw: '引擎之上是体系。AirGIS + Tactics Simulation + Workflow Engine——它们不是三个产品，是同一个世界观。', learned: '', thinking: '体系不是产品组合。体系是让每一块拼图都能独立存在、又能无缝协作的生态设计。' },
+  { zh: '看见地图', period: '早期', tags: ['React', 'OpenLayers', 'GeoServer'], saw: '理解 GIS 不是画图，是对空间数据的建模与表达。', learned: '空间数据模型、地图可视化、政务 GIS 系统设计。', thinking: '地图只是载体。真正的价值在于数据如何组织、如何关联、如何被理解。' },
+  { zh: '看见场景', period: '2022 - 2023', tags: ['Vue 3', 'Cesium', 'TypeScript'], saw: '场景不是地图的放大版。场景有自己的节奏——实体、动画、时序、交互。', learned: 'Cesium 渲染管线、实体系统架构、Off-Screen Rendering、多窗口性能优化。', thinking: '地图是静态的载体，场景是动态的系统。从地图到场景，是从平面到时空的跃迁。' },
+  { zh: '看见平台', period: '2023 - 2024', tags: ['GIS Engine', 'Animation', 'Component System'], saw: '单项目开发的天花板。真正可复用的能力需要抽象为平台层。', learned: 'GIS 引擎封装、动画控制体系、通用组件体系、数据交换协议设计。', thinking: '平台不是产品。平台是让产品能以更低成本、更高一致性被构建的基础设施。' },
+  { zh: '看见引擎', period: '现在', tags: ['Engine', 'Framework', 'Architecture'], saw: '平台解决复用，引擎解决抽象。Entity、Command、Timeline、Workflow——这些才是本质。', learned: '引擎设计范式、DSL 设计、工作流编排、Monorepo 工程体系。', thinking: '引擎不是代码库。引擎是可执行的领域模型，是对一类问题的完整解答。' },
+  { zh: '看见体系', period: '未来', tags: ['GIS', 'Simulation', 'AI', 'System Engineering'], saw: '引擎之上是体系。AirGIS + Tactics Simulation + Workflow Engine——它们不是三个产品，是同一个世界观。', learned: '', thinking: '体系不是产品组合。体系是让每一块拼图都能独立存在、又能无缝协作的生态设计。' },
 ]
 
 const whatIBuild = [
-  { title: 'AirGIS', desc: '构建面向时空数据与仿真场景的新一代 GIS Engine。', core: ['Entity', 'Layer', 'Visualization', 'Interaction', 'Timeline'], status: 'Building' },
-  { title: 'Tactics Simulation', desc: '构建面向态势推演与场景构建的 Simulation Framework。', core: ['Scenario', 'Action', 'Track', 'Trajectory', 'Command'], status: 'Building' },
-  { title: 'Workflow Engine', desc: '探索复杂业务流程的 DSL 与编排体系。', core: ['DSL', 'Orchestration', 'Node Graph'], status: 'Researching' },
-  { title: 'Monorepo Engineering', desc: '统一产品、项目与引擎的工程基础设施。', core: ['pnpm', 'Monorepo', 'Libs + Apps'], status: 'Building' },
+  { title: 'AirGIS', desc: '构建面向时空数据与仿真场景的新一代 GIS 引擎。', core: ['Entity', 'Layer', 'Visualization', 'Interaction', 'Timeline'], status: '构建中' },
+  { title: 'Tactics Simulation', desc: '构建面向态势推演与场景构建的仿真框架。', core: ['Scenario', 'Action', 'Track', 'Trajectory', 'Command'], status: '构建中' },
+  { title: 'Workflow Engine', desc: '探索复杂业务流程的 DSL 与编排体系。', core: ['DSL', 'Orchestration', 'Node Graph'], status: '研究中' },
+  { title: 'Monorepo Engineering', desc: '统一产品、项目与引擎的工程基础设施。', core: ['pnpm', 'Monorepo', 'Libs + Apps'], status: '构建中' },
 ]
 
 const techLandscape = [
   { group: 'GIS', items: ['Cesium', 'OpenLayers', 'GeoServer', 'PostGIS'] },
-  { group: 'Simulation', items: ['Entity', 'Scenario', 'Timeline', 'Trajectory'] },
-  { group: 'Engineering', items: ['Monorepo', 'pnpm', 'Node.js', 'Docker'] },
-  { group: 'Architecture', items: ['Engine Design', 'Workflow', 'DSL', 'System Design'] },
+  { group: '仿真', items: ['Entity', 'Scenario', 'Timeline', 'Trajectory'] },
+  { group: '工程', items: ['Monorepo', 'pnpm', 'Node.js', 'Docker'] },
+  { group: '架构', items: ['Engine Design', 'Workflow', 'DSL', 'System Design'] },
 ]
 
 const coreThinking = [
@@ -39,15 +39,15 @@ const coreThinking = [
 
 <!-- ═══════════ Hero ═══════════ -->
 <div class="hero">
-  <h1 class="hero-title">Career</h1>
+  <h1 class="hero-title">成长</h1>
   <p class="hero-sub">从 GIS 开发者到系统构建者</p>
-  <p class="hero-desc">持续探索 GIS, Simulation, Architecture 与 AI.</p>
+  <p class="hero-desc">持续探索 GIS、仿真、架构与智能。</p>
   <p class="hero-desc">将复杂问题沉淀为作品，将零散创意演化为体系。</p>
 </div>
 
 <!-- ═══════════ Evolution ═══════════ -->
 <div class="section">
-  <h2 class="section-title">Evolution</h2>
+  <h2 class="section-title">演进</h2>
   <div class="timeline">
     <div v-for="(item, i) in timeline" :key="i" class="tl-item">
       <div class="tl-marker">
@@ -58,7 +58,6 @@ const coreThinking = [
         <div class="tl-head">
           <span class="tl-period">{{ item.period }}</span>
           <h3 class="tl-zh">{{ item.zh }}</h3>
-          <p class="tl-en">{{ item.en }}</p>
         </div>
         <div v-if="item.tags.length" class="tl-tags">
           <span v-for="t in item.tags" :key="t" class="tl-tag">{{ t }}</span>
@@ -82,17 +81,17 @@ const coreThinking = [
 
 <!-- ═══════════ Current Organization ═══════════ -->
 <div class="section">
-  <h2 class="section-title">Current Organization</h2>
+  <h2 class="section-title">所在组织</h2>
   <div class="org-card">
     <p class="org-name">中国科学院空天信息创新研究院</p>
     <p class="org-desc">参与空天领域 GIS、仿真与时空信息系统研发。</p>
-    <p class="org-fields"><span>Spatial Intelligence</span><span class="org-sep"> . </span><span>Simulation</span><span class="org-sep"> . </span><span>Architecture</span><span class="org-sep"> . </span><span>AI</span></p>
+    <p class="org-fields"><span>空间智能</span><span class="org-sep"> . </span><span>仿真</span><span class="org-sep"> . </span><span>架构</span><span class="org-sep"> . </span><span>AI</span></p>
   </div>
 </div>
 
 <!-- ═══════════ What I Build ═══════════ -->
 <div class="section">
-  <h2 class="section-title">What I Build</h2>
+  <h2 class="section-title">正在构建</h2>
   <div class="build-list">
     <div v-for="b in whatIBuild" :key="b.title" class="build-item">
       <div class="build-left">
@@ -103,7 +102,7 @@ const coreThinking = [
         </div>
       </div>
       <div class="build-right">
-        <span class="build-status" :class="b.status === 'Building' ? 'status-building' : 'status-researching'">{{ b.status }}</span>
+        <span class="build-status" :class="b.status === '构建中' ? 'status-building' : 'status-researching'">{{ b.status }}</span>
       </div>
     </div>
   </div>
@@ -111,18 +110,18 @@ const coreThinking = [
 
 <!-- ═══════════ Current Focus ═══════════ -->
 <div class="section">
-  <h2 class="section-title">Current Focus</h2>
+  <h2 class="section-title">当前聚焦</h2>
   <div class="focus-list">
-    <div class="focus-row"><span class="focus-name">AirGIS</span><span class="focus-tag status-building">Building</span></div>
-    <div class="focus-row"><span class="focus-name">Tactics Simulation</span><span class="focus-tag status-building">Building</span></div>
-    <div class="focus-row"><span class="focus-name">Workflow Engine</span><span class="focus-tag status-researching">Researching</span></div>
-    <div class="focus-row"><span class="focus-name">Spatial Intelligence</span><span class="focus-tag status-exploring">Exploring</span></div>
+    <div class="focus-row"><span class="focus-name">AirGIS</span><span class="focus-tag status-building">构建中</span></div>
+    <div class="focus-row"><span class="focus-name">Tactics Simulation</span><span class="focus-tag status-building">构建中</span></div>
+    <div class="focus-row"><span class="focus-name">Workflow Engine</span><span class="focus-tag status-researching">研究中</span></div>
+    <div class="focus-row"><span class="focus-name">空间智能</span><span class="focus-tag status-exploring">探索中</span></div>
   </div>
 </div>
 
 <!-- ═══════════ Core Thinking ═══════════ -->
 <div class="section">
-  <h2 class="section-title">Core Thinking</h2>
+  <h2 class="section-title">核心信条</h2>
   <div class="thinking-list">
     <div v-for="c in coreThinking" :key="c.title" class="thinking-item">
       <h3 class="thinking-title">{{ c.title }}</h3>
@@ -133,7 +132,7 @@ const coreThinking = [
 
 <!-- ═══════════ Technology Landscape ═══════════ -->
 <div class="section">
-  <h2 class="section-title">Technology Landscape</h2>
+  <h2 class="section-title">技术版图</h2>
   <div class="landscape">
     <div v-for="g in techLandscape" :key="g.group" class="landscape-group">
       <h3 class="landscape-group-title">{{ g.group }}</h3>
@@ -146,7 +145,7 @@ const coreThinking = [
 
 <!-- ═══════════ Vision ═══════════ -->
 <div class="section">
-  <h2 class="section-title">Vision</h2>
+  <h2 class="section-title">愿景</h2>
 
   <div class="eco-map">
     <div class="eco-top">
@@ -156,26 +155,26 @@ const coreThinking = [
       <span class="eco-line-v"></span>
     </div>
     <div class="eco-middle">
-      <span class="eco-node eco-wf">Workflow</span>
-      <span class="eco-node eco-core">Spatial<br>Intelligence</span>
+      <span class="eco-node eco-wf">工作流</span>
+      <span class="eco-node eco-core">空间<br>智能</span>
       <span class="eco-node eco-ag">AirGIS</span>
     </div>
     <div class="eco-lines">
       <span class="eco-line-v"></span>
     </div>
     <div class="eco-bottom">
-      <span class="eco-node eco-sim">Simulation</span>
+      <span class="eco-node eco-sim">仿真</span>
     </div>
   </div>
 
-  <p class="eco-label">Spatial Intelligence Ecosystem</p>
+  <p class="eco-label">空间智能生态</p>
 
   <p class="vision-statement">构建面向空间智能的系统生态。</p>
 </div>
 
 <!-- ═══════════ Builder Manifesto ═══════════ -->
 <div class="section manifesto-section">
-  <h2 class="section-title">Builder Manifesto</h2>
+  <h2 class="section-title">构建者宣言</h2>
   <div class="manifesto-text">
     <p>我不擅长追逐热点。</p>
     <p>我更喜欢长期构建。</p>
