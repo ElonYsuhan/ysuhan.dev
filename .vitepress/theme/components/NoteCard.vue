@@ -32,7 +32,7 @@ function animDelay(i: number): string {
       v-for="(note, i) in notes"
       :key="i"
       :href="note.url"
-      class="garden-card animate-fade-in-up"
+      class="garden-card glass-card animate-fade-in-up"
       :style="{ animationDelay: animDelay(i) }"
     >
       <div class="garden-header">
@@ -52,25 +52,15 @@ function animDelay(i: number): string {
 .garden-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--border-subtle);
+  gap: 16px;
 }
 
 .garden-card {
   display: flex;
   flex-direction: column;
   padding: 22px;
-  background: var(--bg-base);
   text-decoration: none;
   color: inherit;
-  transition: background 0.25s var(--ease-out);
-}
-
-.garden-card:hover {
-  background: var(--bg-surface);
 }
 
 .garden-header {
@@ -82,10 +72,13 @@ function animDelay(i: number): string {
 
 .garden-stage {
   font-size: 0.625rem;
-  color: var(--text-tertiary);
+  color: var(--accent);
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  padding: 2px 8px;
+  background: var(--accent-subtle);
+  border-radius: 999px;
 }
 
 .garden-date {
@@ -100,10 +93,10 @@ function animDelay(i: number): string {
   font-weight: 600;
   color: var(--text-primary);
   margin: 0 0 4px;
-  transition: color 0.2s;
+  transition: color 300ms var(--ease-out);
 }
 
-.garden-card:hover .garden-title { color: var(--gold); }
+.garden-card:hover .garden-title { color: var(--accent); }
 
 .garden-excerpt {
   font-size: 0.75rem;
@@ -119,10 +112,12 @@ function animDelay(i: number): string {
   font-size: 0.6875rem;
   color: var(--text-tertiary);
   font-family: var(--font-mono);
+  padding: 2px 8px;
+  background: var(--bg-elevated);
+  border-radius: 999px;
 }
 
 @media (max-width: 480px) {
   .garden-grid { grid-template-columns: 1fr; }
 }
 </style>
-

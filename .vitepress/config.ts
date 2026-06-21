@@ -11,8 +11,8 @@ export default defineConfig({
   head: [
     // ── SEO ──
     ['meta', { name: 'author', content: 'Ysuhan' }],
-    ['meta', { name: 'keywords', content: '技术博客,个人作品集,数字花园,前端开发,创意工程,开源项目' }],
-    ['meta', { name: 'theme-color', content: '#c08c54' }],
+    ['meta', { name: 'keywords', content: 'WebGIS,Digital Twin,Open Source,空间计算,数字孪生,前端开发,引擎架构' }],
+    ['meta', { name: 'theme-color', content: '#0d0f12' }],
     ['meta', { name: 'color-scheme', content: 'dark light' }],
 
     // Open Graph
@@ -94,15 +94,10 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '项目', link: '/projects/' },
-      { text: '案例', link: '/showcase/' },
-      { text: '成长', link: '/career/' },
       { text: '博客', link: '/blog/' },
+      { text: '成长', link: '/career/' },
+      { text: '开源', link: 'https://github.com/ysuhan' },
       { text: '关于', link: '/about/' },
-    ],
-
-    // Social links (shown in nav)
-    socialLinks: [
-      { icon: 'github', link: SITE.social.github },
     ],
 
     // Sidebar — contextual per section
@@ -116,32 +111,6 @@ export default defineConfig({
         },
       ],
     },
-
-    // Footer
-    footer: {
-      message: '基于 MIT 许可证发布。',
-      copyright: `© 2024–${new Date().getFullYear()} Ysuhan`,
-    },
-
-    // Edit link
-    editLink: {
-      pattern: 'https://github.com/ysuhan/ysuhan.dev/edit/main/:path',
-      text: '在 GitHub 上编辑此页',
-    },
-
-    // Last updated
-    lastUpdated: {
-      text: '最后更新',
-      formatOptions: {
-        dateStyle: 'short',
-        timeStyle: 'medium',
-      },
-    },
-
-    // Dark mode
-    darkModeSwitchLabel: '深色模式',
-    lightModeSwitchTitle: '切换到浅色模式',
-    darkModeSwitchTitle: '切换到深色模式',
 
     // Doc footer
     docFooter: {

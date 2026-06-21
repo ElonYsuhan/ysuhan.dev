@@ -24,7 +24,7 @@ function animDelay(i: number): string {
     <article
       v-for="(post, i) in posts"
       :key="i"
-      class="blog-item animate-fade-in-up"
+      class="blog-item glass-card animate-fade-in-up"
       :style="{ animationDelay: animDelay(i) }"
     >
       <time class="blog-date">{{ formatDate(post.date) }}</time>
@@ -45,18 +45,16 @@ function animDelay(i: number): string {
 .blog-list {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .blog-item {
   display: flex;
   align-items: flex-start;
   gap: 20px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--border-subtle);
-  transition: padding 0.2s;
+  padding: 24px;
+  transition: all 300ms var(--ease-out);
 }
-
-.blog-item:first-child { padding-top: 0; }
 
 .blog-date {
   flex-shrink: 0;
@@ -77,10 +75,10 @@ function animDelay(i: number): string {
   font-weight: 600;
   color: var(--text-primary);
   margin: 0 0 4px;
-  transition: color 0.2s;
+  transition: color 300ms var(--ease-out);
 }
 
-.blog-item:hover .blog-title { color: var(--gold); }
+.blog-item:hover .blog-title { color: var(--accent); }
 
 .blog-excerpt {
   font-size: 0.8125rem;
@@ -93,15 +91,15 @@ function animDelay(i: number): string {
 
 .blog-tag {
   font-size: 0.6875rem;
-  padding: 1px 6px;
-  border-radius: 4px;
-  color: var(--text-tertiary);
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--accent-subtle);
+  color: var(--accent);
   font-family: var(--font-mono);
 }
 
 @media (max-width: 640px) {
-  .blog-item { flex-direction: column; gap: 6px; }
+  .blog-item { flex-direction: column; gap: 6px; padding: 20px; }
   .blog-date { width: auto; }
 }
 </style>
-

@@ -3,7 +3,7 @@
 
 export const SITE = {
   title: 'Ysuhan',
-  description: '从想法到作品，从创意到体系 — Build Ideas Into Reality.',
+  description: 'WebGIS Engineer · Digital Twin Developer · Open Source Creator',
   url: 'https://ysuhan.dev',
   author: 'Ysuhan',
 

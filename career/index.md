@@ -108,7 +108,7 @@ const coreThinking = [
 <!-- ═══════════ Current Organization ═══════════ -->
 <div class="section">
   <h2 class="section-title">所在组织</h2>
-  <div class="org-card">
+  <div class="org-card glass-card">
     <p class="org-name">中国科学院空天信息创新研究院</p>
     <p class="org-desc">参与空天领域 GIS、仿真与时空信息系统研发。</p>
     <p class="org-fields"><span>空间智能</span><span class="org-sep"> . </span><span>仿真</span><span class="org-sep"> . </span><span>架构</span><span class="org-sep"> . </span><span>AI</span></p>
@@ -119,7 +119,7 @@ const coreThinking = [
 <div class="section">
   <h2 class="section-title">正在构建</h2>
   <div class="build-list">
-    <div v-for="b in whatIBuild" :key="b.title" class="build-item">
+    <div v-for="b in whatIBuild" :key="b.title" class="build-item glass-card">
       <div class="build-left">
         <h3 class="build-title">{{ b.title }}</h3>
         <p class="build-desc">{{ b.desc }}</p>
@@ -149,7 +149,7 @@ const coreThinking = [
 <div class="section">
   <h2 class="section-title">核心信条</h2>
   <div class="thinking-list">
-    <div v-for="c in coreThinking" :key="c.title" class="thinking-item">
+    <div v-for="c in coreThinking" :key="c.title" class="thinking-item glass-card">
       <h3 class="thinking-title">{{ c.title }}</h3>
       <p class="thinking-body">{{ c.body }}</p>
     </div>
@@ -217,7 +217,7 @@ const coreThinking = [
 </div>
 
 <style scoped>
-.page { max-width: 720px; margin: 0 auto; padding: 0 24px 120px; }
+.page { max-width: 720px; margin: 0 auto; padding: 0 24px 120px; position: relative; z-index: 1; }
 
 /* Hero */
 .hero { padding: 120px 0 60px; }
@@ -233,69 +233,69 @@ const coreThinking = [
 .timeline { display: flex; flex-direction: column; }
 .tl-item { display: flex; gap: 28px; }
 .tl-marker { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 10px; padding-top: 8px; }
-.tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 .tl-line { width: 1px; flex: 1; background: var(--border-default); margin-top: 8px; }
 .tl-content { flex: 1; padding-bottom: 64px; min-width: 0; }
 .tl-head { margin-bottom: 14px; }
-.tl-period { font-size: 0.6875rem; color: var(--gold); font-family: var(--font-mono); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+.tl-period { font-size: 0.6875rem; color: var(--accent); font-family: var(--font-mono); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
 .tl-zh { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 6px 0 2px; letter-spacing: -0.02em; }
 .tl-en { font-size: 0.8125rem; color: var(--text-tertiary); font-family: var(--font-mono); margin: 0; }
 .tl-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
-.tl-tag { font-size: 0.6875rem; color: var(--text-tertiary); font-family: var(--font-mono); padding: 2px 8px; background: var(--bg-elevated); border-radius: 3px; }
+.tl-tag { font-size: 0.6875rem; color: var(--text-tertiary); font-family: var(--font-mono); padding: 2px 10px; background: var(--bg-elevated); border-radius: 999px; }
 .tl-insight-text { font-size: 0.9375rem; color: var(--text-primary); line-height: 1.75; margin: 16px 0 0; font-weight: 500; letter-spacing: -0.01em; }
 .tl-narrative { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.85; margin: 12px 0 0; }
 .tl-closing { font-size: 0.875rem; color: var(--text-primary); line-height: 1.8; margin: 14px 0 0; font-weight: 500; }
 
 /* Organization */
-.org-card { padding: 32px; background: var(--bg-surface); border-radius: 8px; }
+.org-card { padding: 32px; }
 .org-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 0 0 8px; }
 .org-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 12px; }
 .org-fields { font-size: 0.75rem; color: var(--text-tertiary); font-family: var(--font-mono); }
 .org-sep { margin: 0 8px; color: var(--text-disabled); }
 
 /* What I Build */
-.build-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border-subtle); overflow: hidden; background: var(--border-subtle); }
-.build-item { display: flex; align-items: flex-start; justify-content: space-between; padding: 32px; background: var(--bg-base); gap: 24px; }
+.build-list { display: flex; flex-direction: column; gap: 16px; }
+.build-item { display: flex; align-items: flex-start; justify-content: space-between; padding: 32px; gap: 24px; }
 .build-left { flex: 1; min-width: 0; }
 .build-right { flex-shrink: 0; padding-top: 2px; }
 .build-title { font-size: 1.0625rem; font-weight: 600; color: var(--text-primary); margin: 0 0 6px; letter-spacing: -0.01em; }
 .build-desc { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 14px; }
 .build-core { display: flex; gap: 6px; flex-wrap: wrap; }
 .build-core-tag { font-size: 0.6875rem; color: var(--text-tertiary); font-family: var(--font-mono); }
-.build-status { font-size: 0.625rem; font-weight: 500; padding: 3px 10px; border-radius: 3px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
-.status-building { background: rgba(212,165,116,0.12); color: var(--gold); }
-.status-researching { background: rgba(212,165,116,0.06); color: var(--text-tertiary); }
+.build-status { font-size: 0.625rem; font-weight: 500; padding: 3px 10px; border-radius: 999px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+.status-building { background: var(--accent-subtle); color: var(--accent); }
+.status-researching { background: rgba(212,165,116,0.04); color: var(--text-tertiary); }
 
 /* Current Focus */
 .focus-list { display: flex; flex-direction: column; }
 .focus-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border-subtle); }
 .focus-row:first-child { padding-top: 0; }
 .focus-name { font-size: 0.9375rem; color: var(--text-primary); font-weight: 500; }
-.focus-tag { font-size: 0.625rem; font-weight: 500; padding: 3px 10px; border-radius: 3px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
-.status-exploring { background: rgba(212,165,116,0.04); color: var(--text-disabled); }
+.focus-tag { font-size: 0.625rem; font-weight: 500; padding: 3px 10px; border-radius: 999px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
+.status-exploring { background: rgba(212,165,116,0.03); color: var(--text-disabled); }
 
 /* Core Thinking */
-.thinking-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--border-subtle); overflow: hidden; background: var(--border-subtle); }
-.thinking-item { padding: 32px; background: var(--bg-base); }
+.thinking-list { display: flex; flex-direction: column; gap: 16px; }
+.thinking-item { padding: 32px; }
 .thinking-title { font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); margin: 0 0 6px; }
 .thinking-body { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
 
 /* Technology Landscape */
 .landscape { display: flex; flex-direction: column; gap: 36px; }
-.landscape-group-title { font-size: 0.75rem; font-weight: 600; color: var(--text-tertiary); margin: 0 0 14px; text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
+.landscape-group-title { font-size: 0.75rem; font-weight: 600; color: var(--accent); margin: 0 0 14px; text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-mono); }
 .landscape-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.landscape-tag { font-size: 0.8125rem; color: var(--text-secondary); font-family: var(--font-mono); padding: 4px 12px; background: var(--bg-surface); border-radius: 4px; }
+.landscape-tag { font-size: 0.8125rem; color: var(--text-secondary); font-family: var(--font-mono); padding: 4px 14px; background: var(--bg-elevated); border-radius: 999px; border: 1px solid var(--border-subtle); }
 
 /* Vision — Ecosystem Map */
 .eco-map { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 32px; }
 .eco-top, .eco-middle, .eco-bottom { display: flex; align-items: center; gap: 24px; }
 .eco-lines { display: flex; justify-content: center; }
 .eco-line-v { width: 1px; height: 24px; background: var(--border-default); }
-.eco-node { font-size: 0.75rem; font-weight: 500; padding: 8px 16px; border-radius: 6px; font-family: var(--font-mono); text-align: center; line-height: 1.4; }
+.eco-node { font-size: 0.75rem; font-weight: 500; padding: 8px 16px; border-radius: 999px; font-family: var(--font-mono); text-align: center; line-height: 1.4; }
 .eco-ai { border: 1px solid var(--border-default); color: var(--text-tertiary); }
-.eco-wf { border: 1px solid rgba(212,165,116,0.2); color: var(--text-secondary); }
-.eco-core { border: 1px solid var(--gold); color: var(--gold); font-weight: 600; }
-.eco-ag { border: 1px solid rgba(212,165,116,0.2); color: var(--text-secondary); }
+.eco-wf { border: 1px solid var(--accent-border); color: var(--text-secondary); }
+.eco-core { border: 1px solid var(--accent); color: var(--accent); font-weight: 600; }
+.eco-ag { border: 1px solid var(--accent-border); color: var(--text-secondary); }
 .eco-sim { border: 1px solid var(--border-default); color: var(--text-tertiary); }
 .eco-label { text-align: center; font-size: 0.75rem; color: var(--text-tertiary); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px; }
 .vision-statement { text-align: center; font-size: 1rem; color: var(--text-primary); font-weight: 500; letter-spacing: -0.01em; }
@@ -304,7 +304,7 @@ const coreThinking = [
 .manifesto-section { padding-bottom: 0; }
 .manifesto-text p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 2.1; margin: 0; }
 .manifesto-slogan { margin-top: 28px; display: flex; flex-direction: column; gap: 2px; }
-.manifesto-slogan span { font-size: 1.0625rem; color: var(--gold); font-weight: 500; }
+.manifesto-slogan span { font-size: 1.0625rem; color: var(--accent); font-weight: 500; }
 
 @media (max-width: 640px) {
   .tl-item { gap: 18px; }
@@ -316,4 +316,3 @@ const coreThinking = [
   .eco-node { font-size: 0.6875rem; padding: 6px 12px; }
 }
 </style>
-

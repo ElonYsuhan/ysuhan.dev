@@ -50,7 +50,9 @@ const projects = [
 .page-container {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 48px 24px 80px;
+  padding: 80px 24px 80px;
+  position: relative;
+  z-index: 1;
 }
 .page-subtitle {
   font-size: 1rem;

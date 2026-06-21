@@ -8,9 +8,9 @@ layout: page
 
 # 关于我
 
-<div class="about-intro">
+<div class="about-intro glass-card">
 
-我是 **Ysuhan**。
+我是 **Ysuhan** — WebGIS Engineer / Digital Twin Developer / Open Source Creator。
 
 我相信**从想法到作品**的力量。这里是我的数字家园，记录着构建与探索的过程。
 
@@ -27,7 +27,9 @@ layout: page
 .about-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 48px 24px 80px;
+  padding: 80px 24px 80px;
+  position: relative;
+  z-index: 1;
 }
 
 .about-intro {
@@ -35,10 +37,6 @@ layout: page
   line-height: 1.8;
   color: var(--text-primary);
   margin-bottom: 40px;
-  padding: 28px;
-  border-radius: 8px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  padding: 32px;
 }
 </style>
-

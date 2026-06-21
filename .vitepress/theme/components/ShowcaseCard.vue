@@ -20,7 +20,7 @@ function animDelay(i: number): string {
       v-for="(item, i) in items"
       :key="i"
       :href="item.link"
-      class="showcase-card animate-fade-in-up"
+      class="showcase-card glass-card animate-fade-in-up"
       :style="{ animationDelay: animDelay(i) }"
     >
       <div class="showcase-image-wrap" />
@@ -37,27 +37,19 @@ function animDelay(i: number): string {
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--border-subtle);
+  gap: 16px;
 }
 
 .showcase-card {
-  background: var(--bg-base);
   text-decoration: none;
   color: inherit;
-  transition: background 0.25s var(--ease-out);
-}
-
-.showcase-card:hover {
-  background: var(--bg-surface);
+  overflow: hidden;
 }
 
 .showcase-image-wrap {
   aspect-ratio: 16 / 10;
-  background: var(--bg-elevated);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .showcase-body {
@@ -67,7 +59,7 @@ function animDelay(i: number): string {
 .showcase-category {
   font-size: 0.6875rem;
   font-weight: 500;
-  color: var(--gold);
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-family: var(--font-mono);
@@ -91,4 +83,3 @@ function animDelay(i: number): string {
   .showcase-grid { grid-template-columns: 1fr; }
 }
 </style>
-

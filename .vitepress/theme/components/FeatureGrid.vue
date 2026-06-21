@@ -17,7 +17,7 @@ function animDelay(i: number): string {
     <div
       v-for="(item, i) in features"
       :key="i"
-      class="feature-item animate-fade-in-up"
+      class="feature-item glass-card animate-fade-in-up"
       :style="{ animationDelay: animDelay(i) }"
     >
       <h3 class="feature-title">{{ item.title }}</h3>
@@ -30,21 +30,11 @@ function animDelay(i: number): string {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  overflow: hidden;
-  background: var(--border-subtle);
+  gap: 16px;
 }
 
 .feature-item {
   padding: 32px 28px;
-  background: var(--bg-base);
-  transition: background 0.25s var(--ease-out);
-}
-
-.feature-item:hover {
-  background: var(--bg-surface);
 }
 
 .feature-title {
@@ -66,4 +56,3 @@ function animDelay(i: number): string {
   .feature-item { padding: 24px 20px; }
 }
 </style>
-

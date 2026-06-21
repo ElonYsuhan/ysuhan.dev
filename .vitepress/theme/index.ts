@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
 
 import Layout from './Layout.vue'
+import CustomNav from './components/CustomNav.vue'
 import ProjectCard from './components/ProjectCard.vue'
 import ShowcaseCard from './components/ShowcaseCard.vue'
 import BlogPost from './components/BlogPost.vue'
@@ -18,6 +19,7 @@ export default {
   Layout,
   enhanceApp({ app }) {
     // Register globally-available components
+    app.component('CustomNav', CustomNav)
     app.component('ProjectCard', ProjectCard)
     app.component('ShowcaseCard', ShowcaseCard)
     app.component('BlogPost', BlogPost)

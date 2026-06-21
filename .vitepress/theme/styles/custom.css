@@ -1,20 +1,21 @@
 /* ═══════════════════════════════════════════════════════════════
-   Ysuhan — Warm Gold · Minimal · Premium
-   Inspired by Linear, Anthropic, Vercel
+   Ysuhan — Apple Glassmorphism · Warm Gold Accent
+   Inspired by Apple Vision Pro, Linear, Raycast, Vercel, Notion
    Light + Dark dual theme
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── Shared constants ── */
+/* ── Shared Design Tokens ── */
 :root {
-  --gold: #c08c54;
-  --gold-hover: #d4a574;
-  --gold-dim: #a07040;
-  --gold-subtle: rgba(192, 140, 84, 0.08);
-  --gold-border: rgba(192, 140, 84, 0.2);
+  --accent: #d4a574;
+  --accent-hover: #e0b989;
+  --accent-dim: #b8915e;
+  --accent-subtle: rgba(212, 165, 116, 0.08);
+  --accent-border: rgba(212, 165, 116, 0.2);
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -22,12 +23,12 @@
   --font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
 }
 
-/* ── Light theme (default) ── */
+/* ── Light Theme (default) ── */
 :root {
-  --bg-base: #fafaf9;
-  --bg-surface: #f5f4f0;
-  --bg-elevated: #fff;
-  --bg-hover: #f0eee9;
+  --bg-primary: #fafaf9;
+  --bg-secondary: #f5f4f0;
+  --bg-elevated: #ffffff;
+  --bg-hover: rgba(0, 0, 0, 0.04);
 
   --text-primary: #1a1a18;
   --text-secondary: #6b6b65;
@@ -35,65 +36,101 @@
   --text-disabled: #c4c4bf;
 
   --border-subtle: rgba(0, 0, 0, 0.06);
-  --border-default: rgba(0, 0, 0, 0.08);
+  --border-default: rgba(0, 0, 0, 0.10);
 
-  /* VitePress overrides — light */
-  --vp-c-bg: var(--bg-base);
-  --vp-c-bg-alt: var(--bg-surface);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-card-bg: rgba(255, 255, 255, 0.6);
+  --glass-card-border: rgba(0, 0, 0, 0.06);
+  --glass-card-hover-bg: rgba(255, 255, 255, 0.85);
+  --glass-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --nav-scrolled-bg: rgba(250, 250, 249, 0.85);
+  --nav-scrolled-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+
+  /* VitePress overrides */
+  --vp-c-bg: var(--bg-primary);
+  --vp-c-bg-alt: var(--bg-secondary);
   --vp-c-bg-elv: var(--bg-elevated);
-  --vp-c-bg-soft: var(--bg-surface);
+  --vp-c-bg-soft: var(--bg-secondary);
   --vp-c-bg-soft-up: var(--bg-elevated);
   --vp-c-text-1: var(--text-primary);
   --vp-c-text-2: var(--text-secondary);
   --vp-c-text-3: var(--text-tertiary);
-  --vp-c-brand: var(--gold);
-  --vp-c-brand-light: var(--gold-hover);
-  --vp-c-brand-lighter: #e0c9a0;
-  --vp-c-brand-dark: var(--gold-dim);
-  --vp-c-brand-darker: #8a6035;
+  --vp-c-brand: var(--accent);
+  --vp-c-brand-light: var(--accent-hover);
+  --vp-c-brand-lighter: #ead5b8;
+  --vp-c-brand-dark: var(--accent-dim);
+  --vp-c-brand-darker: #9a7a50;
   --vp-c-divider: var(--border-subtle);
-  --vp-c-gutter: var(--bg-base);
-  --vp-nav-bg-color: rgba(250, 250, 249, 0.85);
-  --vp-sidebar-bg-color: var(--bg-surface);
-  --vp-custom-block-tip-bg: var(--gold-subtle);
-  --vp-custom-block-tip-border: rgba(192, 140, 84, 0.25);
+  --vp-c-gutter: var(--bg-primary);
+  --vp-nav-bg-color: transparent;
+  --vp-sidebar-bg-color: var(--bg-secondary);
+  --vp-custom-block-tip-bg: var(--accent-subtle);
+  --vp-custom-block-tip-border: var(--accent-border);
 }
 
-/* ── Dark theme ── */
+/* ── Dark Theme ── */
 .dark {
-  --bg-base: #080808;
-  --bg-surface: #0f0f0e;
-  --bg-elevated: #141414;
-  --bg-hover: #1a1a1a;
+  --bg-primary: #0d0f12;
+  --bg-secondary: #15181d;
+  --bg-elevated: #1c2028;
+  --bg-hover: rgba(255, 255, 255, 0.04);
 
-  --text-primary: #ececec;
-  --text-secondary: #999;
-  --text-tertiary: #666;
-  --text-disabled: #444;
+  --text-primary: #f5f5f5;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --text-disabled: #4b5563;
 
   --border-subtle: rgba(255, 255, 255, 0.06);
-  --border-default: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.10);
 
-  /* VitePress overrides — dark */
-  --vp-c-bg: var(--bg-base);
-  --vp-c-bg-alt: var(--bg-surface);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-card-bg: rgba(255, 255, 255, 0.04);
+  --glass-card-border: rgba(255, 255, 255, 0.06);
+  --glass-card-hover-bg: rgba(255, 255, 255, 0.07);
+  --glass-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --nav-scrolled-bg: rgba(13, 15, 18, 0.85);
+  --nav-scrolled-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+
+  /* VitePress overrides */
+  --vp-c-bg: var(--bg-primary);
+  --vp-c-bg-alt: var(--bg-secondary);
   --vp-c-bg-elv: var(--bg-elevated);
-  --vp-c-bg-soft: var(--bg-surface);
+  --vp-c-bg-soft: var(--bg-secondary);
   --vp-c-bg-soft-up: var(--bg-elevated);
   --vp-c-text-1: var(--text-primary);
   --vp-c-text-2: var(--text-secondary);
   --vp-c-text-3: var(--text-tertiary);
-  --vp-c-brand: var(--gold);
-  --vp-c-brand-light: var(--gold-hover);
-  --vp-c-brand-lighter: #e0c9a0;
-  --vp-c-brand-dark: var(--gold-dim);
-  --vp-c-brand-darker: #8a6035;
   --vp-c-divider: var(--border-subtle);
-  --vp-c-gutter: var(--bg-base);
-  --vp-nav-bg-color: rgba(8, 8, 8, 0.85);
-  --vp-sidebar-bg-color: var(--bg-surface);
-  --vp-custom-block-tip-bg: var(--gold-subtle);
-  --vp-custom-block-tip-border: rgba(212, 165, 116, 0.25);
+  --vp-c-gutter: var(--bg-primary);
+  --vp-nav-bg-color: transparent;
+  --vp-sidebar-bg-color: var(--bg-secondary);
+  --vp-custom-block-tip-bg: var(--accent-subtle);
+  --vp-custom-block-tip-border: var(--accent-border);
+}
+
+/* ── Glass Utilities ── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-md);
+  transition: all 300ms var(--ease-out);
+}
+
+.glass-card:hover {
+  background: var(--glass-card-hover-bg);
+  box-shadow: var(--glass-card-shadow);
+  transform: translateY(-2px);
 }
 
 /* ── Global ── */
@@ -107,20 +144,20 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bg-base);
+  background: var(--bg-primary);
   color: var(--text-primary);
 }
 
 body {
   font-family: var(--font-sans);
-  background: var(--bg-base);
+  background: var(--bg-primary);
   font-size: 15px;
   line-height: 1.6;
 }
 
 /* ── Selection ── */
 ::selection {
-  background: rgba(192, 140, 84, 0.2);
+  background: rgba(212, 165, 116, 0.15);
   color: var(--text-primary);
 }
 
@@ -129,6 +166,28 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
+
+/* ── Animations ── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+.animate-fade-in-up { animation: fade-in-up 0.3s var(--ease-out) both; }
+.animate-fade-in    { animation: fade-in 0.3s var(--ease-out) both; }
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
 
 /* ── Typography ── */
 h1, h2, h3, h4, h5, h6 {
@@ -143,29 +202,29 @@ h3 { font-size: 1.125rem; }
 p { color: var(--text-secondary); }
 
 /* ── Links ── */
-a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
-a:hover { color: var(--gold-hover); }
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accent-hover); }
 
 /* ── Code ── */
 code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background: var(--bg-surface);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-subtle);
-  border-radius: 4px;
-  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
   color: var(--text-secondary);
 }
 pre {
-  background: var(--bg-surface) !important;
+  background: var(--bg-secondary) !important;
   border: 1px solid var(--border-subtle) !important;
   border-radius: var(--radius-md) !important;
 }
 
 /* ── Blockquote ── */
 blockquote {
-  border-left: 2px solid var(--gold) !important;
-  background: var(--bg-surface) !important;
+  border-left: 2px solid var(--accent) !important;
+  background: var(--bg-secondary) !important;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
   padding: 14px 20px !important;
   margin: 1.25rem 0 !important;
@@ -176,33 +235,21 @@ blockquote {
 th { color: var(--text-primary); font-weight: 600; }
 td { color: var(--text-secondary); }
 
-/* ── Animations ── */
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-.animate-fade-in-up { animation: fade-in-up 0.5s var(--ease-out) both; }
-.animate-fade-in    { animation: fade-in 0.4s var(--ease-out) both; }
-.animation-delay-100 { animation-delay: 0.1s; }
-.animation-delay-200 { animation-delay: 0.2s; }
-.animation-delay-300 { animation-delay: 0.3s; }
-.animation-delay-400 { animation-delay: 0.4s; }
-.animation-delay-500 { animation-delay: 0.5s; }
+/* ═══════════════════════════════════════════════════════════════
+   VitePress Overrides
+   ═══════════════════════════════════════════════════════════════ */
 
-/* ── VP Nav ── */
-.VPNav {
-  border-bottom: 1px solid var(--border-subtle);
-}
-.VPNavBar { background: transparent !important; }
+/* ── Hide default VP nav (replaced by CustomNav) ── */
+.VPNav { display: none !important; }
 
-/* ── VP Nav Logo ── */
-.VPNavBarTitle .VPImage {
-  border-radius: 8px;
-}
+/* ── Hide VP sidebar globally; shown only on blog pages via .has-sidebar ── */
+.VPSidebar { display: none; }
+.has-sidebar .VPSidebar { display: block; }
+
+/* ── Theme toggle — visible for light/dark switching ── */
+
+/* ── VP Nav Logo (hidden with nav) ── */
+.VPNavBarTitle .VPImage { border-radius: var(--radius-sm); }
 
 /* ── VP Mobile Nav Screen ── */
 .VPNavScreenMenuLink {
@@ -210,12 +257,19 @@ td { color: var(--text-secondary); }
   color: var(--text-primary) !important;
 }
 
+/* ── VP Doc ── */
+.VPDoc { background: transparent !important; }
+.VPContent { background: transparent !important; }
+
+/* ── VP Footer — hidden (using CustomFooter) ── */
+.VPFooter { display: none !important; }
+
 /* ── VP Sidebar ── */
-.VPSidebar {
+.has-sidebar .VPSidebar {
   border-right: 1px solid var(--border-subtle);
 }
 
-/* ── VP Hero Overrides ── */
+/* ── VP Hero Overrides (for VPHero in markdown) ── */
 .VPHero {
   padding-top: 120px !important;
   padding-bottom: 60px !important;
@@ -249,20 +303,20 @@ td { color: var(--text-secondary); }
 .VPHero .image { opacity: 0.85; }
 .VPHero .actions { margin-top: 32px !important; }
 .VPHero .actions .VPButton {
-  border-radius: 6px !important;
-  padding: 0 20px !important;
-  height: 40px !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 0 24px !important;
+  height: 44px !important;
   font-size: 0.875rem !important;
   font-weight: 500 !important;
-  transition: all 0.2s var(--ease-out) !important;
+  transition: all 300ms var(--ease-out) !important;
 }
 .VPHero .actions .VPButton.brand {
-  background: var(--gold) !important;
-  color: #fff !important;
+  background: var(--accent) !important;
+  color: #0d0f12 !important;
   border: none !important;
 }
 .VPHero .actions .VPButton.brand:hover {
-  background: var(--gold-hover) !important;
+  background: var(--accent-hover) !important;
 }
 .VPHero .actions .VPButton.alt {
   border: 1px solid var(--border-default) !important;
@@ -270,7 +324,7 @@ td { color: var(--text-secondary); }
   background: transparent !important;
 }
 .VPHero .actions .VPButton.alt:hover {
-  border-color: var(--gold-border) !important;
+  border-color: var(--accent-border) !important;
   color: var(--text-primary) !important;
 }
 
@@ -280,9 +334,78 @@ td { color: var(--text-secondary); }
   .VPHero { padding-top: 80px !important; }
 }
 
-/* ── VP Doc ── */
-.VPDoc { background: transparent !important; }
-.VPContent { background: transparent !important; }
+/* ═══════════════════════════════════════════════════════════════
+   VitePress Local Search — Spotlight / Raycast Style
+   ═══════════════════════════════════════════════════════════════ */
 
-/* ── VP Footer — hidden (using CustomFooter) ── */
-.VPFooter { display: none !important; }
+.VPLocalSearchBox {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  padding-top: 15vh !important;
+  background: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(4px) !important;
+  z-index: 300 !important;
+}
+
+.VPLocalSearchBox .search-box {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 600px !important;
+  margin: 0 16px !important;
+  background: var(--bg-elevated) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 16px 24px !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15) !important;
+}
+
+.VPLocalSearchBox .search-box input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: var(--text-primary) !important;
+  font-size: 1rem !important;
+  width: 100% !important;
+}
+
+.VPLocalSearchBox .search-box input::placeholder {
+  color: var(--text-tertiary) !important;
+}
+
+.VPLocalSearchBox .search-results {
+  margin-top: 16px !important;
+  max-height: 50vh !important;
+  overflow-y: auto !important;
+}
+
+.VPLocalSearchBox .search-result {
+  padding: 12px 16px !important;
+  border-radius: var(--radius-md) !important;
+  cursor: pointer !important;
+  transition: background 200ms var(--ease-out) !important;
+}
+
+.VPLocalSearchBox .search-result:hover,
+.VPLocalSearchBox .search-result.active {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.VPLocalSearchBox .search-result-title {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+}
+
+.VPLocalSearchBox .search-result-description {
+  font-size: 0.75rem !important;
+  color: var(--text-secondary) !important;
+}
+
+.VPLocalSearchBox .search-keyboard-shortcuts {
+  display: none !important;
+}

@@ -15,10 +15,10 @@ let signals: { nodeIdx: number; progress: number; opacity: number }[] = []
 
 // ── Colors ──
 const C = {
-  node: '184,161,120',     // warm bronze
-  nodeAlt: '201,176,118',  // champagne
-  edge: '184,161,120',
-  pulse: '184,161,120',
+  node: '212,165,116',     // accent gold
+  nodeAlt: '212,165,116',
+  edge: '212,165,116',
+  pulse: '212,165,116',
 }
 
 // ── Network data ──
@@ -117,7 +117,7 @@ function resize() {
 function onMouseMove(e: MouseEvent) { mouse.targetX = e.clientX; mouse.targetY = e.clientY }
 function onClick(e: MouseEvent) {
   // Pulse
-  pulses.push({ x: e.clientX, y: e.clientY, r: 0, opacity: 0.45 })
+  pulses.push({ x: e.clientX, y: e.clientY, r: 0, opacity: 0.35 })
   if (pulses.length > 5) pulses.shift()
 
   // Signal propagation: find nearest node
@@ -128,7 +128,7 @@ function onClick(e: MouseEvent) {
     if (d < minD) { minD = d; nearest = i }
   }
   // Initiate wave
-  signals.push({ nodeIdx: nearest, progress: 0, opacity: 0.4 })
+  signals.push({ nodeIdx: nearest, progress: 0, opacity: 0.3 })
 }
 function onScroll() { targetScrollY = window.scrollY }
 
@@ -167,7 +167,7 @@ function draw(time: number) {
   const c = nodes[centerIdx]
   const breathe = 1 + Math.sin(t * 0.9) * 0.03
   const centerR = c.r * breathe
-  const centerAlpha = 0.45 + Math.sin(t * 0.9) * 0.08
+  const centerAlpha = 0.18 + Math.sin(t * 0.9) * 0.04
 
   // ── Compute hover brightness per node ──
   const hoverBright: number[] = nodes.map(n => {
@@ -180,8 +180,8 @@ function draw(time: number) {
   const signalBright: number[] = new Array(nodes.length).fill(0)
   for (let s = signals.length - 1; s >= 0; s--) {
     const sig = signals[s]
-    sig.progress += 0.008
-    sig.opacity -= 0.0025
+    sig.progress += 0.006
+    sig.opacity -= 0.002
     if (sig.opacity <= 0) { signals.splice(s, 1); continue }
 
     // BFS one hop per progress step
@@ -211,13 +211,13 @@ function draw(time: number) {
     const a = nodes[e.a], b = nodes[e.b]
     const hb = Math.max(hoverBright[e.a], hoverBright[e.b])
     const sb = Math.max(signalBright[e.a], signalBright[e.b])
-    const baseAlpha = 0.04 + Math.sin(t * 0.3 + e.phase) * 0.015
-    const alpha = baseAlpha + hb * 0.12 + sb * 0.2
+    const baseAlpha = 0.015 + Math.sin(t * 0.3 + e.phase) * 0.008
+    const alpha = baseAlpha + hb * 0.06 + sb * 0.12
 
     ctx.beginPath()
     ctx.moveTo(a.x, a.y)
     ctx.lineTo(b.x, b.y)
-    ctx.strokeStyle = `rgba(${C.edge},${Math.min(0.3, alpha)})`
+    ctx.strokeStyle = `rgba(${C.edge},${Math.min(0.18, alpha)})`
     ctx.lineWidth = 0.5
     ctx.stroke()
   }
@@ -229,14 +229,14 @@ function draw(time: number) {
     const sb = signalBright[i]
     const alpha = i === centerIdx
       ? centerAlpha
-      : 0.12 + n.amplitude * 0.08 + hb * 0.4 + sb * 0.5
+      : 0.06 + n.amplitude * 0.04 + hb * 0.25 + sb * 0.3
 
     // Glow
-    if (alpha > 0.08) {
-      const glowR = i === centerIdx ? centerR * 5 : n.r * 5
+    if (alpha > 0.04) {
+      const glowR = i === centerIdx ? centerR * 4 : n.r * 4
       const glow = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowR)
-      glow.addColorStop(0, `rgba(${C.node},${alpha * 0.5})`)
-      glow.addColorStop(1, 'rgba(184,161,120,0)')
+      glow.addColorStop(0, `rgba(${C.node},${alpha * 0.35})`)
+      glow.addColorStop(1, 'rgba(212,165,116,0)')
       ctx.beginPath()
       ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2)
       ctx.fillStyle = glow
@@ -246,14 +246,14 @@ function draw(time: number) {
     // Core
     ctx.beginPath()
     ctx.arc(n.x, n.y, i === centerIdx ? centerR : n.r, 0, Math.PI * 2)
-    ctx.fillStyle = `rgba(${C.node},${Math.min(0.7, alpha + 0.2)})`
+    ctx.fillStyle = `rgba(${C.node},${Math.min(0.4, alpha + 0.12)})`
     ctx.fill()
 
     // Center outer ring
     if (i === centerIdx) {
       ctx.beginPath()
       ctx.arc(n.x, n.y, centerR * 1.8, 0, Math.PI * 2)
-      ctx.strokeStyle = `rgba(${C.node},${0.08 + Math.sin(t * 0.9 + Math.PI) * 0.03})`
+      ctx.strokeStyle = `rgba(${C.node},${0.04 + Math.sin(t * 0.9 + Math.PI) * 0.02})`
       ctx.lineWidth = 1
       ctx.stroke()
     }
