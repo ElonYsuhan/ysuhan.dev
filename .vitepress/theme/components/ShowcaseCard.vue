@@ -8,20 +8,15 @@ interface Showcase {
 }
 
 defineProps<{ items: Showcase[] }>()
-
-function animDelay(i: number): string {
-  return `${i * 0.06}s`
-}
 </script>
 
 <template>
   <div class="showcase-grid">
     <a
-      v-for="(item, i) in items"
-      :key="i"
+      v-for="item in items"
+      :key="item.title"
       :href="item.link"
-      class="showcase-card glass-card animate-fade-in-up"
-      :style="{ animationDelay: animDelay(i) }"
+      class="showcase-card glass-card"
     >
       <div class="showcase-image-wrap" />
       <div class="showcase-body">

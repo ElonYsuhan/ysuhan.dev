@@ -13,19 +13,14 @@ function formatDate(dateStr: string): string {
   const d = new Date(dateStr)
   return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })
 }
-
-function animDelay(i: number): string {
-  return `${i * 0.06}s`
-}
 </script>
 
 <template>
   <div class="blog-list">
     <article
-      v-for="(post, i) in posts"
-      :key="i"
-      class="blog-item glass-card animate-fade-in-up"
-      :style="{ animationDelay: animDelay(i) }"
+      v-for="post in posts"
+      :key="post.title"
+      class="blog-item glass-card"
     >
       <time class="blog-date">{{ formatDate(post.date) }}</time>
       <div class="blog-content">

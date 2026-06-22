@@ -8,20 +8,15 @@ interface Project {
 }
 
 defineProps<{ projects: Project[] }>()
-
-function animDelay(i: number): string {
-  return `${i * 0.06}s`
-}
 </script>
 
 <template>
   <div class="project-grid">
     <a
-      v-for="(p, i) in projects"
-      :key="i"
+      v-for="p in projects"
+      :key="p.title"
       :href="p.link"
-      class="project-card glass-card animate-fade-in-up"
-      :style="{ animationDelay: animDelay(i) }"
+      class="project-card glass-card"
       target="_blank"
       rel="noopener noreferrer"
     >

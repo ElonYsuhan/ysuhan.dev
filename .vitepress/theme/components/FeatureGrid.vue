@@ -6,19 +6,14 @@ interface Feature {
 }
 
 defineProps<{ features: Feature[] }>()
-
-function animDelay(i: number): string {
-  return `${i * 0.08}s`
-}
 </script>
 
 <template>
   <div class="feature-grid">
     <div
-      v-for="(item, i) in features"
-      :key="i"
-      class="feature-item glass-card animate-fade-in-up"
-      :style="{ animationDelay: animDelay(i) }"
+      v-for="item in features"
+      :key="item.title"
+      class="feature-item glass-card"
     >
       <h3 class="feature-title">{{ item.title }}</h3>
       <p class="feature-desc">{{ item.description }}</p>
