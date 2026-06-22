@@ -773,6 +773,7 @@ const showPosts = latestPosts.length >= 1
   color: inherit;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .featured-card.has-bg {
@@ -784,13 +785,23 @@ const showPosts = latestPosts.length >= 1
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.15;
+  opacity: 0.25;
   transition: opacity 300ms var(--ease-out);
   pointer-events: none;
+  z-index: 0;
+}
+
+.featured-card.has-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .featured-card:hover .featured-bg {
-  opacity: 0.25;
+  opacity: 0.35;
 }
 
 .featured-head {

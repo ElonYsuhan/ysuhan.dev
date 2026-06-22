@@ -25,6 +25,7 @@ const projects = [
     description: '面向推演与态势分析的仿真平台。支持多方对抗、实时态势感知与复盘分析。',
     tech: ['Simulation', 'C2', 'Analysis', 'Cloudflare'],
     link: 'https://tactics-sim-engine.pages.dev/',
+    image: '/tactics-sim.png',
   },
   {
     title: 'Open Source',
