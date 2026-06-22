@@ -8,6 +8,8 @@ interface Project {
   link: string
   github?: string
   image?: string
+  status?: string
+  highlights?: string[]
 }
 
 const props = defineProps<{ projects: Project[] }>()
@@ -15,131 +17,241 @@ const visible = ref<boolean[]>(props.projects.map(() => false))
 
 onMounted(() => {
   props.projects.forEach((_, i) => {
-    setTimeout(() => { visible.value[i] = true }, i * 60)
+    setTimeout(() => { visible.value[i] = true }, i * 80)
   })
 })
 </script>
 
 <template>
-  <div class="project-grid">
+  <div class="project-showcase">
     <a
       v-for="(p, i) in projects"
       :key="p.title"
       :href="p.link"
-      class="project-card glass-card card-stagger"
-      :class="{ show: visible[i], 'has-bg': p.image }"
+      class="showcase-card card-stagger"
+      :class="{ show: visible[i] }"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div v-if="p.image" class="project-bg" :style="{ backgroundImage: `url(${p.image})` }" />
-      <div class="project-body">
-        <h3 class="project-title">{{ p.title }}</h3>
-        <p class="project-desc">{{ p.description }}</p>
+      <!-- Full-bleed background screenshot -->
+      <div
+        class="showcase-bg"
+        :style="p.image ? { backgroundImage: `url(${p.image})` } : {}"
+      />
+
+      <!-- Gradient overlays -->
+      <div class="showcase-gradient" />
+      <div class="showcase-gradient-top" />
+
+      <!-- Floating glass info layer -->
+      <div class="showcase-info">
+        <div class="showcase-info-header">
+          <h3 class="showcase-name">{{ p.title }}</h3>
+          <span v-if="p.status" class="showcase-status">{{ p.status }}</span>
+        </div>
+        <p class="showcase-desc">{{ p.description }}</p>
+        <div class="showcase-tags">
+          <span v-for="t in p.tech" :key="t" class="showcase-tag">{{ t }}</span>
+        </div>
       </div>
-      <div class="project-footer">
-        <span v-for="t in p.tech" :key="t" class="project-tag">{{ t }}</span>
+
+      <!-- Hover highlights -->
+      <div v-if="p.highlights?.length" class="showcase-highlights">
+        <ul class="highlights-list">
+          <li v-for="h in p.highlights" :key="h" class="highlights-item">
+            <span class="highlights-check">✓</span>
+            <span>{{ h }}</span>
+          </li>
+        </ul>
       </div>
     </a>
   </div>
 </template>
 
 <style scoped>
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 16px;
-}
-
-.project-card {
+.project-showcase {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 28px;
+  gap: 24px;
+}
+
+.showcase-card {
+  display: block;
+  position: relative;
+  height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
   text-decoration: none;
   color: inherit;
-  min-height: 160px;
-  position: relative;
-  overflow: hidden;
   isolation: isolate;
+  transition: box-shadow 300ms var(--ease-out);
 }
 
-.project-card.has-bg {
-  min-height: 220px;
+.showcase-card:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
 }
 
-.project-bg {
+/* Background screenshot */
+.showcase-bg {
   position: absolute;
   inset: 0;
+  background: var(--bg-secondary);
   background-size: cover;
   background-position: center;
-  opacity: 0.2;
-  transition: opacity 300ms var(--ease-out);
-  pointer-events: none;
-  z-index: 0;
+  transition: transform 400ms var(--ease-out);
 }
 
-.project-card.has-bg::after {
-  content: '';
+.showcase-card:hover .showcase-bg {
+  transform: scale(1.03);
+}
+
+/* Gradients for text readability */
+.showcase-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(13,15,18,0.85) 0%, rgba(13,15,18,0.4) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.25) 50%,
+    transparent 100%
+  );
+  z-index: 1;
   pointer-events: none;
-  z-index: 0;
 }
 
-:root .project-card.has-bg::after {
-  background: linear-gradient(135deg, rgba(250,250,249,0.85) 0%, rgba(250,250,249,0.4) 100%);
+.showcase-gradient-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    transparent
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
-.dark .project-card.has-bg::after {
-  background: linear-gradient(135deg, rgba(13,15,18,0.85) 0%, rgba(13,15,18,0.4) 100%);
+/* Floating glass info layer */
+.showcase-info {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  z-index: 2;
+  transition: transform 300ms var(--ease-out);
 }
 
-.project-card:hover .project-bg {
-  opacity: 0.3;
+.showcase-card:hover .showcase-info {
+  transform: translateY(-8px);
 }
 
-.project-body { position: relative; z-index: 1; }
-
-.project-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 8px;
-  letter-spacing: -0.01em;
+.showcase-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
 }
 
-.project-desc {
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
+.showcase-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
-.project-footer {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
-}
-
-.project-tag {
-  display: inline-block;
-  padding: 3px 10px;
+.showcase-status {
   font-size: 0.6875rem;
   font-weight: 500;
-  border-radius: 999px;
-  background: var(--accent-subtle);
   color: var(--accent);
+  background: rgba(212, 165, 116, 0.15);
+  padding: 3px 10px;
+  border-radius: 999px;
   font-family: var(--font-mono);
-  letter-spacing: 0.02em;
+  white-space: nowrap;
+  border: 1px solid rgba(212, 165, 116, 0.25);
 }
 
-@media (max-width: 480px) {
-  .project-grid { grid-template-columns: 1fr; }
-  .project-card { padding: 22px 20px; }
+.showcase-desc {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.showcase-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.showcase-tag {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-mono);
+  padding: 2px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+/* Hover highlights overlay */
+.showcase-highlights {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out);
+  pointer-events: none;
+}
+
+.showcase-card:hover .showcase-highlights {
+  opacity: 1;
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.highlights-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.highlights-check {
+  color: var(--accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .showcase-card { height: 340px; }
+  .showcase-info { left: 16px; right: 16px; bottom: 16px; padding: 16px 18px; }
+  .showcase-name { font-size: 1rem; }
 }
 </style>

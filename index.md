@@ -60,20 +60,21 @@ const techNodes = [
 const featuredProjects = [
   {
     title: 'AirGIS',
-    description: '面向时空数据与仿真场景的 GIS 引擎体系。支持大规模地理数据管理、实时渲染与 spatial analysis 管线。',
+    description: '面向数字孪生与空间分析的 GIS 引擎体系',
     tech: ['Cesium', 'Vue 3', 'TypeScript'],
     link: '/projects/',
-    status: '开发中',
-    since: '2025',
+    image: '/tactics-sim.png',
+    status: '持续开发中',
+    highlights: ['3D GIS 引擎', '数字孪生渲染', '空间分析管线', '实时数据融合'],
   },
   {
     title: 'Tactics Simulation',
-    description: '面向推演与态势分析的仿真平台。支持多方对抗、实时态势感知与复盘分析。',
+    description: '面向推演与态势分析的仿真平台',
     tech: ['Simulation', 'C2', 'DSL'],
     link: 'https://tactics-sim-engine.pages.dev/',
-    status: '开发中',
-    since: '2025',
     image: '/tactics-sim.png',
+    status: '持续开发中',
+    highlights: ['多方对抗推演', '实时态势感知', 'DSL 驱动', '复盘回放'],
   },
 ]
 
@@ -243,27 +244,7 @@ const showPosts = latestPosts.length >= 1
     <span class="section-label">精选</span>
     <h2 class="section-title">项目</h2>
   </div>
-  <div class="featured-grid">
-    <a
-      v-for="(p, i) in featuredProjects"
-      :key="i"
-      :href="p.link"
-      class="featured-card glass-card"
-      :class="{ 'has-bg': p.image }"
-      :target="p.link.startsWith('http') ? '_blank' : undefined"
-      :rel="p.link.startsWith('http') ? 'noopener noreferrer' : undefined"
-    >
-      <div v-if="p.image" class="featured-bg" :style="{ backgroundImage: `url(${p.image})` }" />
-      <div class="featured-head">
-        <h3 class="featured-title">{{ p.title }}</h3>
-        <span class="featured-status">{{ p.status }} · 始于 {{ p.since }}</span>
-      </div>
-      <p class="featured-desc">{{ p.description }}</p>
-      <div class="featured-tags">
-        <span v-for="t in p.tech" :key="t" class="featured-tag">{{ t }}</span>
-      </div>
-    </a>
-  </div>
+  <ProjectCard :projects="featuredProjects" />
   <div class="section-more">
     <a href="/projects/">浏览全部项目 →</a>
   </div>
@@ -756,106 +737,6 @@ const showPosts = latestPosts.length >= 1
   .tm-branch { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 6px 0; }
   .tm-node { padding: 6px 16px; }
   .tm-node .tm-label { font-size: 0.75rem; }
-}
-
-/* ── Featured Projects ── */
-.featured-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.featured-card {
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.featured-card.has-bg {
-  min-height: 260px;
-}
-
-.featured-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.25;
-  transition: opacity 300ms var(--ease-out);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.featured-card.has-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--bg-primary) 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.featured-card:hover .featured-bg {
-  opacity: 0.35;
-}
-
-.featured-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.featured-title {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-  letter-spacing: -0.02em;
-  position: relative;
-  z-index: 1;
-}
-
-.featured-status {
-  font-size: 0.6875rem;
-  color: var(--accent);
-  font-family: var(--font-mono);
-  white-space: nowrap;
-  position: relative;
-  z-index: 1;
-}
-
-.featured-desc {
-  font-size: 0.8125rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0 0 20px;
-  flex: 1;
-  position: relative;
-  z-index: 1;
-}
-
-.featured-tags { display: flex; gap: 8px; flex-wrap: wrap; position: relative; z-index: 1; }
-
-.featured-tag {
-  font-size: 0.6875rem;
-  color: var(--accent);
-  font-family: var(--font-mono);
-  padding: 3px 10px;
-  border: 1px solid var(--accent-border);
-  border-radius: 999px;
-  background: var(--bg-primary);
-}
-
-@media (max-width: 640px) {
-  .featured-grid { grid-template-columns: 1fr; }
-  .featured-card { padding: 24px; }
 }
 
 /* ── Posts ── */
