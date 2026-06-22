@@ -73,6 +73,7 @@ const featuredProjects = [
     link: 'https://tactics-sim-engine.pages.dev/',
     status: '开发中',
     since: '2025',
+    image: '/tactics-sim.png',
   },
 ]
 
@@ -248,9 +249,11 @@ const showPosts = latestPosts.length >= 1
       :key="i"
       :href="p.link"
       class="featured-card glass-card"
+      :class="{ 'has-bg': p.image }"
       :target="p.link.startsWith('http') ? '_blank' : undefined"
       :rel="p.link.startsWith('http') ? 'noopener noreferrer' : undefined"
     >
+      <div v-if="p.image" class="featured-bg" :style="{ backgroundImage: `url(${p.image})` }" />
       <div class="featured-head">
         <h3 class="featured-title">{{ p.title }}</h3>
         <span class="featured-status">{{ p.status }} · 始于 {{ p.since }}</span>
@@ -768,6 +771,26 @@ const showPosts = latestPosts.length >= 1
   padding: 30px;
   text-decoration: none;
   color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.featured-card.has-bg {
+  min-height: 260px;
+}
+
+.featured-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  transition: opacity 300ms var(--ease-out);
+  pointer-events: none;
+}
+
+.featured-card:hover .featured-bg {
+  opacity: 0.25;
 }
 
 .featured-head {
@@ -784,6 +807,8 @@ const showPosts = latestPosts.length >= 1
   color: var(--text-primary);
   margin: 0;
   letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
 }
 
 .featured-status {
@@ -791,6 +816,8 @@ const showPosts = latestPosts.length >= 1
   color: var(--accent);
   font-family: var(--font-mono);
   white-space: nowrap;
+  position: relative;
+  z-index: 1;
 }
 
 .featured-desc {
@@ -799,9 +826,11 @@ const showPosts = latestPosts.length >= 1
   line-height: 1.6;
   margin: 0 0 20px;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
-.featured-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.featured-tags { display: flex; gap: 8px; flex-wrap: wrap; position: relative; z-index: 1; }
 
 .featured-tag {
   font-size: 0.6875rem;
@@ -810,6 +839,7 @@ const showPosts = latestPosts.length >= 1
   padding: 3px 10px;
   border: 1px solid var(--accent-border);
   border-radius: 999px;
+  background: var(--bg-primary);
 }
 
 @media (max-width: 640px) {
