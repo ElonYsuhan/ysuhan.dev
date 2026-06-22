@@ -13,10 +13,11 @@ defineProps<{ items: Showcase[] }>()
 <template>
   <div class="showcase-grid">
     <a
-      v-for="item in items"
+      v-for="(item, i) in items"
       :key="item.title"
       :href="item.link"
-      class="showcase-card glass-card"
+      class="showcase-card glass-card animate-fade-in-up"
+      :style="{ animationDelay: `${i * 0.06}s` }"
     >
       <div class="showcase-image-wrap" />
       <div class="showcase-body">
