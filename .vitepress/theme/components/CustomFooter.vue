@@ -12,15 +12,12 @@ const currentYear = new Date().getFullYear()
         </div>
         <div class="footer-status">
           <div class="footer-status-row">
-            <span class="footer-status-icon">💻</span>
             <span>WebGIS / Digital Twin</span>
           </div>
           <div class="footer-status-row">
-            <span class="footer-status-icon">🚀</span>
             <span>Building Tactics Engine</span>
           </div>
           <div class="footer-status-row footer-status-updated">
-            <span class="footer-status-icon">📡</span>
             <span>最近更新：2026.06</span>
           </div>
         </div>

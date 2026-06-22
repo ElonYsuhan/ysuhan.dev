@@ -95,7 +95,7 @@ const showPosts = latestPosts.length >= 1
 <section class="hero">
   <div class="hero-content">
     <div class="hero-avatar">
-      <span class="hero-avatar-text">YS</span>
+      <img src="/favicon.png" alt="Ysuhan" class="hero-avatar-img" />
     </div>
     <h1 class="hero-name">Ysuhan</h1>
     <div class="hero-roles">
@@ -323,19 +323,14 @@ const showPosts = latestPosts.length >= 1
   height: 80px;
   border-radius: 50%;
   margin: 0 auto 28px;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
   border: 3px solid var(--accent-border);
 }
 
-.hero-avatar-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.02em;
-  font-family: var(--font-mono);
+.hero-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-name {
@@ -423,7 +418,6 @@ const showPosts = latestPosts.length >= 1
   .hero-tagline { font-size: 0.8125rem; }
   .hero-roles { font-size: 0.6875rem; }
   .hero-avatar { width: 64px; height: 64px; margin-bottom: 22px; }
-  .hero-avatar-text { font-size: 1.25rem; }
 }
 
 /* ── Section shared ── */
