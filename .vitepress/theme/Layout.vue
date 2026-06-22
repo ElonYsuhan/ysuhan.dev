@@ -12,8 +12,10 @@ const isHome = computed(() => frontmatter.value.layout === 'home')
 
 <template>
   <div class="app-shell" :class="{ 'layout-home': isHome, 'layout-page': !isHome }">
-    <CustomNav />
     <DefaultLayout>
+      <template #layout-top>
+        <CustomNav />
+      </template>
       <template #doc-footer-before>
         <slot name="doc-footer-before" />
       </template>
