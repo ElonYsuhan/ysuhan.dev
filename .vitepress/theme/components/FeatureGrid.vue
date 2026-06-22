@@ -11,10 +11,9 @@ defineProps<{ features: Feature[] }>()
 <template>
   <div class="feature-grid">
     <div
-      v-for="(item, i) in features"
+      v-for="item in features"
       :key="item.title"
       class="feature-item glass-card animate-fade-in-up"
-      :style="{ animationDelay: `${i * 0.08}s` }"
     >
       <h3 class="feature-title">{{ item.title }}</h3>
       <p class="feature-desc">{{ item.description }}</p>

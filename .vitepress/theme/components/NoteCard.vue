@@ -26,11 +26,10 @@ function formatDate(dateStr: string): string {
 <template>
   <div class="garden-grid">
     <a
-      v-for="(note, i) in notes"
+      v-for="note in notes"
       :key="note.title"
       :href="note.url"
       class="garden-card glass-card animate-fade-in-up"
-      :style="{ animationDelay: `${i * 0.04}s` }"
     >
       <div class="garden-header">
         <span class="garden-stage">{{ stageLabel[note.stage] }}</span>

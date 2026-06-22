@@ -13,11 +13,10 @@ defineProps<{ projects: Project[] }>()
 <template>
   <div class="project-grid">
     <a
-      v-for="(p, i) in projects"
+      v-for="p in projects"
       :key="p.title"
       :href="p.link"
       class="project-card glass-card animate-fade-in-up"
-      :style="{ animationDelay: `${i * 0.06}s` }"
       target="_blank"
       rel="noopener noreferrer"
     >
