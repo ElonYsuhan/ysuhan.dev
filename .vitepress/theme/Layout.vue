@@ -7,9 +7,7 @@ const { Layout: DefaultLayout } = DefaultTheme
 <template>
   <DefaultLayout>
     <template #layout-top>
-      <ClientOnly>
-        <CustomNav />
-      </ClientOnly>
+      <CustomNav />
     </template>
     <template #doc-footer-before>
       <slot name="doc-footer-before" />

@@ -7,6 +7,7 @@ export default defineConfig({
   title: SITE.title,
   description: SITE.description,
   lang: 'zh-CN',
+  appearance: 'dark',
   outDir: 'docs/.vitepress/dist',
   head: [
     // ── SEO ──
