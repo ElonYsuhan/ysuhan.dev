@@ -30,7 +30,7 @@ function formatDate(dateStr: string): string {
       :key="note.title"
       :href="note.url"
       class="garden-card glass-card animate-fade-in-up"
-      :style="{ animationDelay: `${i * 0.04}s` }"
+      :style="{ opacity: 0, animationDelay: `${i * 0.04}s` }"
     >
       <div class="garden-header">
         <span class="garden-stage">{{ stageLabel[note.stage] }}</span>

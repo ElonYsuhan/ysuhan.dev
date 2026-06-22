@@ -17,7 +17,7 @@ defineProps<{ projects: Project[] }>()
       :key="p.title"
       :href="p.link"
       class="project-card glass-card animate-fade-in-up"
-      :style="{ animationDelay: `${i * 0.06}s` }"
+      :style="{ opacity: 0, animationDelay: `${i * 0.06}s` }"
       target="_blank"
       rel="noopener noreferrer"
     >

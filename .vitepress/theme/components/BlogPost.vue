@@ -21,7 +21,7 @@ function formatDate(dateStr: string): string {
       v-for="(post, i) in posts"
       :key="post.title"
       class="blog-item glass-card animate-fade-in-up"
-      :style="{ animationDelay: `${i * 0.06}s` }"
+      :style="{ opacity: 0, animationDelay: `${i * 0.06}s` }"
     >
       <time class="blog-date">{{ formatDate(post.date) }}</time>
       <div class="blog-content">

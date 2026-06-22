@@ -17,7 +17,7 @@ defineProps<{ items: Showcase[] }>()
       :key="item.title"
       :href="item.link"
       class="showcase-card glass-card animate-fade-in-up"
-      :style="{ animationDelay: `${i * 0.06}s` }"
+      :style="{ opacity: 0, animationDelay: `${i * 0.06}s` }"
     >
       <div class="showcase-image-wrap" />
       <div class="showcase-body">

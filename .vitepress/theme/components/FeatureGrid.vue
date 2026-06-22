@@ -14,7 +14,7 @@ defineProps<{ features: Feature[] }>()
       v-for="(item, i) in features"
       :key="item.title"
       class="feature-item glass-card animate-fade-in-up"
-      :style="{ animationDelay: `${i * 0.08}s` }"
+      :style="{ opacity: 0, animationDelay: `${i * 0.08}s` }"
     >
       <h3 class="feature-title">{{ item.title }}</h3>
       <p class="feature-desc">{{ item.description }}</p>
