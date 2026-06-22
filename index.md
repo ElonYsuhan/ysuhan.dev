@@ -19,43 +19,60 @@ const nowItems = {
   ],
 }
 
+/* ═══════════ Recent Activity ═══════════ */
+const activities = [
+  { month: '2026.06', items: [
+    '完成时间轨道编辑器重构',
+    '推演引擎支持 DSL 驱动',
+    'GIS SDK 发布 v0.3',
+  ]},
+  { month: '2026.05', items: [
+    'Tactics Simulation 接入实时数据流',
+    'ECS 架构原型验证通过',
+  ]},
+  { month: '2026.04', items: [
+    'AirGIS 渲染管线重构',
+    '开始研究 Command 系统',
+  ]},
+]
+
 /* ═══════════ Growth Timeline ═══════════ */
 const timeline = [
-  { year: '2023', title: '进入 WebGIS', desc: 'React · OpenLayers · GeoServer，政务 GIS 系统实战', accent: true },
-  { year: '2024', title: '深入 Cesium', desc: 'Vue 3 · 实体系统 · 多窗口渲染 · 离线方案', accent: false },
-  { year: '2025', title: '构建 GIS SDK', desc: '引擎封装 · 组件体系 · 数据交换规范', accent: false },
-  { year: '2026', title: '开发推演引擎', desc: 'Tactics Simulation · DSL · Workflow · Architecture', accent: false },
+  { year: '2023', title: '进入 WebGIS', desc: '参与多个 GIS 项目交付，建立空间数据与地图渲染的基础认知。', accent: true },
+  { year: '2024', title: '深入 Cesium', desc: '开始研究三维 GIS 与数字孪生，解决多窗口渲染、离线方案等核心问题。', accent: false },
+  { year: '2025', title: '构建 GIS SDK', desc: '尝试封装自己的前端 GIS 体系，沉淀引擎能力与组件规范。', accent: false },
+  { year: '2026', title: '开发推演引擎', desc: '探索 ECS 与 DSL 驱动架构，构建面向态势推演的仿真系统。', accent: false },
 ]
 
-/* ═══════════ Tech Map ═══════════ */
-const techMap = [
-  {
-    domain: 'WebGIS',
-    items: ['Cesium', 'OpenLayers', 'GeoServer', 'PostGIS'],
-  },
-  {
-    domain: '数字孪生',
-    items: ['ECS', '实体编辑器', '场景管理', '实时数据'],
-  },
-  {
-    domain: '工程化',
-    items: ['Monorepo', 'pnpm', 'NPM', 'CI/CD'],
-  },
+/* ═══════════ Tech Map (network style) ═══════════ */
+const techNodes = [
+  { id: 'webgis', label: 'WebGIS', x: 50, y: 10 },
+  { id: 'cesium', label: 'Cesium', x: 20, y: 45 },
+  { id: 'sdk', label: 'GIS SDK', x: 80, y: 45 },
+  { id: 'digitaltwin', label: '数字孪生', x: 50, y: 55 },
+  { id: 'ecs', label: 'ECS', x: 20, y: 70 },
+  { id: 'dsl', label: 'DSL', x: 80, y: 70 },
+  { id: 'engine', label: '推演引擎', x: 50, y: 85 },
+  { id: 'engineering', label: '工程化', x: 50, y: 95 },
 ]
 
-/* ═══════════ Featured Projects (only 2) ═══════════ */
+/* ═══════════ Featured Projects ═══════════ */
 const featuredProjects = [
   {
     title: 'AirGIS',
     description: '面向时空数据与仿真场景的 GIS 引擎体系。支持大规模地理数据管理、实时渲染与 spatial analysis 管线。',
-    tech: ['GIS', 'Cesium', 'Spatial', 'TypeScript'],
+    tech: ['Cesium', 'Vue 3', 'TypeScript'],
     link: '/projects/',
+    status: '开发中',
+    since: '2025',
   },
   {
     title: 'Tactics Simulation',
     description: '面向推演与态势分析的仿真平台。支持多方对抗、实时态势感知与复盘分析。',
-    tech: ['Simulation', 'C2', 'Analysis', 'Cloudflare'],
+    tech: ['Simulation', 'C2', 'DSL'],
     link: 'https://tactics-sim-engine.pages.dev/',
+    status: '开发中',
+    since: '2025',
   },
 ]
 
@@ -77,6 +94,9 @@ const showPosts = latestPosts.length >= 1
 <!-- ═══════════ Hero ═══════════ -->
 <section class="hero">
   <div class="hero-content">
+    <div class="hero-avatar">
+      <span class="hero-avatar-text">YS</span>
+    </div>
     <h1 class="hero-name">Ysuhan</h1>
     <div class="hero-roles">
       <span>WebGIS Engineer</span>
@@ -130,6 +150,43 @@ const showPosts = latestPosts.length >= 1
   </div>
 </section>
 
+<!-- ═══════════ Philosophy ═══════════ -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">理念</span>
+    <h2 class="section-title">我相信</h2>
+  </div>
+  <div class="philosophy-card glass-card">
+    <p class="philosophy-text">
+      GIS 不应该只是地图展示。<br>
+      数字孪生不应该只是三维可视化。
+    </p>
+    <p class="philosophy-core">
+      真正的数字孪生系统，<br>
+      应该具备<span class="philosophy-accent">感知</span>、<span class="philosophy-accent">推演</span>、<span class="philosophy-accent">决策</span>与<span class="philosophy-accent">交互</span>能力。
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ Recent Activity ═══════════ -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">动态</span>
+    <h2 class="section-title">最近在做</h2>
+  </div>
+  <div class="activity-list">
+    <div v-for="(group, i) in activities" :key="i" class="activity-group glass-card">
+      <div class="activity-month">{{ group.month }}</div>
+      <ul class="activity-items">
+        <li v-for="(item, j) in group.items" :key="j" class="activity-item">
+          <span class="activity-check">✓</span>
+          <span class="activity-text">{{ item }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ Growth Timeline ═══════════ -->
 <section class="section">
   <div class="section-header">
@@ -151,18 +208,30 @@ const showPosts = latestPosts.length >= 1
   </div>
 </section>
 
-<!-- ═══════════ Tech Map ═══════════ -->
+<!-- ═══════════ Tech Map — network style ═══════════ -->
 <section class="section">
   <div class="section-header">
     <span class="section-label">知识体系</span>
     <h2 class="section-title">技术地图</h2>
   </div>
-  <div class="techmap-grid">
-    <div v-for="domain in techMap" :key="domain.domain" class="techmap-card glass-card">
-      <h3 class="techmap-domain">{{ domain.domain }}</h3>
-      <div class="techmap-items">
-        <span v-for="item in domain.items" :key="item" class="techmap-tag">{{ item }}</span>
+  <div class="techmap-network">
+    <div class="tm-node tm-node-core">
+      <span class="tm-label">空间智能</span>
+    </div>
+    <div class="tm-branches">
+      <div class="tm-branch tm-branch-left">
+        <div class="tm-node"><span class="tm-label">Cesium</span></div>
+        <div class="tm-node"><span class="tm-label">GIS SDK</span></div>
+        <div class="tm-node"><span class="tm-label">ECS</span></div>
       </div>
+      <div class="tm-branch tm-branch-right">
+        <div class="tm-node"><span class="tm-label">数字孪生</span></div>
+        <div class="tm-node"><span class="tm-label">DSL</span></div>
+        <div class="tm-node"><span class="tm-label">推演引擎</span></div>
+      </div>
+    </div>
+    <div class="tm-node tm-node-bottom">
+      <span class="tm-label">工程化</span>
     </div>
   </div>
 </section>
@@ -182,7 +251,10 @@ const showPosts = latestPosts.length >= 1
       :target="p.link.startsWith('http') ? '_blank' : undefined"
       :rel="p.link.startsWith('http') ? 'noopener noreferrer' : undefined"
     >
-      <h3 class="featured-title">{{ p.title }}</h3>
+      <div class="featured-head">
+        <h3 class="featured-title">{{ p.title }}</h3>
+        <span class="featured-status">{{ p.status }} · 始于 {{ p.since }}</span>
+      </div>
       <p class="featured-desc">{{ p.description }}</p>
       <div class="featured-tags">
         <span v-for="t in p.tech" :key="t" class="featured-tag">{{ t }}</span>
@@ -224,19 +296,19 @@ const showPosts = latestPosts.length >= 1
 <section class="section footer-cta">
   <div class="cta-card glass-card">
     <p class="cta-text">从 WebGIS 到数字孪生，从 SDK 到推演引擎。</p>
-    <p class="cta-text cta-text-dim">持续构建，长期沉淀。</p>
+    <p class="cta-text-dim">持续构建，长期沉淀。</p>
     <a href="/career/" class="cta-link">查看完整成长轨迹 →</a>
   </div>
 </section>
 
 <style scoped>
-/* ── Hero — compact, not full-screen ── */
+/* ── Hero — 80vh, with avatar anchor ── */
 .hero {
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 24px 80px;
+  padding: 100px 24px 60px;
   position: relative;
   z-index: 1;
 }
@@ -246,8 +318,28 @@ const showPosts = latestPosts.length >= 1
   text-align: center;
 }
 
+.hero-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 28px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--accent-border);
+}
+
+.hero-avatar-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  font-family: var(--font-mono);
+}
+
 .hero-name {
-  font-size: 3.5rem;
+  font-size: 3.25rem;
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--text-primary);
@@ -261,8 +353,8 @@ const showPosts = latestPosts.length >= 1
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-top: 16px;
-  font-size: 0.875rem;
+  margin-top: 14px;
+  font-size: 0.8125rem;
   font-family: var(--font-mono);
   color: var(--accent);
   letter-spacing: 0.02em;
@@ -274,15 +366,15 @@ const showPosts = latestPosts.length >= 1
 }
 
 .hero-tagline {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   color: var(--text-secondary);
-  margin-top: 24px;
+  margin-top: 22px;
   line-height: 1.6;
   font-weight: 400;
 }
 
 .hero-actions {
-  margin-top: 36px;
+  margin-top: 34px;
   display: flex;
   gap: 12px;
   justify-content: center;
@@ -291,10 +383,10 @@ const showPosts = latestPosts.length >= 1
 .hero-btn {
   display: inline-flex;
   align-items: center;
-  height: 44px;
-  padding: 0 24px;
+  height: 42px;
+  padding: 0 22px;
   border-radius: 999px;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   text-decoration: none;
   transition: all 300ms var(--ease-out);
@@ -326,22 +418,24 @@ const showPosts = latestPosts.length >= 1
 }
 
 @media (max-width: 640px) {
-  .hero { min-height: 75vh; padding: 100px 24px 60px; }
-  .hero-name { font-size: 2.5rem; }
-  .hero-tagline { font-size: 0.875rem; }
-  .hero-roles { font-size: 0.75rem; }
+  .hero { min-height: 70vh; padding: 80px 24px 50px; }
+  .hero-name { font-size: 2.25rem; }
+  .hero-tagline { font-size: 0.8125rem; }
+  .hero-roles { font-size: 0.6875rem; }
+  .hero-avatar { width: 64px; height: 64px; margin-bottom: 22px; }
+  .hero-avatar-text { font-size: 1.25rem; }
 }
 
 /* ── Section shared ── */
 .section {
   max-width: 960px;
   margin: 0 auto;
-  padding: 100px 24px 0;
+  padding: 90px 24px 0;
   position: relative;
   z-index: 1;
 }
 
-.section-header { margin-bottom: 48px; }
+.section-header { margin-bottom: 40px; }
 
 .section-label {
   font-size: 0.6875rem;
@@ -360,7 +454,7 @@ const showPosts = latestPosts.length >= 1
   margin: 6px 0 0;
 }
 
-.section-more { margin-top: 32px; }
+.section-more { margin-top: 28px; }
 
 .section-more a {
   font-size: 0.8125rem;
@@ -378,9 +472,7 @@ const showPosts = latestPosts.length >= 1
   gap: 16px;
 }
 
-.now-card {
-  padding: 28px;
-}
+.now-card { padding: 26px; }
 
 .now-card-title {
   font-size: 0.75rem;
@@ -389,7 +481,7 @@ const showPosts = latestPosts.length >= 1
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-family: var(--font-mono);
-  margin: 0 0 20px;
+  margin: 0 0 18px;
 }
 
 .now-list {
@@ -398,7 +490,7 @@ const showPosts = latestPosts.length >= 1
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .now-item {
@@ -424,11 +516,97 @@ const showPosts = latestPosts.length >= 1
   .now-grid { grid-template-columns: 1fr; }
 }
 
-/* ── Growth Timeline — horizontal-ish, cards with dots ── */
+/* ── Philosophy ── */
+.philosophy-card {
+  padding: 40px;
+  text-align: center;
+}
+
+.philosophy-text {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 2;
+  margin: 0 0 24px;
+}
+
+.philosophy-core {
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  line-height: 2;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.philosophy-accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .philosophy-card { padding: 28px 24px; }
+  .philosophy-text { font-size: 0.9375rem; }
+  .philosophy-core { font-size: 1rem; }
+}
+
+/* ── Recent Activity ── */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.activity-group {
+  display: flex;
+  gap: 32px;
+  padding: 24px 28px;
+}
+
+.activity-month {
+  flex-shrink: 0;
+  width: 80px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  padding-top: 1px;
+}
+
+.activity-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.activity-check {
+  color: var(--accent);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.activity-text { color: var(--text-primary); }
+
+@media (max-width: 640px) {
+  .activity-group { flex-direction: column; gap: 12px; padding: 20px; }
+  .activity-month { width: auto; }
+}
+
+/* ── Growth Timeline ── */
 .timeline-track {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .tl-node {
@@ -439,7 +617,7 @@ const showPosts = latestPosts.length >= 1
 
 .tl-year {
   flex-shrink: 0;
-  width: 52px;
+  width: 48px;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--accent);
@@ -501,8 +679,8 @@ const showPosts = latestPosts.length >= 1
 .tl-desc {
   font-size: 0.8125rem;
   color: var(--text-secondary);
-  margin: 0;
   line-height: 1.6;
+  margin: 0;
 }
 
 .tl-accent .tl-card {
@@ -510,49 +688,80 @@ const showPosts = latestPosts.length >= 1
 }
 
 @media (max-width: 640px) {
-  .tl-year { width: 44px; font-size: 0.6875rem; }
+  .tl-year { width: 40px; font-size: 0.6875rem; }
   .tl-card { padding: 16px 18px; }
 }
 
-/* ── Tech Map ── */
-.techmap-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.techmap-card {
-  padding: 28px;
-}
-
-.techmap-domain {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 16px;
-  letter-spacing: -0.01em;
-}
-
-.techmap-items {
+/* ── Tech Map — network style ── */
+.techmap-network {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 20px 0;
 }
 
-.techmap-tag {
-  font-size: 0.75rem;
-  color: var(--accent);
-  font-family: var(--font-mono);
-  padding: 3px 12px;
+.tm-node {
+  display: inline-flex;
+  padding: 8px 20px;
+  border-radius: 999px;
   border: 1px solid var(--accent-border);
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.tm-node-core {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+  padding: 10px 24px;
+  margin-bottom: 4px;
+}
+
+.tm-node-core .tm-label {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tm-label {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.tm-branches {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 480px;
+}
+
+.tm-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+}
+
+.tm-branch .tm-node {
   border-radius: 999px;
 }
 
-@media (max-width: 768px) {
-  .techmap-grid { grid-template-columns: 1fr; }
+.tm-node-bottom {
+  margin-top: 4px;
+  border-color: var(--border-default);
 }
 
-/* ── Featured Projects — only 2 ── */
+@media (max-width: 480px) {
+  .tm-branches { flex-direction: column; align-items: center; gap: 8px; }
+  .tm-branch { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 6px 0; }
+  .tm-node { padding: 6px 16px; }
+  .tm-node .tm-label { font-size: 0.75rem; }
+}
+
+/* ── Featured Projects ── */
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -562,17 +771,32 @@ const showPosts = latestPosts.length >= 1
 .featured-card {
   display: flex;
   flex-direction: column;
-  padding: 32px;
+  padding: 30px;
   text-decoration: none;
   color: inherit;
 }
 
+.featured-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
 .featured-title {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 8px;
+  margin: 0;
   letter-spacing: -0.02em;
+}
+
+.featured-status {
+  font-size: 0.6875rem;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  white-space: nowrap;
 }
 
 .featured-desc {
@@ -619,7 +843,6 @@ const showPosts = latestPosts.length >= 1
 }
 
 .post-content { flex: 1; min-width: 0; }
-
 .post-title-link { text-decoration: none; color: inherit; }
 
 .post-title {
@@ -648,28 +871,28 @@ const showPosts = latestPosts.length >= 1
 .footer-cta { padding-bottom: 80px; }
 
 .cta-card {
-  padding: 40px;
+  padding: 36px;
   text-align: center;
 }
 
 .cta-text {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   color: var(--text-primary);
   font-weight: 500;
   letter-spacing: -0.02em;
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 
 .cta-text-dim {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--text-secondary);
   font-weight: 400;
 }
 
 .cta-link {
   display: inline-block;
-  margin-top: 24px;
-  font-size: 0.875rem;
+  margin-top: 22px;
+  font-size: 0.8125rem;
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
