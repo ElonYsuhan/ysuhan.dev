@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 interface Post {
   title: string
   date: string
@@ -7,12 +9,19 @@ interface Post {
   url: string
 }
 
-defineProps<{ posts: Post[] }>()
+const props = defineProps<{ posts: Post[] }>()
+const visible = ref<boolean[]>(props.posts.map(() => false))
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr)
   return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })
 }
+
+onMounted(() => {
+  props.posts.forEach((_, i) => {
+    setTimeout(() => { visible.value[i] = true }, i * 60)
+  })
+})
 </script>
 
 <template>
@@ -20,8 +29,8 @@ function formatDate(dateStr: string): string {
     <article
       v-for="(post, i) in posts"
       :key="post.title"
-      class="blog-item glass-card animate-fade-in-up"
-      :style="{ opacity: 0, animationDelay: `${i * 0.06}s` }"
+      class="blog-item glass-card card-stagger"
+      :class="{ show: visible[i] }"
     >
       <time class="blog-date">{{ formatDate(post.date) }}</time>
       <div class="blog-content">
@@ -49,7 +58,6 @@ function formatDate(dateStr: string): string {
   align-items: flex-start;
   gap: 20px;
   padding: 24px;
-  transition: all 300ms var(--ease-out);
 }
 
 .blog-date {
@@ -63,7 +71,6 @@ function formatDate(dateStr: string): string {
 }
 
 .blog-content { flex: 1; min-width: 0; }
-
 .blog-title-link { text-decoration: none; color: inherit; }
 
 .blog-title {

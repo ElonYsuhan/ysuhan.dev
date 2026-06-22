@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 interface Note {
   title: string
   date: string
@@ -8,7 +10,8 @@ interface Note {
   stage: 'seedling' | 'budding' | 'evergreen'
 }
 
-defineProps<{ notes: Note[] }>()
+const props = defineProps<{ notes: Note[] }>()
+const visible = ref<boolean[]>(props.notes.map(() => false))
 
 const stageLabel: Record<string, string> = {
   seedling: 'seedling',
@@ -21,6 +24,11 @@ function formatDate(dateStr: string): string {
   return d.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
+onMounted(() => {
+  props.notes.forEach((_, i) => {
+    setTimeout(() => { visible.value[i] = true }, i * 40)
+  })
+})
 </script>
 
 <template>
@@ -29,8 +37,8 @@ function formatDate(dateStr: string): string {
       v-for="(note, i) in notes"
       :key="note.title"
       :href="note.url"
-      class="garden-card glass-card animate-fade-in-up"
-      :style="{ opacity: 0, animationDelay: `${i * 0.04}s` }"
+      class="garden-card glass-card card-stagger"
+      :class="{ show: visible[i] }"
     >
       <div class="garden-header">
         <span class="garden-stage">{{ stageLabel[note.stage] }}</span>

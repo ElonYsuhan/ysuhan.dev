@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 interface Showcase {
   title: string
   description: string
@@ -7,7 +9,14 @@ interface Showcase {
   category: string
 }
 
-defineProps<{ items: Showcase[] }>()
+const props = defineProps<{ items: Showcase[] }>()
+const visible = ref<boolean[]>(props.items.map(() => false))
+
+onMounted(() => {
+  props.items.forEach((_, i) => {
+    setTimeout(() => { visible.value[i] = true }, i * 60)
+  })
+})
 </script>
 
 <template>
@@ -16,8 +25,8 @@ defineProps<{ items: Showcase[] }>()
       v-for="(item, i) in items"
       :key="item.title"
       :href="item.link"
-      class="showcase-card glass-card animate-fade-in-up"
-      :style="{ opacity: 0, animationDelay: `${i * 0.06}s` }"
+      class="showcase-card glass-card card-stagger"
+      :class="{ show: visible[i] }"
     >
       <div class="showcase-image-wrap" />
       <div class="showcase-body">

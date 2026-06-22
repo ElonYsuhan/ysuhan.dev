@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 interface Project {
   title: string
   description: string
@@ -7,7 +9,14 @@ interface Project {
   github?: string
 }
 
-defineProps<{ projects: Project[] }>()
+const props = defineProps<{ projects: Project[] }>()
+const visible = ref<boolean[]>(props.projects.map(() => false))
+
+onMounted(() => {
+  props.projects.forEach((_, i) => {
+    setTimeout(() => { visible.value[i] = true }, i * 60)
+  })
+})
 </script>
 
 <template>
@@ -16,8 +25,8 @@ defineProps<{ projects: Project[] }>()
       v-for="(p, i) in projects"
       :key="p.title"
       :href="p.link"
-      class="project-card glass-card animate-fade-in-up"
-      :style="{ opacity: 0, animationDelay: `${i * 0.06}s` }"
+      class="project-card glass-card card-stagger"
+      :class="{ show: visible[i] }"
       target="_blank"
       rel="noopener noreferrer"
     >
