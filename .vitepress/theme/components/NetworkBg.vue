@@ -67,10 +67,13 @@ function draw(time: number) {
     { rx: w * 0.32, ry: w * 0.18, tilt: -0.05 },
   ]
 
-  // ═══════════ Layer 1: Spatial coordinate grid (ultra-faint) ═══════════
+  // Mouse distance from center for orbit highlighting
+  const mouseDistFromCenter = Math.hypot(mouse.x - centerX, mouse.y - centerY)
+
+  // ═══════════ Layer 1: Spatial coordinate grid ═══════════
   const gridSpacing = 140
-  ctx.strokeStyle = `rgba(${GOLD},0.018)`
-  ctx.lineWidth = 0.25
+  ctx.strokeStyle = `rgba(${GOLD},0.03)`
+  ctx.lineWidth = 0.3
   ctx.beginPath()
   for (let x = gridSpacing; x < w; x += gridSpacing) {
     ctx.moveTo(x, 0); ctx.lineTo(x, h)
@@ -80,25 +83,31 @@ function draw(time: number) {
   }
   ctx.stroke()
 
-  // A few subtle "latitude" arcs near center
+  // Subtle "latitude" arcs near center
   for (let i = 0; i < 2; i++) {
     const r = w * (0.10 + i * 0.08)
     ctx.beginPath()
     ctx.arc(centerX, centerY, r, 0, Math.PI * 2)
-    ctx.strokeStyle = `rgba(${GOLD},0.025)`
-    ctx.lineWidth = 0.25
+    ctx.strokeStyle = `rgba(${GOLD},0.04)`
+    ctx.lineWidth = 0.3
     ctx.stroke()
   }
 
-  // ═══════════ Layer 2: Orbital arcs ═══════════
+  // ═══════════ Layer 2: Orbital arcs — glow near mouse ═══════════
   for (const o of orbits) {
+    // How close is the mouse to this orbit's distance from center?
+    const avgR = (o.rx + o.ry) / 2
+    const distFromOrbit = Math.abs(mouseDistFromCenter - avgR)
+    const orbitGlow = Math.max(0, 1 - distFromOrbit / 120)
+
     ctx.save()
     ctx.translate(centerX, centerY)
     ctx.rotate(o.tilt)
     ctx.beginPath()
     ctx.ellipse(0, 0, o.rx, o.ry, 0, 0, Math.PI * 2)
-    ctx.strokeStyle = `rgba(${GOLD},0.05)`
-    ctx.lineWidth = 0.5
+    const orbitAlpha = 0.06 + orbitGlow * 0.1
+    ctx.strokeStyle = `rgba(${GOLD},${orbitAlpha})`
+    ctx.lineWidth = 0.5 + orbitGlow * 0.8
     ctx.stroke()
     ctx.restore()
   }
@@ -115,8 +124,8 @@ function draw(time: number) {
     const dist = Math.sqrt(dx * dx + dy * dy)
     const hoverGlow = Math.max(0, 1 - dist / 160)
 
-    const baseAlpha = 0.25
-    const alpha = baseAlpha + hoverGlow * 0.3
+    const baseAlpha = 0.3
+    const alpha = baseAlpha + hoverGlow * 0.4
 
     // Glow
     const glowR = 16 + hoverGlow * 14
@@ -135,9 +144,9 @@ function draw(time: number) {
     ctx!.fill()
 
     // Label on hover or if nearby
-    if (hoverGlow > 0.3) {
+    if (hoverGlow > 0.2) {
       ctx!.font = '10px Inter, sans-serif'
-      ctx!.fillStyle = `rgba(${GOLD},${hoverGlow})`
+      ctx!.fillStyle = `rgba(${GOLD},${Math.min(0.7, hoverGlow + 0.3)})`
       ctx!.textAlign = 'center'
       ctx!.fillText(node.label, x, y - 12)
     }
