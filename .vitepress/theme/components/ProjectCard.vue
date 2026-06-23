@@ -70,15 +70,15 @@ onMounted(() => {
 
 <style scoped>
 .project-showcase {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .showcase-card {
   display: block;
   position: relative;
-  height: 320px;
+  height: 200px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   text-decoration: none;
@@ -124,7 +124,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   right: 0;
-  height: 120px;
+  height: 60px;
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.3),
@@ -137,10 +137,10 @@ onMounted(() => {
 /* Floating glass info layer */
 .showcase-info {
   position: absolute;
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
-  padding: 20px 24px;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  padding: 12px 16px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -151,19 +151,19 @@ onMounted(() => {
 }
 
 .showcase-card:hover .showcase-info {
-  transform: translateY(-8px);
+  transform: translateY(-4px);
 }
 
 .showcase-info-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 6px;
+  gap: 8px;
+  margin-bottom: 2px;
 }
 
 .showcase-name {
-  font-size: 1.125rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.02em;
@@ -171,11 +171,11 @@ onMounted(() => {
 }
 
 .showcase-status {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 500;
   color: var(--accent);
   background: rgba(212, 165, 116, 0.15);
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 999px;
   font-family: var(--font-mono);
   white-space: nowrap;
@@ -183,23 +183,23 @@ onMounted(() => {
 }
 
 .showcase-desc {
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   color: rgba(255, 255, 255, 0.7);
-  line-height: 1.5;
-  margin: 0 0 12px;
+  line-height: 1.4;
+  margin: 0 0 8px;
 }
 
 .showcase-tags {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .showcase-tag {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-mono);
-  padding: 2px 10px;
+  padding: 2px 8px;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 999px;
 }
@@ -230,14 +230,14 @@ onMounted(() => {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .highlights-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 1rem;
+  gap: 8px;
+  font-size: 0.875rem;
   color: #fff;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -245,13 +245,14 @@ onMounted(() => {
 
 .highlights-check {
   color: var(--accent);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
 @media (max-width: 640px) {
-  .showcase-card { height: 260px; }
-  .showcase-info { left: 16px; right: 16px; bottom: 16px; padding: 16px 18px; }
-  .showcase-name { font-size: 1rem; }
+  .project-showcase { grid-template-columns: 1fr; }
+  .showcase-card { height: 200px; }
+  .showcase-info { left: 12px; right: 12px; bottom: 12px; padding: 12px 14px; }
+  .showcase-name { font-size: 0.875rem; }
 }
 </style>
