@@ -132,15 +132,17 @@ function draw(time: number) {
     ctx!.fillStyle = `rgba(${C},${Math.min(0.7, alpha + 0.2)})`
     ctx!.fill()
 
-    // Label — larger, bolder, with glow for readability
+    // Label — black in light mode, white in dark mode
     if (hoverGlow > 0.15) {
+      const isDark = document.documentElement.classList.contains('dark')
+      const textColor = isDark ? '255,255,255' : '20,20,20'
+      const shadowColor = isDark ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)'
       const labelAlpha = Math.min(0.9, hoverGlow + 0.35)
-      ctx!.font = '11px Inter, sans-serif'
+      ctx!.font = '600 11px Inter, sans-serif'
       ctx!.textAlign = 'center'
-      // Text glow for contrast
-      ctx!.shadowColor = `rgba(13,15,18,0.6)`
+      ctx!.shadowColor = shadowColor
       ctx!.shadowBlur = 4
-      ctx!.fillStyle = `rgba(${C},${labelAlpha})`
+      ctx!.fillStyle = `rgba(${textColor},${labelAlpha})`
       ctx!.fillText(node.label, x, y - 14)
       ctx!.shadowBlur = 0
     }
