@@ -132,12 +132,12 @@ function draw(time: number) {
     ctx!.fillStyle = `rgba(${C},${Math.min(0.7, alpha + 0.2)})`
     ctx!.fill()
 
-    // Label — only on desktop
-    if (hoverGlow > 0.15 && w >= 768) {
+    // Label — always visible on desktop
+    if (w >= 768) {
       const isDark = document.documentElement.classList.contains('dark')
       const textColor = isDark ? '255,255,255' : '20,20,20'
       const shadowColor = isDark ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)'
-      const labelAlpha = Math.min(0.9, hoverGlow + 0.35)
+      const labelAlpha = Math.min(0.9, 0.35 + hoverGlow * 0.4)
       ctx!.font = '600 11px Inter, sans-serif'
       ctx!.textAlign = 'center'
       ctx!.shadowColor = shadowColor
