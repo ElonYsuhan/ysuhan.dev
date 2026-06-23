@@ -307,12 +307,12 @@ const showPosts = latestPosts.length >= 1
 .hero-content::before {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 40px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(212,165,116,0.08) 0%, transparent 70%);
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212,165,116,0.10) 0%, transparent 65%);
   pointer-events: none;
   z-index: -1;
 }

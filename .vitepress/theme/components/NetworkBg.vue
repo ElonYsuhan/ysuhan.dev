@@ -68,9 +68,9 @@ function draw(time: number) {
   ]
 
   // ═══════════ Layer 1: Spatial coordinate grid (ultra-faint) ═══════════
-  const gridSpacing = 60
-  ctx.strokeStyle = `rgba(${GOLD},0.025)`
-  ctx.lineWidth = 0.3
+  const gridSpacing = 140
+  ctx.strokeStyle = `rgba(${GOLD},0.018)`
+  ctx.lineWidth = 0.25
   ctx.beginPath()
   for (let x = gridSpacing; x < w; x += gridSpacing) {
     ctx.moveTo(x, 0); ctx.lineTo(x, h)
@@ -81,12 +81,12 @@ function draw(time: number) {
   ctx.stroke()
 
   // A few subtle "latitude" arcs near center
-  for (let i = 0; i < 3; i++) {
-    const r = w * (0.08 + i * 0.06)
+  for (let i = 0; i < 2; i++) {
+    const r = w * (0.10 + i * 0.08)
     ctx.beginPath()
     ctx.arc(centerX, centerY, r, 0, Math.PI * 2)
-    ctx.strokeStyle = `rgba(${GOLD},0.03)`
-    ctx.lineWidth = 0.3
+    ctx.strokeStyle = `rgba(${GOLD},0.025)`
+    ctx.lineWidth = 0.25
     ctx.stroke()
   }
 
