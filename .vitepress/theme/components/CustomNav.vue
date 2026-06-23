@@ -7,20 +7,8 @@ const { isDark } = useData()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
 
-function toggleTheme(e: MouseEvent) {
-  const x = e.clientX
-  const y = e.clientY
-
-  if (document.startViewTransition) {
-    // Pass position via CSS custom properties
-    document.documentElement.style.setProperty('--vt-x', `${x}px`)
-    document.documentElement.style.setProperty('--vt-y', `${y}px`)
-    document.startViewTransition(() => {
-      isDark.value = !isDark.value
-    })
-  } else {
-    isDark.value = !isDark.value
-  }
+function toggleTheme() {
+  isDark.value = !isDark.value
 }
 
 const navItems = [
