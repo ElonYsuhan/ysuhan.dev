@@ -78,7 +78,7 @@ onMounted(() => {
 .showcase-card {
   display: block;
   position: relative;
-  height: 420px;
+  height: 320px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   text-decoration: none;
@@ -250,7 +250,7 @@ onMounted(() => {
 }
 
 @media (max-width: 640px) {
-  .showcase-card { height: 340px; }
+  .showcase-card { height: 260px; }
   .showcase-info { left: 16px; right: 16px; bottom: 16px; padding: 16px 18px; }
   .showcase-name { font-size: 1rem; }
 }
