@@ -27,9 +27,9 @@ const LABELS = ['Vue', 'Cesium', 'GIS', 'Engine', 'Open Source', 'Digital Twin']
 function buildOrbits() {
   orbitNodes = []
   const orbits = [
-    { rx: w * 0.16, ry: w * 0.10, nodes: [0.3, 0.7] },
-    { rx: w * 0.24, ry: w * 0.14, nodes: [0.1, 0.55] },
-    { rx: w * 0.32, ry: w * 0.18, nodes: [0.0, 0.45] },
+    { rx: w * 0.20, ry: w * 0.06, nodes: [0.3, 0.7] },
+    { rx: w * 0.30, ry: w * 0.10, nodes: [0.1, 0.55] },
+    { rx: w * 0.40, ry: w * 0.14, nodes: [0.0, 0.45] },
   ]
 
   let li = 0
@@ -55,9 +55,9 @@ function draw(time: number) {
   mouse.y += (mouse.ty - mouse.y) * 0.04
 
   const orbits = [
-    { rx: w * 0.16, ry: w * 0.10 },
-    { rx: w * 0.24, ry: w * 0.14 },
-    { rx: w * 0.32, ry: w * 0.18 },
+    { rx: w * 0.20, ry: w * 0.06 },
+    { rx: w * 0.30, ry: w * 0.10 },
+    { rx: w * 0.40, ry: w * 0.14 },
   ]
   const mouseDistFromCenter = Math.hypot(mouse.x - centerX, mouse.y - centerY)
 
