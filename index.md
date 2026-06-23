@@ -300,6 +300,21 @@ const showPosts = latestPosts.length >= 1
 .hero-content {
   max-width: 640px;
   text-align: center;
+  position: relative;
+}
+
+/* Radial glow behind logo — the "sun" */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212,165,116,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .hero-avatar {
