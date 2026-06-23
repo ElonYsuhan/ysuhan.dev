@@ -8,7 +8,7 @@ let w = 0, h = 0
 let dpr = 1
 
 // ── Colors ──
-const C = '140,170,210'  // muted slate blue
+const C = '100,180,255'  // bright sky blue
 
 // ── State ──
 let mouse = { x: -500, y: -500, tx: -500, ty: -500 }
@@ -102,7 +102,7 @@ function draw(time: number) {
   for (const node of orbitNodes) {
     // Nodes stay exactly on the orbit — angle only changes with time for slow orbit animation
     // but we keep them on the ellipse by using the proper parametric equation
-    const t = time * 0.0003  // extremely slow drift along the orbit
+    const t = time * 0.0001  // barely perceptible drift
     const o = orbits[node.orbit]
     // Point on ellipse: x = cx + rx*cos(θ), y = cy + ry*sin(θ)
     const angle = node.angle + t
@@ -132,12 +132,17 @@ function draw(time: number) {
     ctx!.fillStyle = `rgba(${C},${Math.min(0.7, alpha + 0.2)})`
     ctx!.fill()
 
-    // Label
-    if (hoverGlow > 0.2) {
-      ctx!.font = '10px Inter, sans-serif'
-      ctx!.fillStyle = `rgba(${C},${Math.min(0.7, hoverGlow + 0.3)})`
+    // Label — larger, bolder, with glow for readability
+    if (hoverGlow > 0.15) {
+      const labelAlpha = Math.min(0.9, hoverGlow + 0.35)
+      ctx!.font = '11px Inter, sans-serif'
       ctx!.textAlign = 'center'
-      ctx!.fillText(node.label, x, y - 12)
+      // Text glow for contrast
+      ctx!.shadowColor = `rgba(13,15,18,0.6)`
+      ctx!.shadowBlur = 4
+      ctx!.fillStyle = `rgba(${C},${labelAlpha})`
+      ctx!.fillText(node.label, x, y - 14)
+      ctx!.shadowBlur = 0
     }
   }
 
