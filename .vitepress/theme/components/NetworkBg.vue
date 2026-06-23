@@ -132,18 +132,26 @@ function draw(time: number) {
     ctx!.fillStyle = `rgba(${C},${Math.min(0.7, alpha + 0.2)})`
     ctx!.fill()
 
-    // Label — always visible on desktop
+    // Label — always visible on desktop, placed outside the orbit
     if (w >= 768) {
       const isDark = document.documentElement.classList.contains('dark')
       const textColor = isDark ? '255,255,255' : '20,20,20'
       const shadowColor = isDark ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)'
       const labelAlpha = Math.min(0.9, 0.35 + hoverGlow * 0.4)
+      // Push label radially outward from center
+      const dirX = (x - centerX) / (o.rx || 1)
+      const dirY = (y - centerY) / (o.ry || 1)
+      const dist = Math.sqrt(dirX * dirX + dirY * dirY) || 1
+      const nx = dirX / dist
+      const ny = dirY / dist
+      const labelX = x + nx * 22
+      const labelY = y + ny * 22
       ctx!.font = '600 11px Inter, sans-serif'
       ctx!.textAlign = 'center'
       ctx!.shadowColor = shadowColor
       ctx!.shadowBlur = 4
       ctx!.fillStyle = `rgba(${textColor},${labelAlpha})`
-      ctx!.fillText(node.label, x, y - 14)
+      ctx!.fillText(node.label, labelX, labelY)
       ctx!.shadowBlur = 0
     }
   }
