@@ -144,8 +144,8 @@ function draw(time: number) {
       const dist = Math.sqrt(dirX * dirX + dirY * dirY) || 1
       const nx = dirX / dist
       const ny = dirY / dist
-      const labelX = x + nx * 34
-      const labelY = y + ny * 34
+      const labelX = x + nx * 42
+      const labelY = y + ny * 42
       ctx!.font = '600 11px Inter, sans-serif'
       ctx!.textAlign = 'center'
       ctx!.shadowColor = shadowColor
