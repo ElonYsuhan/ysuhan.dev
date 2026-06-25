@@ -35,13 +35,14 @@ const projects = [
     highlights: ['DSL 定义', 'DAG 调度', '状态持久化', '可视化编排'],
   },
   {
-    title: 'Open Source',
-    description: '长期维护的开源工具与组件库',
-    tech: ['Tools', 'Libraries', 'Community', 'Vue 3'],
-    link: '#',
-    github: '#',
+    title: 'Cesium REPL',
+    description: 'CesiumJS 在线交互式 Playground，浏览器中编写、运行和分享 Cesium 代码',
+    tech: ['CesiumJS', 'Vue 3', 'TypeScript', 'Monaco Editor'],
+    link: 'https://cesium-repl.stuxu.com/',
+    github: 'https://github.com/ysuhan/cesium-repl',
+    image: '/cesium-repl.png',
     status: '积极维护',
-    highlights: ['CLI 工具', 'Vue 3 组件', 'GIS 实用函数', '开发效率工具'],
+    highlights: ['在线代码编辑', '实时 3D 预览', 'CesiumJS 沙箱', '代码分享'],
   },
 ]
 </script>
