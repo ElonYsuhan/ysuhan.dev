@@ -15,6 +15,7 @@ const navItems = [
   { text: '首页', link: '/' },
   { text: '项目', link: '/projects/' },
   { text: '案例', link: '/showcase/' },
+  { text: 'API', link: 'https://air-stack-docs.pages.dev/', external: true },
   { text: '博客', link: '/blog/' },
   { text: '成长', link: '/career/' },
   { text: '开源', link: 'https://github.com/ysuhan', external: true },
