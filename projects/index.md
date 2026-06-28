@@ -17,6 +17,15 @@ const projects = [
     highlights: ['3D GIS 引擎', '数字孪生渲染', '空间分析管线', '实时数据融合'],
   },
   {
+    title: 'AirGIS 示例中心',
+    description: 'AirGIS 生态的在线示例平台，提供 Cesium 能力演示、组件示例、API 用法和最佳实践',
+    tech: ['CesiumJS', 'Vue 3', 'TypeScript'],
+    link: 'https://ysuhan-gis-cesium.pages.dev/',
+    image: '/airgis-cesium.png',
+    status: '积极维护',
+    highlights: ['3D 能力演示', '组件示例', 'API 用法', '最佳实践'],
+  },
+  {
     title: 'Tactics Simulation',
     description: '面向推演与态势分析的仿真平台',
     tech: ['Simulation', 'C2', 'DSL'],
