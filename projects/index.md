@@ -21,7 +21,7 @@ const projects = [
     description: 'AirGIS 生态的在线示例平台，提供 Cesium 能力演示、组件示例、API 用法和最佳实践',
     tech: ['CesiumJS', 'Vue 3', 'TypeScript'],
     link: 'https://ysuhan-gis-cesium.pages.dev/',
-    image: '/airgis-cesium.png',
+    image: '/airgis-cesium.jpg',
     status: '积极维护',
     highlights: ['3D 能力演示', '组件示例', 'API 用法', '最佳实践'],
   },
