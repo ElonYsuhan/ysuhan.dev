@@ -174,12 +174,13 @@ onMounted(() => {
   font-size: 0.625rem;
   font-weight: 500;
   color: var(--accent);
-  background: rgba(212, 165, 116, 0.15);
+  background: var(--accent-subtle);
   padding: 2px 8px;
   border-radius: 999px;
   font-family: var(--font-mono);
   white-space: nowrap;
-  border: 1px solid rgba(212, 165, 116, 0.25);
+  border: 1px solid var(--accent-border);
+  box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .showcase-desc {

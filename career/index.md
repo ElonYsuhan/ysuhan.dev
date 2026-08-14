@@ -264,7 +264,7 @@ const coreThinking = [
 .build-core-tag { font-size: 0.6875rem; color: var(--text-tertiary); font-family: var(--font-mono); }
 .build-status { font-size: 0.625rem; font-weight: 500; padding: 3px 10px; border-radius: 999px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
 .status-building { background: var(--accent-subtle); color: var(--accent); }
-.status-researching { background: rgba(212,165,116,0.04); color: var(--text-tertiary); }
+.status-researching { background: var(--accent-subtle); color: var(--text-tertiary); }
 
 /* Current Focus */
 .focus-list { display: flex; flex-direction: column; }
@@ -272,7 +272,7 @@ const coreThinking = [
 .focus-row:first-child { padding-top: 0; }
 .focus-name { font-size: 0.9375rem; color: var(--text-primary); font-weight: 500; }
 .focus-tag { font-size: 0.625rem; font-weight: 500; padding: 3px 10px; border-radius: 999px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; }
-.status-exploring { background: rgba(212,165,116,0.03); color: var(--text-disabled); }
+.status-exploring { background: var(--accent-subtle); color: var(--text-disabled); }
 
 /* Core Thinking */
 .thinking-list { display: flex; flex-direction: column; gap: 16px; }

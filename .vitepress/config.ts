@@ -13,7 +13,7 @@ export default defineConfig({
     // ── SEO ──
     ['meta', { name: 'author', content: 'Ysuhan' }],
     ['meta', { name: 'keywords', content: 'WebGIS,Digital Twin,Open Source,空间计算,数字孪生,前端开发,引擎架构' }],
-    ['meta', { name: 'theme-color', content: '#0d0f12' }],
+    ['meta', { name: 'theme-color', content: '#05070d' }],
     ['meta', { name: 'color-scheme', content: 'dark light' }],
 
     // Open Graph

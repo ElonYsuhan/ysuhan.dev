@@ -217,7 +217,7 @@ const showPosts = latestPosts.length >= 1
     <h2 class="section-title">技术地图</h2>
   </div>
   <div class="techmap-network">
-    <div class="tm-node tm-node-core">
+    <div class="tm-node tm-node-core animate-pulse-glow">
       <span class="tm-label">空间智能</span>
     </div>
     <div class="tm-branches">
@@ -303,7 +303,7 @@ const showPosts = latestPosts.length >= 1
   position: relative;
 }
 
-/* Radial glow behind logo — the "sun" */
+/* Radial glow behind logo — neon "core" */
 .hero-content::before {
   content: '';
   position: absolute;
@@ -312,7 +312,7 @@ const showPosts = latestPosts.length >= 1
   transform: translateX(-50%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(212,165,116,0.10) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(0,229,255,0.10) 0%, rgba(0,229,255,0.03) 40%, transparent 65%);
   pointer-events: none;
   z-index: -1;
 }
@@ -324,6 +324,7 @@ const showPosts = latestPosts.length >= 1
   margin: 0 auto 28px;
   overflow: hidden;
   border: 3px solid var(--accent-border);
+  box-shadow: 0 0 24px var(--accent-glow), inset 0 0 12px var(--accent-subtle);
 }
 
 .hero-avatar-img {
@@ -387,14 +388,16 @@ const showPosts = latestPosts.length >= 1
 }
 
 .hero-btn-primary {
-  background: var(--accent);
-  color: #fff;
+  background: linear-gradient(135deg, var(--accent-dim), var(--accent));
+  color: #03101a;
   border: none;
+  box-shadow: 0 0 16px var(--accent-glow);
 }
 
 .hero-btn-primary:hover {
-  background: var(--accent-hover);
-  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  box-shadow: 0 0 28px var(--accent-glow);
+  color: #03101a;
 }
 
 .hero-btn-secondary {
@@ -431,12 +434,24 @@ const showPosts = latestPosts.length >= 1
 .section-header { margin-bottom: 40px; }
 
 .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 0.6875rem;
   font-weight: 600;
   color: var(--accent);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-family: var(--font-mono);
+}
+
+/* HUD tick before section labels */
+.section-label::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
 }
 
 .section-title {
@@ -636,14 +651,14 @@ const showPosts = latestPosts.length >= 1
   flex-shrink: 0;
   margin-top: 22px;
   border: 2px solid var(--bg-primary);
-  box-shadow: 0 0 0 2px var(--accent-border);
+  box-shadow: 0 0 0 2px var(--accent-border), 0 0 12px var(--accent-glow);
 }
 
 .tl-accent .tl-dot {
   width: 14px;
   height: 14px;
   margin-top: 21px;
-  box-shadow: 0 0 0 4px var(--accent-subtle), 0 0 0 2px var(--accent-border);
+  box-shadow: 0 0 0 4px var(--accent-subtle), 0 0 0 2px var(--accent-border), 0 0 18px var(--accent);
 }
 
 .tl-line {
@@ -702,6 +717,7 @@ const showPosts = latestPosts.length >= 1
   background: var(--glass-card-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .tm-node-core {
@@ -709,6 +725,7 @@ const showPosts = latestPosts.length >= 1
   background: var(--accent-subtle);
   padding: 10px 24px;
   margin-bottom: 4px;
+  box-shadow: 0 0 20px var(--accent-glow), inset 0 0 12px var(--accent-subtle);
 }
 
 .tm-node-core .tm-label {
