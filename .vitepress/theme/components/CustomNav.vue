@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--glass-border);
   border-radius: 999px;
-  box-shadow: 0 0 16px rgba(0, 229, 255, 0.05);
+  box-shadow: 0 0 16px var(--accent-glow-soft);
   transition: all 300ms var(--ease-out);
 }
 
@@ -134,7 +134,7 @@ onBeforeUnmount(() => {
   background: var(--nav-scrolled-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  box-shadow: var(--nav-scrolled-shadow), 0 0 20px var(--accent-glow);
+  box-shadow: var(--nav-scrolled-shadow), 0 0 20px var(--accent-glow-soft);
 }
 
 .nav-brand {

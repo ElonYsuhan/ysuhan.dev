@@ -8,8 +8,8 @@ let w = 0, h = 0
 let dpr = 1
 
 // ── Colors (per theme — reassigned in draw) ──
-let C = '0,229,255'       // dark: neon cyan
-const C_LIGHT = '8,145,178' // light: deep cyan-teal
+let C = '34,211,238'       // dark: cyan (matches --accent #22d3ee)
+const C_LIGHT = '14,116,144' // light: deep cyan-teal (matches --accent #0e7490)
 let STAR_C = '190,232,255'  // dark: pale blue-white
 const STAR_C_LIGHT = '71,105,140' // light: slate blue
 let VIG_RGB = '2,4,10'      // dark vignette
@@ -125,7 +125,7 @@ function draw(time: number) {
 
   // Theme-aware palette — keep the system legible in both themes
   const isDark = document.documentElement.classList.contains('dark')
-  C = isDark ? '0,229,255' : C_LIGHT
+  C = isDark ? '34,211,238' : C_LIGHT
   STAR_C = isDark ? '190,232,255' : STAR_C_LIGHT
   VIG_RGB = isDark ? '2,4,10' : '15,23,42'
   VIG_A = isDark ? 0.5 : VIG_LIGHT_A

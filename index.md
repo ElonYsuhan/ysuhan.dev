@@ -312,7 +312,7 @@ const showPosts = latestPosts.length >= 1
   transform: translateX(-50%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(0,229,255,0.10) 0%, rgba(0,229,255,0.03) 40%, transparent 65%);
+  background: radial-gradient(circle, var(--accent-glow-soft) 0%, var(--accent-glow-soft) 40%, transparent 65%);
   pointer-events: none;
   z-index: -1;
 }
@@ -389,7 +389,7 @@ const showPosts = latestPosts.length >= 1
 
 .hero-btn-primary {
   background: linear-gradient(135deg, var(--accent-dim), var(--accent));
-  color: #03101a;
+  color: var(--accent-ink);
   border: none;
   box-shadow: 0 0 16px var(--accent-glow);
 }
@@ -397,7 +397,7 @@ const showPosts = latestPosts.length >= 1
 .hero-btn-primary:hover {
   background: linear-gradient(135deg, var(--accent), var(--accent-hover));
   box-shadow: 0 0 28px var(--accent-glow);
-  color: #03101a;
+  color: var(--accent-ink);
 }
 
 .hero-btn-secondary {

@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
-   Ysuhan — Deep-Space HUD · Neon Cyan Accent
-   Sci-fi / cyberpunk inspired: deep-space navy, neon cyan glow,
+   Ysuhan — Deep-Space HUD · Cyan Accent (toned)
+   Sci-fi / cyberpunk inspired: deep-space navy, cyan glow,
    HUD corner brackets, scanlines, mono terminal labels
    Light + Dark dual theme
    ═══════════════════════════════════════════════════════════════ */
@@ -20,13 +20,15 @@
 
 /* ── Light Theme (cold "lab" sci-fi variant) ── */
 :root {
-  --accent: #0891b2;
-  --accent-hover: #0e7490;
+  --accent: #0e7490;
+  --accent-hover: #155e75;
   --accent-dim: #155e75;
-  --accent-blue: #2563eb;
-  --accent-subtle: rgba(8, 145, 178, 0.08);
-  --accent-border: rgba(8, 145, 178, 0.22);
-  --accent-glow: rgba(8, 145, 178, 0.3);
+  --accent-subtle: rgba(14, 116, 144, 0.08);
+  --accent-border: rgba(14, 116, 144, 0.2);
+  --accent-glow: rgba(14, 116, 144, 0.18);
+  --accent-glow-soft: rgba(14, 116, 144, 0.07);
+  --accent-ink: #ffffff;
+  --scanline: rgba(14, 116, 144, 0.008);
 
   --bg-primary: #f5f7fa;
   --bg-secondary: #e9edf3;
@@ -35,8 +37,8 @@
 
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --text-tertiary: #94a3b8;
-  --text-disabled: #cbd5e1;
+  --text-tertiary: #5b6b82;
+  --text-disabled: #7d8ca3;
 
   --border-subtle: rgba(15, 23, 42, 0.08);
   --border-default: rgba(15, 23, 42, 0.12);
@@ -61,9 +63,9 @@
   --vp-c-text-3: var(--text-tertiary);
   --vp-c-brand: var(--accent);
   --vp-c-brand-light: var(--accent-hover);
-  --vp-c-brand-lighter: #22d3ee;
+  --vp-c-brand-lighter: #0891b2;
   --vp-c-brand-dark: var(--accent-dim);
-  --vp-c-brand-darker: #134e4a;
+  --vp-c-brand-darker: #155e75;
   --vp-c-divider: var(--border-subtle);
   --vp-c-gutter: var(--bg-primary);
   --vp-nav-bg-color: transparent;
@@ -74,31 +76,33 @@
 
 /* ── Dark Theme (deep space) ── */
 .dark {
-  --accent: #00e5ff;
-  --accent-hover: #67f0ff;
-  --accent-dim: #00b8d4;
-  --accent-blue: #60a5fa;
-  --accent-subtle: rgba(0, 229, 255, 0.08);
-  --accent-border: rgba(0, 229, 255, 0.22);
-  --accent-glow: rgba(0, 229, 255, 0.35);
+  --accent: #22d3ee;
+  --accent-hover: #67e8f9;
+  --accent-dim: #0891b2;
+  --accent-subtle: rgba(34, 211, 238, 0.08);
+  --accent-border: rgba(34, 211, 238, 0.22);
+  --accent-glow: rgba(34, 211, 238, 0.25);
+  --accent-glow-soft: rgba(34, 211, 238, 0.06);
+  --accent-ink: #03101a;
+  --scanline: rgba(34, 211, 238, 0.012);
 
   --bg-primary: #05070d;
   --bg-secondary: #0a0f1a;
   --bg-elevated: #101725;
-  --bg-hover: rgba(148, 197, 255, 0.05);
+  --bg-hover: rgba(34, 211, 238, 0.05);
 
   --text-primary: #eaf4ff;
   --text-secondary: #9db4cc;
-  --text-tertiary: #5f7c99;
-  --text-disabled: #3d5470;
+  --text-tertiary: #6f8fae;
+  --text-disabled: #4a6a8c;
 
-  --border-subtle: rgba(148, 197, 255, 0.08);
-  --border-default: rgba(148, 197, 255, 0.12);
+  --border-subtle: rgba(34, 211, 238, 0.1);
+  --border-default: rgba(34, 211, 238, 0.14);
 
   --glass-bg: rgba(8, 14, 26, 0.5);
-  --glass-border: rgba(96, 165, 250, 0.12);
+  --glass-border: rgba(34, 211, 238, 0.1);
   --glass-card-bg: rgba(10, 18, 32, 0.55);
-  --glass-card-border: rgba(96, 165, 250, 0.12);
+  --glass-card-border: rgba(34, 211, 238, 0.1);
   --glass-card-hover-bg: rgba(14, 26, 46, 0.65);
   --glass-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
   --nav-scrolled-bg: rgba(5, 7, 13, 0.85);
@@ -222,7 +226,7 @@ body::after {
   background: repeating-linear-gradient(
     to bottom,
     transparent 0 3px,
-    rgba(0, 229, 255, 0.015) 3px 4px
+    var(--scanline) 3px 4px
   );
 }
 
@@ -387,7 +391,7 @@ td { color: var(--text-secondary); }
 }
 .VPHero .actions .VPButton.brand {
   background: linear-gradient(135deg, var(--accent-dim), var(--accent)) !important;
-  color: #03101a !important;
+  color: var(--accent-ink) !important;
   border: none !important;
   box-shadow: 0 0 16px var(--accent-glow) !important;
 }
@@ -469,7 +473,7 @@ td { color: var(--text-secondary); }
 
 .VPLocalSearchBox .search-result:hover,
 .VPLocalSearchBox .search-result.active {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: var(--bg-hover) !important;
 }
 
 .VPLocalSearchBox .search-result-title {
