@@ -7,14 +7,48 @@ let animId = 0
 let w = 0, h = 0
 let dpr = 1
 
-// ── Colors (per theme — reassigned in draw) ──
-let C = '34,211,238'       // dark: cyan (matches --accent #22d3ee)
-const C_LIGHT = '14,116,144' // light: deep cyan-teal (matches --accent #0e7490)
-let STAR_C = '190,232,255'  // dark: pale blue-white
-const STAR_C_LIGHT = '71,105,140' // light: slate blue
-let VIG_RGB = '2,4,10'      // dark vignette
-let VIG_A = 0.5
-const VIG_LIGHT_A = 0.12
+// ── Per-theme palettes — dark: deep space · light: cold "lab" variant.
+// Light values are deliberately toned down (~40–60% weaker) so the
+// background reads as a subtle lab texture instead of noise on white.
+const PALETTES = {
+  dark: {
+    accent: '34,211,238', // matches --accent #22d3ee
+    star: '190,232,255',  // pale blue-white
+    starMult: 0.55,
+    grid: 0.03,
+    arcs: 0.04,
+    coreMin: 0.16, coreMax: 0.26,
+    sweepWedge: 0.05, sweepScan: 0.16,
+    orbitAlpha: 0.05, orbitGlowMax: 0.1,
+    flowAlpha: 0.05, flowGlowMax: 0.12,
+    linkAlpha: 0.06, linkPulseMax: 0.1, linkGlow: 0.03,
+    trailMax: 0.3,
+    nodeBase: 0.3,
+    vignette: '2,4,10', vignetteA: 0.5,
+    labelText: '255,255,255',
+    labelShadow: 'rgba(0,0,0,0.6)',
+  },
+  light: {
+    accent: '14,116,144', // matches --accent #0e7490
+    star: '148,163,184',  // slate-400 — faint lab specks
+    starMult: 0.22,       // alpha cap ≈ 0.17 (was 0.41)
+    grid: 0.02,
+    arcs: 0.025,
+    coreMin: 0.04, coreMax: 0.1, // (was 0.16–0.26)
+    sweepWedge: 0.012, sweepScan: 0.055, // (was 0.05 / 0.16)
+    orbitAlpha: 0.035, orbitGlowMax: 0.07,
+    flowAlpha: 0.035, flowGlowMax: 0.08,
+    linkAlpha: 0.04, linkPulseMax: 0.07, linkGlow: 0.02,
+    trailMax: 0.15,     // (was 0.3)
+    nodeBase: 0.16,     // (was 0.3)
+    vignette: '148,163,184', vignetteA: 0.06, // soft cool edge (was slate-900 @ 0.12)
+    labelText: '30,41,59',
+    labelShadow: 'rgba(255,255,255,0.6)',
+  },
+}
+
+// Active accent (reassigned per frame in draw)
+let C = PALETTES.dark.accent
 
 // ── State ──
 let mouse = { x: -500, y: -500, tx: -500, ty: -500 }
@@ -125,10 +159,8 @@ function draw(time: number) {
 
   // Theme-aware palette — keep the system legible in both themes
   const isDark = document.documentElement.classList.contains('dark')
-  C = isDark ? '34,211,238' : C_LIGHT
-  STAR_C = isDark ? '190,232,255' : STAR_C_LIGHT
-  VIG_RGB = isDark ? '2,4,10' : '15,23,42'
-  VIG_A = isDark ? 0.5 : VIG_LIGHT_A
+  const P = isDark ? PALETTES.dark : PALETTES.light
+  C = P.accent
 
   const orbits = [
     { rx: w * 0.20, ry: w * 0.06 },
@@ -143,13 +175,13 @@ function draw(time: number) {
     const tw = 0.3 + 0.45 * Math.abs(Math.sin(time * 0.001 * s.speed + s.phase))
     ctx.beginPath()
     ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
-    ctx.fillStyle = `rgba(${STAR_C},${tw * 0.55})`
+    ctx.fillStyle = `rgba(${P.star},${tw * P.starMult})`
     ctx.fill()
   }
 
   // ═══════════ Layer 1: Grid ═══════════
   const gridSpacing = 140
-  ctx.strokeStyle = `rgba(${C},0.03)`
+  ctx.strokeStyle = `rgba(${C},${P.grid})`
   ctx.lineWidth = 0.3
   ctx.beginPath()
   for (let x = gridSpacing; x < w; x += gridSpacing) {
@@ -165,7 +197,7 @@ function draw(time: number) {
     const r = w * (0.10 + i * 0.08)
     ctx.beginPath()
     ctx.arc(centerX, centerY, r, 0, Math.PI * 2)
-    ctx.strokeStyle = `rgba(${C},0.04)`
+    ctx.strokeStyle = `rgba(${C},${P.arcs})`
     ctx.lineWidth = 0.3
     ctx.stroke()
   }
@@ -173,9 +205,10 @@ function draw(time: number) {
   // ═══════════ Layer 2: Core pulse ═══════════
   const pulse = 0.5 + 0.5 * Math.sin(time * 0.002)
   const coreR = Math.max(20, w * 0.045 * (0.85 + 0.3 * pulse))
+  const coreA = P.coreMin + (P.coreMax - P.coreMin) * pulse
   const core = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, coreR)
-  core.addColorStop(0, `rgba(${C},${0.16 + 0.1 * pulse})`)
-  core.addColorStop(0.55, `rgba(${C},${0.05 + 0.04 * pulse})`)
+  core.addColorStop(0, `rgba(${C},${coreA})`)
+  core.addColorStop(0.55, `rgba(${C},${coreA * 0.35})`)
   core.addColorStop(1, 'rgba(0,0,0,0)')
   ctx.beginPath()
   ctx.arc(centerX, centerY, coreR, 0, Math.PI * 2)
@@ -188,8 +221,8 @@ function draw(time: number) {
     const sweepR = Math.max(w, h) * 0.85
     // Trailing wedge
     const wedge = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, sweepR)
-    wedge.addColorStop(0, `rgba(${C},0.05)`)
-    wedge.addColorStop(1, `rgba(${C},0.01)`)
+    wedge.addColorStop(0, `rgba(${C},${P.sweepWedge})`)
+    wedge.addColorStop(1, `rgba(${C},${P.sweepWedge * 0.2})`)
     ctx.beginPath()
     ctx.moveTo(centerX, centerY)
     ctx.arc(centerX, centerY, sweepR, sweepA - 0.55, sweepA)
@@ -202,7 +235,7 @@ function draw(time: number) {
       centerX + Math.cos(sweepA) * sweepR,
       centerY + Math.sin(sweepA) * sweepR,
     )
-    scan.addColorStop(0, `rgba(${C},0.16)`)
+    scan.addColorStop(0, `rgba(${C},${P.sweepScan})`)
     scan.addColorStop(1, 'rgba(0,0,0,0)')
     ctx.beginPath()
     ctx.moveTo(centerX, centerY)
@@ -223,7 +256,7 @@ function draw(time: number) {
     // Base ellipse (with precession rotation)
     ctx.beginPath()
     ctx.ellipse(centerX, centerY, o.rx, o.ry, phi, 0, Math.PI * 2)
-    ctx.strokeStyle = `rgba(${C},${0.05 + orbitGlow * 0.1})`
+    ctx.strokeStyle = `rgba(${C},${P.orbitAlpha + orbitGlow * P.orbitGlowMax})`
     ctx.lineWidth = 0.5 + orbitGlow * 0.8
     ctx.stroke()
 
@@ -232,7 +265,7 @@ function draw(time: number) {
     ctx.ellipse(centerX, centerY, o.rx, o.ry, phi, 0, Math.PI * 2)
     ctx.setLineDash([14, 26])
     ctx.lineDashOffset = -time * FLOW_SPEEDS[oi]
-    ctx.strokeStyle = `rgba(${C},${0.05 + orbitGlow * 0.12})`
+    ctx.strokeStyle = `rgba(${C},${P.flowAlpha + orbitGlow * P.flowGlowMax})`
     ctx.lineWidth = 0.7 + orbitGlow * 0.6
     ctx.stroke()
     ctx.setLineDash([])
@@ -252,14 +285,14 @@ function draw(time: number) {
     ctx.beginPath()
     ctx.moveTo(a.x, a.y)
     ctx.lineTo(b.x, b.y)
-    ctx.strokeStyle = `rgba(${C},${0.06 + 0.1 * linkPulse})`
+    ctx.strokeStyle = `rgba(${C},${P.linkAlpha + P.linkPulseMax * linkPulse})`
     ctx.lineWidth = 0.6
     ctx.stroke()
     // Soft glow pass
     ctx.beginPath()
     ctx.moveTo(a.x, a.y)
     ctx.lineTo(b.x, b.y)
-    ctx.strokeStyle = `rgba(${C},${0.03 * linkPulse})`
+    ctx.strokeStyle = `rgba(${C},${P.linkGlow * linkPulse})`
     ctx.lineWidth = 2.4
     ctx.stroke()
   }
@@ -281,7 +314,7 @@ function draw(time: number) {
       ctx.beginPath()
       ctx.moveTo(node.trail[ti].x, node.trail[ti].y)
       ctx.lineTo(node.trail[ti + 1].x, node.trail[ti + 1].y)
-      ctx.strokeStyle = `rgba(${C},${0.3 * f * f})`
+      ctx.strokeStyle = `rgba(${C},${P.trailMax * f * f})`
       ctx.lineWidth = 0.4 + 1.1 * f
       ctx.stroke()
     }
@@ -290,7 +323,7 @@ function draw(time: number) {
     const dist = Math.sqrt(dx * dx + dy * dy)
     const hoverGlow = Math.max(0, 1 - dist / 160)
 
-    const baseAlpha = 0.3
+    const baseAlpha = P.nodeBase
     const alpha = baseAlpha + hoverGlow * 0.4
 
     // Glow
@@ -311,8 +344,8 @@ function draw(time: number) {
 
     // Label — hover only on desktop
     if (hoverGlow > 0.15 && w >= 768) {
-      const textColor = isDark ? '255,255,255' : '20,20,20'
-      const shadowColor = isDark ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.6)'
+      const textColor = P.labelText
+      const shadowColor = P.labelShadow
       const labelAlpha = Math.min(0.9, 0.35 + hoverGlow * 0.4)
       // Push label radially outward from center
       const dirX = (p.x - centerX) / (o.rx || 1)
@@ -342,7 +375,7 @@ function draw(time: number) {
   // ── Vignette — deep-space edge falloff ──
   const vig = ctx.createRadialGradient(w / 2, h * 0.4, Math.min(w, h) * 0.3, w / 2, h * 0.5, Math.max(w, h) * 0.72)
   vig.addColorStop(0, 'rgba(0,0,0,0)')
-  vig.addColorStop(1, `rgba(${VIG_RGB},${VIG_A})`)
+  vig.addColorStop(1, `rgba(${P.vignette},${P.vignetteA})`)
   ctx.fillStyle = vig
   ctx.fillRect(0, 0, w, h)
 

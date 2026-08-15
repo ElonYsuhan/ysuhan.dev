@@ -28,7 +28,19 @@ onMounted(() => {
       class="showcase-card glass-card card-stagger"
       :class="{ show: visible[i] }"
     >
-      <div class="showcase-image-wrap" />
+      <div
+        class="showcase-image-wrap"
+        :class="{ 'has-image': item.image }"
+        :style="item.image ? { backgroundImage: `url(${item.image})` } : {}"
+      >
+        <span v-if="!item.image" class="showcase-placeholder" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <path d="M21 15l-5-5L5 21" />
+          </svg>
+        </span>
+      </div>
       <div class="showcase-body">
         <span class="showcase-category">{{ item.category }}</span>
         <h3 class="showcase-title">{{ item.title }}</h3>
@@ -52,9 +64,40 @@ onMounted(() => {
 }
 
 .showcase-image-wrap {
+  position: relative;
   aspect-ratio: 16 / 10;
   background: var(--bg-secondary);
+  background-size: cover;
+  background-position: center;
   border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+  transition: transform 400ms var(--ease-out);
+}
+
+.showcase-card:hover .showcase-image-wrap.has-image {
+  transform: scale(1.03);
+}
+
+/* Branded placeholder — HUD grid + accent wash, shown when no image is set */
+.showcase-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  opacity: 0.55;
+  background:
+    linear-gradient(135deg, var(--accent-subtle), transparent 55%),
+    repeating-linear-gradient(0deg, transparent 0 23px, var(--accent-border) 23px 24px),
+    repeating-linear-gradient(90deg, transparent 0 23px, var(--accent-border) 23px 24px),
+    var(--bg-secondary);
+}
+
+.showcase-placeholder svg {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 8px var(--accent-glow));
 }
 
 .showcase-body {
