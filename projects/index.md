@@ -7,16 +7,6 @@ layout: page
 <script setup>
 const projects = [
   {
-    title: 'AirGIS',
-    description: '面向数字孪生与空间分析的 GIS 引擎体系',
-    tech: ['Cesium', 'Vue 3', 'TypeScript'],
-    link: '#',
-    github: '#',
-    image: '/images/tactics-sim.jpg',
-    status: '持续开发中',
-    highlights: ['3D GIS 引擎', '数字孪生渲染', '空间分析管线', '实时数据融合'],
-  },
-  {
     title: 'AirGIS 示例中心',
     description: 'AirGIS 生态的在线示例平台，提供 Cesium 能力演示、组件示例、API 用法和最佳实践',
     tech: ['CesiumJS', 'Vue 3', 'TypeScript'],
@@ -52,6 +42,16 @@ const projects = [
     image: '/images/cesium-repl.png',
     status: '积极维护',
     highlights: ['在线代码编辑', '实时 3D 预览', 'CesiumJS 沙箱', '代码分享'],
+  },
+  {
+    title: 'Suhan DSH Forge',
+    description: '面向 DeepSeek Harness (DSH) 的插件工厂与可视化插件平台，覆盖插件开发、验证、打包与在线市场展示',
+    tech: ['Vue 3', 'TypeScript', 'DSH', 'Cloudflare Pages'],
+    link: 'https://suhan-dsh-forge.pages.dev/',
+    github: 'https://github.com/ElonYsuhan/suhan-dsh-forge',
+    image: '/images/dsh-forge.png',
+    status: '持续开发中',
+    highlights: ['插件市场', '插件开发工作区', '发布门禁校验', '真实环境冒烟测试'],
   },
 ]
 </script>
