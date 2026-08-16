@@ -8,8 +8,9 @@ let w = 0, h = 0
 let dpr = 1
 
 // ── Per-theme palettes — dark: deep space · light: cold "lab" variant.
-// Light values are deliberately toned down (~40–60% weaker) so the
-// background reads as a subtle lab texture instead of noise on white.
+// Light values are tuned to remain clearly visible on pale backgrounds
+// without turning into harsh noise: use deeper slate/cyan and moderate
+// alpha so the network stays readable on the white theme.
 const PALETTES = {
   dark: {
     accent: '34,211,238', // matches --accent #22d3ee
@@ -30,18 +31,18 @@ const PALETTES = {
   },
   light: {
     accent: '14,116,144', // matches --accent #0e7490
-    star: '148,163,184',  // slate-400 — faint lab specks
-    starMult: 0.22,       // alpha cap ≈ 0.17 (was 0.41)
-    grid: 0.02,
-    arcs: 0.025,
-    coreMin: 0.04, coreMax: 0.1, // (was 0.16–0.26)
-    sweepWedge: 0.012, sweepScan: 0.055, // (was 0.05 / 0.16)
-    orbitAlpha: 0.035, orbitGlowMax: 0.07,
-    flowAlpha: 0.035, flowGlowMax: 0.08,
-    linkAlpha: 0.04, linkPulseMax: 0.07, linkGlow: 0.02,
-    trailMax: 0.15,     // (was 0.3)
-    nodeBase: 0.16,     // (was 0.3)
-    vignette: '148,163,184', vignetteA: 0.06, // soft cool edge (was slate-900 @ 0.12)
+    star: '71,105,140',   // deep slate blue — clearly visible lab specks on white
+    starMult: 0.5,
+    grid: 0.08,
+    arcs: 0.09,
+    coreMin: 0.16, coreMax: 0.26,
+    sweepWedge: 0.05, sweepScan: 0.16,
+    orbitAlpha: 0.07, orbitGlowMax: 0.14,
+    flowAlpha: 0.07, flowGlowMax: 0.16,
+    linkAlpha: 0.08, linkPulseMax: 0.14, linkGlow: 0.05,
+    trailMax: 0.35,
+    nodeBase: 0.34,
+    vignette: '15,23,42', vignetteA: 0.12, // soft cool edge for depth
     labelText: '30,41,59',
     labelShadow: 'rgba(255,255,255,0.6)',
   },
