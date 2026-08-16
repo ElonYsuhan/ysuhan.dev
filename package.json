@@ -4,11 +4,14 @@
   "description": "从想法到作品，从创意到体系 — Ysuhan 的个人数字花园",
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev --port 5173",
+    "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
+    "clean": "rm -rf docs/.vitepress/dist",
     "lint": "eslint . --ext .ts,.vue --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "img:resize": "sips -Z",
+    "img:tojpg": "sips -s format jpeg -s formatOptions 80"
   },
   "dependencies": {
     "@vueuse/core": "^11.3.0",
