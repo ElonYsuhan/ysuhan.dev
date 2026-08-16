@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DefaultTheme from 'vitepress/theme'
+import VoiceChat from './components/VoiceChat.vue'
 
 const { Layout: DefaultLayout } = DefaultTheme
 </script>
@@ -16,4 +17,6 @@ const { Layout: DefaultLayout } = DefaultTheme
       <CustomFooter />
     </template>
   </DefaultLayout>
+
+  <VoiceChat />
 </template>

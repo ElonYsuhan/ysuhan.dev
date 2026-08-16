@@ -5,4 +5,5 @@ export { default as ProjectCard } from './ProjectCard.vue'
 export { default as ShowcaseCard } from './ShowcaseCard.vue'
 export { default as BlogPost } from './BlogPost.vue'
 export { default as NoteCard } from './NoteCard.vue'
+export { default as VoiceChat } from './VoiceChat.vue'
 
