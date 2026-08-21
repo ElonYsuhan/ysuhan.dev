@@ -53,6 +53,11 @@
   --nav-scrolled-bg: rgba(245, 247, 250, 0.85);
   --nav-scrolled-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
 
+  --overlay-mask: rgba(15, 23, 42, 0.18);
+  --search-shadow: 0 16px 48px rgba(15, 23, 42, 0.10);
+  --on-image-accent: #67e8f9;
+  --on-image-badge-bg: rgba(255, 255, 255, 0.12);
+
   /* VitePress overrides */
   --vp-c-bg: var(--bg-primary);
   --vp-c-bg-alt: var(--bg-secondary);
@@ -67,6 +72,12 @@
   --vp-c-brand-lighter: #0891b2;
   --vp-c-brand-dark: var(--accent-dim);
   --vp-c-brand-darker: #155e75;
+  --vp-c-brand-1: var(--accent);
+  --vp-c-brand-2: var(--accent-hover);
+  --vp-c-brand-3: #0891b2;
+  --vp-c-brand-soft: var(--accent-subtle);
+  --vp-button-brand-bg: var(--accent);
+  --vp-button-brand-hover-bg: var(--accent-hover);
   --vp-c-divider: var(--border-subtle);
   --vp-c-gutter: var(--bg-primary);
   --vp-nav-bg-color: transparent;
@@ -110,6 +121,11 @@
   --nav-scrolled-bg: rgba(5, 7, 13, 0.85);
   --nav-scrolled-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 
+  --overlay-mask: rgba(0, 0, 0, 0.4);
+  --search-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  --on-image-accent: #67e8f9;
+  --on-image-badge-bg: rgba(255, 255, 255, 0.08);
+
   /* VitePress overrides */
   --vp-c-bg: var(--bg-primary);
   --vp-c-bg-alt: var(--bg-secondary);
@@ -119,6 +135,17 @@
   --vp-c-text-1: var(--text-primary);
   --vp-c-text-2: var(--text-secondary);
   --vp-c-text-3: var(--text-tertiary);
+  --vp-c-brand: var(--accent);
+  --vp-c-brand-light: var(--accent-hover);
+  --vp-c-brand-lighter: #67e8f9;
+  --vp-c-brand-dark: var(--accent-dim);
+  --vp-c-brand-darker: #0e7490;
+  --vp-c-brand-1: var(--accent);
+  --vp-c-brand-2: var(--accent-hover);
+  --vp-c-brand-3: var(--accent-hover);
+  --vp-c-brand-soft: var(--accent-subtle);
+  --vp-button-brand-bg: var(--accent);
+  --vp-button-brand-hover-bg: var(--accent-hover);
   --vp-c-divider: var(--border-subtle);
   --vp-c-gutter: var(--bg-primary);
   --vp-nav-bg-color: transparent;
@@ -429,7 +456,7 @@ td { color: var(--text-secondary); }
   align-items: flex-start !important;
   justify-content: center !important;
   padding-top: 15vh !important;
-  background: rgba(0, 0, 0, 0.4) !important;
+  background: var(--overlay-mask) !important;
   backdrop-filter: blur(4px) !important;
   z-index: 300 !important;
 }
@@ -445,7 +472,7 @@ td { color: var(--text-secondary); }
   border: 1px solid var(--border-default) !important;
   border-radius: var(--radius-pill) !important;
   padding: 16px 24px !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: var(--search-shadow) !important;
 }
 
 .VPLocalSearchBox .search-box input {

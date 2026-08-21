@@ -528,7 +528,7 @@ onBeforeUnmount(() => {
   border: 1px solid var(--accent-border, rgba(34, 211, 238, 0.35));
   background: var(--bg-elevated, #101725);
   color: var(--accent, #22d3ee);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 18px var(--accent-glow, rgba(34, 211, 238, 0.2));
+  box-shadow: var(--glass-card-shadow), 0 0 18px var(--accent-glow, rgba(34, 211, 238, 0.2));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -539,7 +539,7 @@ onBeforeUnmount(() => {
 .voice-fab:hover,
 .voice-fab-active {
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.42), 0 0 26px var(--accent-glow, rgba(34, 211, 238, 0.32));
+  box-shadow: var(--glass-card-shadow), 0 0 26px var(--accent-glow, rgba(34, 211, 238, 0.32));
 }
 
 .voice-fab-text {

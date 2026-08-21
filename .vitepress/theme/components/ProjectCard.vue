@@ -173,8 +173,8 @@ onMounted(() => {
 .showcase-status {
   font-size: 0.625rem;
   font-weight: 500;
-  color: var(--accent);
-  background: var(--accent-subtle);
+  color: var(--on-image-accent);
+  background: var(--on-image-badge-bg);
   padding: 2px 8px;
   border-radius: 999px;
   font-family: var(--font-mono);

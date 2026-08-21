@@ -1,15 +1,27 @@
 <script setup lang="ts">
 import { useRoute, useData } from 'vitepress'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
 
 const route = useRoute()
 const { isDark } = useData()
 const scrolled = ref(false)
 const mobileOpen = ref(false)
 
+const THEME_COLORS = {
+  light: '#f5f7fa',
+  dark: '#05070d',
+} as const
+
 function toggleTheme() {
   isDark.value = !isDark.value
 }
+
+function syncThemeColor() {
+  const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')
+  meta?.setAttribute('content', isDark.value ? THEME_COLORS.dark : THEME_COLORS.light)
+}
+
+watch(isDark, syncThemeColor)
 
 const navItems = [
   { text: '首页', link: '/' },
@@ -37,6 +49,7 @@ function closeMobile(): void {
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll, { passive: true })
+  syncThemeColor()
 })
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', onScroll)

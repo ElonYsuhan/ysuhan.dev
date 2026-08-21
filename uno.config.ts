@@ -16,8 +16,9 @@ export default defineConfig({
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
     // UnoCSS utility palette — mirrors .vitepress/theme/styles/custom.css dark
-    // tokens (light theme is handled via CSS variables; Uno colors are
-    // currently unused by utility classes and kept only for parity).
+    // tokens for parity. Light theme is handled via CSS variables in
+    // custom.css; Uno colors are currently unused by utility classes, so the
+    // light palette is intentionally not duplicated here.
     colors: {
       accent: '#22d3ee',
       'accent-hover': '#67e8f9',
