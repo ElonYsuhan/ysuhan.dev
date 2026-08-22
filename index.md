@@ -2,7 +2,29 @@
 layout: page
 ---
 
-<script setup>
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useIntersectionObserver } from '@vueuse/core'
+
+/* ═══════════ Scroll Reveal ═══════════ */
+const revealSections = ref<HTMLElement[]>([])
+function trackReveal(el: unknown) {
+  if (el instanceof HTMLElement && !revealSections.value.includes(el)) {
+    revealSections.value.push(el)
+  }
+}
+
+onMounted(() => {
+  revealSections.value.forEach((el) => {
+    const { stop } = useIntersectionObserver(el, ([{ isIntersecting }]) => {
+      if (isIntersecting) {
+        el.classList.add('is-visible')
+        stop()
+      }
+    }, { threshold: 0.12 })
+  })
+})
+
 /* ═══════════ Now ═══════════ */
 const nowItems = {
   building: [
@@ -96,8 +118,12 @@ const showPosts = latestPosts.length >= 1
 <!-- ═══════════ Hero ═══════════ -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-avatar">
-      <img src="/favicon.png" alt="Ysuhan" class="hero-avatar-img" />
+    <div class="hero-avatar-wrap">
+      <div class="hero-avatar">
+        <img src="/favicon.png" alt="Ysuhan" class="hero-avatar-img" />
+      </div>
+      <span class="hero-avatar-ring" aria-hidden="true"></span>
+      <span class="hero-avatar-ring hero-avatar-ring-delay" aria-hidden="true"></span>
     </div>
     <h1 class="hero-name">Ysuhan</h1>
     <div class="hero-roles">
@@ -112,14 +138,21 @@ const showPosts = latestPosts.length >= 1
       <a href="/career/" class="hero-btn hero-btn-primary">成长轨迹</a>
       <a href="/projects/" class="hero-btn hero-btn-secondary">精选项目</a>
     </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="hero-scroll-line"></span>
+      <span class="hero-scroll-label">SCROLL</span>
+    </div>
   </div>
 </section>
 
 <!-- ═══════════ Now ═══════════ -->
-<section class="section">
+<section class="section reveal" :ref="trackReveal">
   <div class="section-header">
-    <span class="section-label">现在</span>
-    <h2 class="section-title">正在做什么</h2>
+    <span class="section-index">01</span>
+    <div class="section-heading">
+      <span class="section-label">现在</span>
+      <h2 class="section-title">正在做什么</h2>
+    </div>
   </div>
   <div class="now-grid">
     <div class="now-card glass-card">
@@ -153,10 +186,13 @@ const showPosts = latestPosts.length >= 1
 </section>
 
 <!-- ═══════════ Philosophy ═══════════ -->
-<section class="section">
+<section class="section reveal" :ref="trackReveal">
   <div class="section-header">
-    <span class="section-label">理念</span>
-    <h2 class="section-title">我相信</h2>
+    <span class="section-index">02</span>
+    <div class="section-heading">
+      <span class="section-label">理念</span>
+      <h2 class="section-title">我相信</h2>
+    </div>
   </div>
   <div class="philosophy-card glass-card">
     <p class="philosophy-text">
@@ -171,10 +207,13 @@ const showPosts = latestPosts.length >= 1
 </section>
 
 <!-- ═══════════ Recent Activity ═══════════ -->
-<section class="section">
+<section class="section reveal" :ref="trackReveal">
   <div class="section-header">
-    <span class="section-label">动态</span>
-    <h2 class="section-title">最近在做</h2>
+    <span class="section-index">03</span>
+    <div class="section-heading">
+      <span class="section-label">动态</span>
+      <h2 class="section-title">最近在做</h2>
+    </div>
   </div>
   <div class="activity-list">
     <div v-for="(group, i) in activities" :key="i" class="activity-group glass-card">
@@ -190,10 +229,13 @@ const showPosts = latestPosts.length >= 1
 </section>
 
 <!-- ═══════════ Growth Timeline ═══════════ -->
-<section class="section">
+<section class="section reveal" :ref="trackReveal">
   <div class="section-header">
-    <span class="section-label">成长</span>
-    <h2 class="section-title">成长轨迹</h2>
+    <span class="section-index">04</span>
+    <div class="section-heading">
+      <span class="section-label">成长</span>
+      <h2 class="section-title">成长轨迹</h2>
+    </div>
   </div>
   <div class="timeline-track">
     <div v-for="(item, i) in timeline" :key="i" class="tl-node" :class="{ 'tl-accent': item.accent }">
@@ -211,10 +253,13 @@ const showPosts = latestPosts.length >= 1
 </section>
 
 <!-- ═══════════ Tech Map — network style ═══════════ -->
-<section class="section">
+<section class="section reveal" :ref="trackReveal">
   <div class="section-header">
-    <span class="section-label">知识体系</span>
-    <h2 class="section-title">技术地图</h2>
+    <span class="section-index">05</span>
+    <div class="section-heading">
+      <span class="section-label">知识体系</span>
+      <h2 class="section-title">技术地图</h2>
+    </div>
   </div>
   <div class="techmap-network">
     <div class="tm-node tm-node-core animate-pulse-glow">
@@ -239,10 +284,13 @@ const showPosts = latestPosts.length >= 1
 </section>
 
 <!-- ═══════════ Featured Projects ═══════════ -->
-<section class="section">
+<section class="section reveal" :ref="trackReveal">
   <div class="section-header">
-    <span class="section-label">精选</span>
-    <h2 class="section-title">项目</h2>
+    <span class="section-index">06</span>
+    <div class="section-heading">
+      <span class="section-label">精选</span>
+      <h2 class="section-title">项目</h2>
+    </div>
   </div>
   <ProjectCard :projects="featuredProjects" />
   <div class="section-more">
@@ -251,10 +299,13 @@ const showPosts = latestPosts.length >= 1
 </section>
 
 <!-- ═══════════ Latest Posts ═══════════ -->
-<section v-if="showPosts" class="section">
+<section v-if="showPosts" class="section reveal" :ref="trackReveal">
   <div class="section-header">
-    <span class="section-label">文章</span>
-    <h2 class="section-title">最新文章</h2>
+    <span class="section-index">07</span>
+    <div class="section-heading">
+      <span class="section-label">文章</span>
+      <h2 class="section-title">最新文章</h2>
+    </div>
   </div>
   <div class="posts-list">
     <article
@@ -277,7 +328,7 @@ const showPosts = latestPosts.length >= 1
 </section>
 
 <!-- ═══════════ Footer CTA ═══════════ -->
-<section class="section footer-cta">
+<section class="section footer-cta reveal" :ref="trackReveal">
   <div class="cta-card glass-card">
     <p class="cta-text">从 WebGIS 到数字孪生，从 SDK 到推演引擎。</p>
     <p class="cta-text-dim">持续构建，长期沉淀。</p>
@@ -303,6 +354,22 @@ const showPosts = latestPosts.length >= 1
   position: relative;
 }
 
+/* Hero entrance stagger */
+.hero-content > * {
+  animation: hero-enter 0.7s var(--ease-out) both;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.12s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.19s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.26s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.33s; }
+.hero-content > *:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* Radial glow behind logo — neon "core" */
 .hero-content::before {
   content: '';
@@ -317,14 +384,49 @@ const showPosts = latestPosts.length >= 1
   z-index: -1;
 }
 
+/* Avatar + orbiting HUD rings */
+.hero-avatar-wrap {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 28px;
+}
+
 .hero-avatar {
+  position: absolute;
+  top: 6px;
+  left: 6px;
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin: 0 auto 28px;
   overflow: hidden;
   border: 3px solid var(--accent-border);
   box-shadow: 0 0 24px var(--accent-glow), inset 0 0 12px var(--accent-subtle);
+}
+
+.hero-avatar-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: var(--accent);
+  border-right-color: var(--accent);
+  opacity: 0.7;
+  animation: hero-ring-spin 4s linear infinite;
+  pointer-events: none;
+}
+
+.hero-avatar-ring-delay {
+  inset: 4px;
+  animation-duration: 6s;
+  animation-direction: reverse;
+  border-top-color: var(--accent-hover);
+  border-right-color: var(--accent-hover);
+  opacity: 0.45;
+}
+
+@keyframes hero-ring-spin {
+  to { transform: rotate(360deg); }
 }
 
 .hero-avatar-img {
@@ -337,22 +439,38 @@ const showPosts = latestPosts.length >= 1
   font-size: 3.25rem;
   font-weight: 700;
   letter-spacing: -0.04em;
-  color: var(--text-primary);
   margin: 0;
   line-height: 1;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-hover) 70%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 16px var(--accent-glow-soft));
 }
 
 .hero-roles {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 14px;
+  padding: 6px 14px;
   font-size: 0.8125rem;
   font-family: var(--font-mono);
   color: var(--accent);
   letter-spacing: 0.02em;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-roles::before {
+  content: '>';
+  margin-right: 2px;
+  opacity: 0.5;
 }
 
 .hero-dot {
@@ -376,6 +494,8 @@ const showPosts = latestPosts.length >= 1
 }
 
 .hero-btn {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   height: 42px;
@@ -385,6 +505,22 @@ const showPosts = latestPosts.length >= 1
   font-weight: 500;
   text-decoration: none;
   transition: all 300ms var(--ease-out);
+}
+
+.hero-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s var(--ease-out);
+}
+
+.hero-btn:hover::after {
+  left: 120%;
 }
 
 .hero-btn-primary {
@@ -414,12 +550,45 @@ const showPosts = latestPosts.length >= 1
   background: var(--glass-card-hover-bg);
 }
 
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: -64px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  opacity: 0.7;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  transform-origin: top;
+  animation: hero-scroll-drop 2s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-drop {
+  0%   { transform: scaleY(0); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
 @media (max-width: 640px) {
   .hero { min-height: 70vh; padding: 80px 24px 50px; }
   .hero-name { font-size: 2.25rem; }
   .hero-tagline { font-size: 0.8125rem; }
   .hero-roles { font-size: 0.6875rem; }
-  .hero-avatar { width: 64px; height: 64px; margin-bottom: 22px; }
+  .hero-avatar-wrap { width: 76px; height: 76px; margin-bottom: 22px; }
+  .hero-avatar { width: 64px; height: 64px; top: 6px; left: 6px; }
+  .hero-scroll { bottom: -56px; }
 }
 
 /* ── Section shared ── */
@@ -431,7 +600,35 @@ const showPosts = latestPosts.length >= 1
   z-index: 1;
 }
 
-.section-header { margin-bottom: 40px; }
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.section-header::after {
+  content: '';
+  flex: 1;
+  align-self: center;
+  height: 1px;
+  margin-left: 8px;
+  background: linear-gradient(90deg, var(--border-default), transparent);
+}
+
+.section-index {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  line-height: 1.6;
+  padding-top: 2px;
+  opacity: 0.85;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.section-heading { min-width: 0; }
 
 .section-label {
   display: inline-flex;
@@ -473,6 +670,35 @@ const showPosts = latestPosts.length >= 1
 
 .section-more a:hover { color: var(--accent-hover); }
 
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-content > *,
+  .hero-avatar-ring,
+  .hero-avatar-ring-delay,
+  .hero-scroll-line {
+    animation: none !important;
+  }
+  .hero-scroll {
+    opacity: 1;
+  }
+}
+
 /* ── Now — 3-column glass cards ── */
 .now-grid {
   display: grid;
@@ -480,7 +706,16 @@ const showPosts = latestPosts.length >= 1
   gap: 16px;
 }
 
-.now-card { padding: 26px; }
+.now-card {
+  padding: 26px;
+  border-top: 1px solid var(--accent-border);
+  transition: border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+
+.now-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--glass-card-shadow), 0 0 28px var(--accent-glow-soft);
+}
 
 .now-card-title {
   font-size: 0.75rem;
@@ -528,6 +763,13 @@ const showPosts = latestPosts.length >= 1
 .philosophy-card {
   padding: 40px;
   text-align: center;
+  border-top: 1px solid var(--accent-border);
+  transition: border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+
+.philosophy-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--glass-card-shadow), 0 0 28px var(--accent-glow-soft);
 }
 
 .philosophy-text {
@@ -568,6 +810,13 @@ const showPosts = latestPosts.length >= 1
   display: flex;
   gap: 32px;
   padding: 24px 28px;
+  border-top: 1px solid var(--accent-border);
+  transition: border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+
+.activity-group:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--glass-card-shadow), 0 0 28px var(--accent-glow-soft);
 }
 
 .activity-month {
@@ -674,6 +923,13 @@ const showPosts = latestPosts.length >= 1
   padding: 20px 24px;
   margin-bottom: 8px;
   min-width: 0;
+  border-top: 1px solid var(--accent-border);
+  transition: border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+
+.tl-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--glass-card-shadow), 0 0 28px var(--accent-glow-soft);
 }
 
 .tl-title {
@@ -707,9 +963,27 @@ const showPosts = latestPosts.length >= 1
   align-items: center;
   gap: 0;
   padding: 20px 0;
+  position: relative;
+}
+
+/* Vertical backbone */
+.techmap-network::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 54px;
+  bottom: 28px;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, var(--accent), var(--border-default) 60%, transparent);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .tm-node {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   padding: 8px 20px;
   border-radius: 999px;
@@ -718,6 +992,13 @@ const showPosts = latestPosts.length >= 1
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 0 10px var(--accent-glow);
+  transition: transform 300ms var(--ease-out), border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+
+.tm-node:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 0 18px var(--accent-glow), inset 0 0 10px var(--accent-subtle);
 }
 
 .tm-node-core {
@@ -741,13 +1022,31 @@ const showPosts = latestPosts.length >= 1
 }
 
 .tm-branches {
+  position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 480px;
 }
 
+/* Horizontal cross-beam */
+.tm-branches::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, var(--accent-border), transparent);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .tm-branch {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -778,6 +1077,13 @@ const showPosts = latestPosts.length >= 1
   display: flex;
   gap: 32px;
   padding: 24px;
+  border-top: 1px solid var(--accent-border);
+  transition: border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+
+.post-item:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--glass-card-shadow), 0 0 28px var(--accent-glow-soft);
 }
 
 .post-date {
@@ -821,6 +1127,13 @@ const showPosts = latestPosts.length >= 1
 .cta-card {
   padding: 36px;
   text-align: center;
+  border-top: 1px solid var(--accent-border);
+  transition: border-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+
+.cta-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--glass-card-shadow), 0 0 28px var(--accent-glow-soft);
 }
 
 .cta-text {
